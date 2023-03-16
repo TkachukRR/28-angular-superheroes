@@ -1,6 +1,6 @@
 import {FormControl} from "@angular/forms";
 
-export class SelfValidators{
+export class CustomValidators {
   static restrictedDomains(control: FormControl): {[key:string]: boolean} | null {
     const supportsDomains: Array<string> = ['.com', '.net', '.org', '.co', '.us']
 
