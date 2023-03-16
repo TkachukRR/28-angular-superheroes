@@ -2,20 +2,20 @@
   <div class="login modal">
     <h2 class="login__header">Login page</h2>
 
-    <form class="login__form form">
+    <form class="login__form form" [formGroup]="loginForm" (ngSubmit)="submit()">
       <div class="form__control">
         <label for="email">Email:</label>
-        <input id="email" type="email">
+        <input id="email" type="email" placeholder="Enter email" formControlName="email">
       </div>
 
       <div class="form__control">
         <label for="password">Password:</label>
-        <input id="password" type="password">
+        <input id="password" type="password" placeholder="Enter password" formControlName="password">
       </div>
 
       <div class="form__buttons">
-        <button class="btn btn-orange">Sign in</button>
-        <button class="btn btn-orange">Create new</button>
+        <button class="btn btn-orange" type="submit">Sign in</button>
+        <button class="btn btn-orange" type="submit">Create new</button>
       </div>
     </form>
   </div>
