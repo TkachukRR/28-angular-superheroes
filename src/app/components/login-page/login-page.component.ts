@@ -17,7 +17,8 @@ export class LoginPageComponent implements OnInit{
           Validators.required,
           Validators.email,
           CustomValidators.supportsDomains(['.com', '.net', '.org', '.co', '.us']) as ValidatorFn,
-          CustomValidators.maxLengthAfterAt(5) as ValidatorFn
+          CustomValidators.maxLengthAfterAt(5) as ValidatorFn,
+          CustomValidators.allowedDotsBeforeAt(3) as ValidatorFn,
         ]
       ),
       password :new FormControl('')

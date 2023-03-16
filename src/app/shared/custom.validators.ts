@@ -24,12 +24,15 @@ export class CustomValidators {
     }
   }
 
-  static dotsBeforeAt(control: FormControl): {[key:string]: boolean} | null {
-    const quantityDotsBeforeAt = 3
-    const lastAtIndex = control.value.lastIndexOf('@')
-    if (lastAtIndex !== -1 && (control.value.slice(0, lastAtIndex).replaceAll('.', '').length + quantityDotsBeforeAt <= control.value.slice(0, lastAtIndex).length)) {
-      return {dotsBeforeAt: true}
+  static allowedDotsBeforeAt(dotsQuantity: number): ValidatorFn | null {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const lastAtIndex = control.value.lastIndexOf('@')
+      const slicedEmail = control.value.slice(0, lastAtIndex)
+
+      if (slicedEmail.replaceAll('.', '').length <= slicedEmail.length - dotsQuantity) {
+        return {dotsBeforeAt: true, allowedDotsBeforeAt : dotsQuantity}
+      }
+      return null
     }
-    return null
   }
 }
