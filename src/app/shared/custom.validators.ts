@@ -1,25 +1,23 @@
-import {FormControl} from "@angular/forms";
+import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 
 export class CustomValidators {
-  static restrictedDomains(control: FormControl): {[key:string]: boolean} | null {
-    const supportsDomains: Array<string> = ['.com', '.net', '.org', '.co', '.us']
+  static supportsDomains(domains: string[]): ValidatorFn | null {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const restrictedDomains: Array<string> = domains.filter(domain => { return control.value.endsWith(domain)})
 
-    if (supportsDomains.filter(domain => {
-      return control.value.endsWith(domain)
-    }).length){
-      return null
+      if (restrictedDomains.length){
+        return null
+      }
+      return {restrictedDomain: true, supportsDomains: domains.join(', ')}
     }
-
-    return {restrictedDomain: true}
   }
 
-  static lengthAfterAt(control: FormControl): {[key:string]: boolean} | null {
+  static lengthAfterAt(control: FormControl): ValidationErrors | null {
     const quantitySymbolsAfterAt = 5
     const lastAtIndex = control.value.lastIndexOf('@')
     if(lastAtIndex !== -1 && control.value.slice(lastAtIndex + 1).length > quantitySymbolsAfterAt) {
       return {lengthAfterAt: true}
     }
-
     return null
   }
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {CustomValidators} from "../../shared/custom.validators";
 
 @Component({
@@ -12,8 +12,15 @@ export class LoginPageComponent implements OnInit{
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required, CustomValidators.restrictedDomains, CustomValidators.lengthAfterAt, CustomValidators.dotsBeforeAt]),
-      password :new FormControl('', [Validators.required])
+      email: new FormControl('',
+        [
+          Validators.required,
+          Validators.email,
+          CustomValidators.supportsDomains(['.com', '.net', '.org', '.co', '.us']) as ValidatorFn,
+
+        ]
+      ),
+      password :new FormControl('')
     })
   }
 
