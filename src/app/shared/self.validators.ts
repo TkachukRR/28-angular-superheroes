@@ -22,4 +22,13 @@ export class SelfValidators{
 
     return null
   }
+
+  static dotsBeforeAt(control: FormControl): {[key:string]: boolean} | null {
+    const quantityDotsBeforeAt = 3
+    const lastAtIndex = control.value.lastIndexOf('@')
+    if (lastAtIndex !== -1 && (control.value.slice(0, lastAtIndex).replaceAll('.', '').length + quantityDotsBeforeAt <= control.value.slice(0, lastAtIndex).length)) {
+      return {dotsBeforeAt: true}
+    }
+    return null
+  }
 }

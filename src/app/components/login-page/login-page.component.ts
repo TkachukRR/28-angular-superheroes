@@ -12,7 +12,7 @@ export class LoginPageComponent implements OnInit{
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required, SelfValidators.restrictedDomains, SelfValidators.lengthAfterAt]),
+      email: new FormControl('', [Validators.email, Validators.required, SelfValidators.restrictedDomains, SelfValidators.lengthAfterAt, SelfValidators.dotsBeforeAt]),
       password :new FormControl('', [Validators.required])
     })
   }
