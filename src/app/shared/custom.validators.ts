@@ -12,13 +12,16 @@ export class CustomValidators {
     }
   }
 
-  static lengthAfterAt(control: FormControl): ValidationErrors | null {
-    const quantitySymbolsAfterAt = 5
-    const lastAtIndex = control.value.lastIndexOf('@')
-    if(lastAtIndex !== -1 && control.value.slice(lastAtIndex + 1).length > quantitySymbolsAfterAt) {
-      return {lengthAfterAt: true}
+  static maxLengthAfterAt(maxLength: number): ValidatorFn | null {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const lastAtIndex : number = control.value.lastIndexOf('@')
+      const lengthSlicedEmail : number= control.value.slice(lastAtIndex + 1).length
+
+      if(lengthSlicedEmail > maxLength) {
+        return {lengthAfterAt: true, maxLength: maxLength, currentLength: lengthSlicedEmail}
+      }
+      return null
     }
-    return null
   }
 
   static dotsBeforeAt(control: FormControl): {[key:string]: boolean} | null {
