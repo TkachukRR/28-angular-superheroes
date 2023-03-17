@@ -7,6 +7,7 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { HeaderComponent } from './components/header/header.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LocalStorageService} from "./shared/services/localStorage.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    LocalStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

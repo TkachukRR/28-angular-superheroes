@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {CustomValidators} from "../../shared/custom.validators";
+import {LocalStorageService} from "../../shared/services/localStorage.service";
 
 @Component({
   selector: 'app-login-page',
@@ -10,6 +11,9 @@ import {CustomValidators} from "../../shared/custom.validators";
 export class LoginPageComponent implements OnInit{
   loginForm!: FormGroup
   submitted!: false
+
+  constructor(private localStorageService: LocalStorageService) {
+  }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
