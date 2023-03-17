@@ -28,7 +28,7 @@
           </small>
         </div>
       </div>
-<!--      <pre>{{loginForm.get('email')?.errors | json}}</pre>-->
+
 
       <div
         class="form__control"
@@ -54,16 +54,29 @@
       </div>
 
       <div class="form__control" >
-        <div *ngIf="loginForm.get('email')?.touched && checkRegisteredStatus()">
+        <div *ngIf="loginForm.get('email')?.touched && !checkRegisteredStatus()">
           <label for="name">Name: </label>
           <input id="name" type="text" placeholder="Enter name" formControlName="name">
-          <div class="message-error"></div>
+          <div class="message-error">
+            <small
+              class="massege__error"
+              *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched"
+            >
+              <div *ngIf="loginForm.get('name')?.errors?.['required']">Can not be empty.</div>
+              <div *ngIf="loginForm.get('name')?.errors?.['minlength']">
+                required length more than {{loginForm.get('name')?.errors?.['minlength']['requiredLength']}} symbols
+                current length {{loginForm.get('name')?.errors?.['minlength']['actualLength']}}
+              </div>
+              <div *ngIf="loginForm.get('name')?.errors?.['requiredPattern']">Only kebab-case or camelCase</div>
+
+            </small>
+          </div>
         </div>
       </div>
-
+<!--            <pre>{{loginForm.get('name')?.errors | json}}</pre>-->
       <div class="form__buttons">
-        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted" type="submit">Sign in</button>
-        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted" type="submit">Create new</button>
+        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted || !checkRegisteredStatus()" type="submit">Sign in</button>
+        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted || checkRegisteredStatus()" type="button" (click)="localStorageService.addNewRegisteredUser(loginForm.value)">Create new</button>
       </div>
     </form>
   </div>

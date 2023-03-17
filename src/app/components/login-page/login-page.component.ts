@@ -33,7 +33,11 @@ export class LoginPageComponent implements OnInit{
         Validators.minLength(5),
         Validators.pattern(/(?=[A-Za-z0-9$%.&!]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$%.&!]).*$/),
       ]),
-      name: new FormControl('')
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(([a-z]+(-[a-z]+))*|^(([a-z]+|[a-z])+([A-Z][a-z]+|[A-Z])))$/),
+      ])
     })
   }
 
