@@ -1,4 +1,4 @@
-import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 
 export class CustomValidators {
   static supportsDomains(domains: string[]): ValidatorFn | null {

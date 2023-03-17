@@ -9,10 +9,11 @@ import {LocalStorageService} from "../../shared/services/localStorage.service";
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit{
-  loginForm!: FormGroup
-  submitted!: false
+  loginForm: FormGroup = new FormGroup({})
+  submitted = false
+  isRegistered = false
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(public localStorageService: LocalStorageService) {
   }
 
   ngOnInit() {
@@ -31,11 +32,28 @@ export class LoginPageComponent implements OnInit{
         Validators.required,
         Validators.minLength(5),
         Validators.pattern(/(?=[A-Za-z0-9$%.&!]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$%.&!]).*$/),
-      ])
+      ]),
+      name: new FormControl('')
     })
   }
 
   submit() {
     console.log(this.loginForm)
+    this.setActualRegisteredStatus(this.loginForm.value['email'])
+    console.log(this.isRegistered)
+  }
+
+  setActualRegisteredStatus(email: string): void{
+    const registered: Array<string> = this.localStorageService.getRegisteredEmails()
+    if (registered.includes(email)) {
+      this.isRegistered = true
+      return
+    }
+    this.isRegistered = false
+  }
+
+  checkRegisteredStatus():boolean{
+    this.setActualRegisteredStatus(this.loginForm.value['email'])
+    return this.isRegistered
   }
 }

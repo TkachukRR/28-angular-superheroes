@@ -28,6 +28,7 @@
           </small>
         </div>
       </div>
+<!--      <pre>{{loginForm.get('email')?.errors | json}}</pre>-->
 
       <div
         class="form__control"
@@ -49,6 +50,14 @@
             </div>
             <div *ngIf="loginForm.get('password')?.errors?.['pattern']">One uppercase letter, one number, one special symbol. $ % . & !</div>
           </small>
+        </div>
+      </div>
+
+      <div class="form__control" >
+        <div *ngIf="loginForm.get('email')?.touched && checkRegisteredStatus()">
+          <label for="name">Name: </label>
+          <input id="name" type="text" placeholder="Enter name" formControlName="name">
+          <div class="message-error"></div>
         </div>
       </div>
 

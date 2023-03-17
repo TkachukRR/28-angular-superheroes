@@ -22,7 +22,7 @@ export class LocalStorageService{
     localStorage.setItem('registeredUsers', JSON.stringify([newUser]))
   }
 
-  checkForRegisteredEmail(newEmail: string):boolean{
-      return (this.getRegisteredUsers()).some(registeredUser => registeredUser.email === newEmail)
+  getRegisteredEmails(): Array<string> | []{
+      return (this.getRegisteredUsers()).map(registeredUser => registeredUser.email)
   }
 }

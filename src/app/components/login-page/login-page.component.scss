@@ -16,7 +16,8 @@
   margin-bottom: 12px;
 
   &__control{
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    min-height: 75px;
 
     &-invalid {
       color: red;
@@ -43,5 +44,5 @@
 .message-error{
   height: 18px;
   overflow: hidden;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
