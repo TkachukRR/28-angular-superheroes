@@ -9,6 +9,7 @@ import {CustomValidators} from "../../shared/custom.validators";
 })
 export class LoginPageComponent implements OnInit{
   loginForm!: FormGroup
+  submitted!: false
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -21,7 +22,11 @@ export class LoginPageComponent implements OnInit{
           CustomValidators.allowedDotsBeforeAt(3) as ValidatorFn,
         ]
       ),
-      password :new FormControl('')
+      password :new FormControl('',
+        [
+        Validators.required,
+        Validators.minLength(5),
+      ])
     })
   }
 

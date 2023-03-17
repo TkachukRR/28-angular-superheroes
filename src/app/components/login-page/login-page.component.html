@@ -14,8 +14,8 @@
       </div>
 
       <div class="form__buttons">
-        <button class="btn btn-orange" type="submit">Sign in</button>
-        <button class="btn btn-orange" type="submit">Create new</button>
+        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted" type="submit">Sign in</button>
+        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted" type="submit">Create new</button>
       </div>
     </form>
   </div>

@@ -88,33 +88,19 @@ input, textarea{
     z-index: 1;
   }
 
-  &-orange:after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 0;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    border-radius: 5px;
+  &-orange:hover:not(:disabled) {
     background-color: #eaf818;
     background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
-    box-shadow:inset 2px 2px 2px 0 rgba(255,255,255,.5),
-    7px 7px 20px 0 rgba(0,0,0,.1),
-    4px 4px 5px 0 rgba(0,0,0,.1);
     transition: all 0.2s ease;
   }
 
-  &-orange:hover {
-    color: #000;
-  }
-  &-orange:hover:after {
-    top: auto;
-    bottom: 0;
-    height: 100%;
-  }
   &-orange:active {
     top: 2px;
+  }
+
+  &:disabled{
+    background: rgb(253, 240, 223);
+    color: rgba(189, 189, 189, 0.85);
   }
 }
 
