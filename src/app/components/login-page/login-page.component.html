@@ -39,10 +39,7 @@
         </label>
         <input id="password" type="password" placeholder="Enter password" formControlName="password">
         <div class="message-error">
-          <small
-            class="massege__error"
-            *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-          >
+          <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
             <div *ngIf="loginForm.get('password')?.errors?.['required']">Can not be empty.</div>
             <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
               required length more than {{loginForm.get('password')?.errors?.['minlength']['requiredLength']}} symbols
@@ -53,22 +50,21 @@
         </div>
       </div>
 
-      <div class="form__control" >
+      <div
+        class="form__control"
+        [ngClass]="{'form__control-invalid': loginForm.get('name')?.invalid && loginForm.get('name')?.touched}"
+      >
         <div *ngIf="loginForm.get('email')?.touched && !checkRegisteredStatus()">
           <label for="name">Name: </label>
           <input id="name" type="text" placeholder="Enter name" formControlName="name">
           <div class="message-error">
-            <small
-              class="massege__error"
-              *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched"
-            >
+            <small *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched">
               <div *ngIf="loginForm.get('name')?.errors?.['required']">Can not be empty.</div>
               <div *ngIf="loginForm.get('name')?.errors?.['minlength']">
                 required length more than {{loginForm.get('name')?.errors?.['minlength']['requiredLength']}} symbols
                 current length {{loginForm.get('name')?.errors?.['minlength']['actualLength']}}
               </div>
               <div *ngIf="loginForm.get('name')?.errors?.['requiredPattern']">Only kebab-case or camelCase</div>
-
             </small>
           </div>
         </div>
