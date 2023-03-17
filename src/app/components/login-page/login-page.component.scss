@@ -17,6 +17,15 @@
 
   &__control{
     margin-bottom: 8px;
+
+    &-invalid {
+      color: red;
+
+      input{
+        border-color: red;
+        color: red;
+      }
+    }
   }
 
   & label{
@@ -29,4 +38,10 @@
     justify-content: center;
     gap: 10px;
   }
+}
+
+.message-error{
+  height: 18px;
+  overflow: hidden;
+  margin-bottom: 4px;
 }

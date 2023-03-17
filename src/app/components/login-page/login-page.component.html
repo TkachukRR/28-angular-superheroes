@@ -3,14 +3,54 @@
     <h2 class="login__header">Login page</h2>
 
     <form class="login__form form" [formGroup]="loginForm" (ngSubmit)="submit()">
-      <div class="form__control">
-        <label for="email">Email:</label>
+      <div
+        class="form__control"
+        [ngClass]="{'form__control-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+      >
+        <label for="email">
+          Email: <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">error</span>
+        </label>
+
         <input id="email" type="email" placeholder="Enter email" formControlName="email">
+        <div class="message-error">
+          <small *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            <span *ngIf="loginForm.get('email')?.errors?.['required']">Can not be empty.</span>
+            <span *ngIf="loginForm.get('email')?.errors?.['email']">Isn't email.</span>
+            <span *ngIf="loginForm.get('email')?.errors?.['restrictedDomain']">
+                  Supports domains: {{loginForm.get('email')?.errors?.['supportsDomains']}}.
+            </span>
+            <span *ngIf="loginForm.get('email')?.errors?.['lengthAfterAt']">
+                  Max length after @ is {{loginForm.get('email')?.errors?.['maxLength']}} symbols current length is {{loginForm.get('email')?.errors?.['currentLength']}}.
+            </span>
+            <span *ngIf="loginForm.get('email')?.errors?.['dotsBeforeAt']">
+                  Allowed dots before @ is {{loginForm.get('email')?.errors?.['allowedDotsBeforeAt']}}.
+            </span>
+          </small>
+        </div>
+<!--        <pre>{{loginForm.get('email')?.errors | json}}</pre>-->
       </div>
 
-      <div class="form__control">
-        <label for="password">Password:</label>
+      <div
+        class="form__control"
+        [ngClass]="{'form__control-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+      >
+        <label for="password">
+          Password: <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">error</span>
+        </label>
         <input id="password" type="password" placeholder="Enter password" formControlName="password">
+        <div class="message-error">
+          <small
+            class="massege__error"
+            *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          >
+            <span *ngIf="loginForm.get('password')?.errors?.['required']">can not be empty</span>
+            <span *ngIf="loginForm.get('password')?.errors?.['minlength']">
+              required length more than {{loginForm.get('password')?.errors?.['minlength']['requiredLength']}} symbols
+              current length {{loginForm.get('password')?.errors?.['minlength']['actualLength']}}
+            </span>
+          </small>
+        </div>
+<!--        <pre>{{loginForm.get('password')?.errors | json}}</pre>-->
       </div>
 
       <div class="form__buttons">
