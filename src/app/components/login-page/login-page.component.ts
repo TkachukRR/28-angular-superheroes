@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit{
         [
         Validators.required,
         Validators.minLength(5),
+        Validators.pattern(/(?=[A-Za-z0-9$%.&!]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$%.&!]).*$/),
       ])
     })
   }
