@@ -4,12 +4,12 @@ import {RegisteredUser} from "../interfaces";
 @Injectable()
 export class LocalStorageService{
 
-  getRegisteredUsers(): Array<RegisteredUser> | null {
+  getRegisteredUsers(): Array<RegisteredUser> | [] {
     const registeredUsers = localStorage.getItem('registeredUsers')
     if (registeredUsers) {
       return JSON.parse(registeredUsers)
     }
-    return null
+    return []
   }
 
   addNewRegisteredUser(newUser: RegisteredUser): void{
@@ -20,5 +20,9 @@ export class LocalStorageService{
       return
     }
     localStorage.setItem('registeredUsers', JSON.stringify([newUser]))
+  }
+
+  checkForRegisteredEmail(newEmail: string):boolean{
+      return (this.getRegisteredUsers()).some(registeredUser => registeredUser.email === newEmail)
   }
 }
