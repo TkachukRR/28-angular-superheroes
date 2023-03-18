@@ -29,7 +29,6 @@
         </div>
       </div>
 
-
       <div
         class="form__control"
         [ngClass]="{'form__control-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
@@ -37,7 +36,7 @@
         <label for="password">
           Password: <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">error</span>
         </label>
-        <input id="password" type="password" placeholder="Enter password" formControlName="password">
+        <input id="password" type="text" placeholder="Enter password" formControlName="password">
         <div class="message-error">
           <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
             <div *ngIf="loginForm.get('password')?.errors?.['required']">Can not be empty.</div>
@@ -50,29 +49,30 @@
         </div>
       </div>
 
-      <div
-        class="form__control"
-        [ngClass]="{'form__control-invalid': loginForm.get('name')?.invalid && loginForm.get('name')?.touched}"
-      >
-        <div *ngIf="loginForm.get('email')?.touched && !checkRegisteredStatus()">
-          <label for="name">Name: </label>
-          <input id="name" type="text" placeholder="Enter name" formControlName="name">
-          <div class="message-error">
-            <small *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched">
-              <div *ngIf="loginForm.get('name')?.errors?.['required']">Can not be empty.</div>
-              <div *ngIf="loginForm.get('name')?.errors?.['minlength']">
-                required length more than {{loginForm.get('name')?.errors?.['minlength']['requiredLength']}} symbols
-                current length {{loginForm.get('name')?.errors?.['minlength']['actualLength']}}
-              </div>
-              <div *ngIf="loginForm.get('name')?.errors?.['requiredPattern']">Only kebab-case or camelCase</div>
-            </small>
+
+        <div
+          class="form__control"
+          [ngClass]="{'form__control-invalid': loginForm.get('name')?.invalid && loginForm.get('name')?.touched}"
+        >
+          <div *ngIf="loginForm.get('email')?.touched && !checkRegisteredStatus()">
+            <label for="name">Name: </label>
+            <input id="name" type="text" placeholder="Enter name" formControlName="name">
+            <div class="message-error">
+              <small *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched">
+                <div *ngIf="loginForm.get('name')?.errors?.['required']">Can not be empty.</div>
+                <div *ngIf="loginForm.get('name')?.errors?.['minlength']">
+                  required length more than {{loginForm.get('name')?.errors?.['minlength']['requiredLength']}} symbols
+                  current length {{loginForm.get('name')?.errors?.['minlength']['actualLength']}}
+                </div>
+                <div *ngIf="loginForm.get('name')?.errors?.['requiredPattern']">Only kebab-case or camelCase</div>
+              </small>
+            </div>
           </div>
         </div>
-      </div>
-<!--            <pre>{{loginForm.get('name')?.errors | json}}</pre>-->
+
       <div class="form__buttons">
-        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted || !checkRegisteredStatus()" type="submit">Sign in</button>
-        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted || checkRegisteredStatus()" type="button" (click)="localStorageService.addNewRegisteredUser(loginForm.value)">Create new</button>
+        <button class="btn btn-orange" [disabled]="loginForm.get('email')?.invalid || submitted || !isRegistered" type="submit">Sign in</button>
+        <button class="btn btn-orange" [disabled]="loginForm.invalid || submitted || isRegistered" type="button" (click)="registrationNewUser()">Create new</button>
       </div>
     </form>
   </div>

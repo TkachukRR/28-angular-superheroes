@@ -12,7 +12,7 @@ export class LocalStorageService{
     return []
   }
 
-  addNewRegisteredUser(newUser: RegisteredUser): void{
+  addNewUserToRegistered(newUser: RegisteredUser): void{
     const registeredUsers = localStorage.getItem('registeredUsers')
     if (registeredUsers) {
       const users: Array<RegisteredUser> = JSON.parse(registeredUsers)
@@ -24,5 +24,9 @@ export class LocalStorageService{
 
   getRegisteredEmails(): Array<string> | []{
       return (this.getRegisteredUsers()).map(registeredUser => registeredUser.email)
+  }
+
+  getFullUserInfoByEmail(email: string){
+    return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email)
   }
 }
