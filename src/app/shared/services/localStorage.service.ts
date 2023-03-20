@@ -31,18 +31,14 @@ export class LocalStorageService {
 		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email);
 	}
 
-  public addUsersSessionExpiresDate(userEmail: string): void{
+  public addNewUserSession(newUserSession: Session): void{
     const sessions = localStorage.getItem('sessions');
-    const newSession: Session = {
-      email: userEmail,
-      expDate: new Date(new Date().getTime() + 3600 * 1000)
-    };
-    if (sessions) {
-      localStorage.setItem('sessions', JSON.stringify([...JSON.parse(sessions), newSession]));
+      if (sessions) {
+        localStorage.setItem('sessions', JSON.stringify([...JSON.parse(sessions), newUserSession]));
 
-      return;
-    }
+        return;
+      }
 
-    localStorage.setItem('sessions', JSON.stringify([newSession]));
+    localStorage.setItem('sessions', JSON.stringify([newUserSession]));
   }
 }

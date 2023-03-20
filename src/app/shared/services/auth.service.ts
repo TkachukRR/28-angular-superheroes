@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { LocalStorageService } from "./localStorage.service";
+import { Session } from "../interfaces";
 
 @Injectable()
 export class AuthService{
@@ -7,7 +8,11 @@ export class AuthService{
   }
 
   public login(userEmail: string){
-    this.localStorageService.addUsersSessionExpiresDate(userEmail);
+    const newUserSession: Session = {
+      email: userEmail,
+      expDate: new Date(new Date().getTime() + 3600 * 1000)
+    };
+    this.localStorageService.addNewUserSession(newUserSession);
   }
 
   public logout(){}

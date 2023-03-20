@@ -17,7 +17,7 @@ export class LoginPageComponent implements OnInit {
 
 	constructor(
     public localStorageService: LocalStorageService,
-    public auth: AuthService
+    private auth: AuthService
   ) {}
 
 	public ngOnInit() {
