@@ -30,4 +30,19 @@ export class LocalStorageService {
 	public getFullUserInfoByEmail(email: string) {
 		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email);
 	}
+
+  public addUsersSessionExpiresDate(userEmail: string): void{
+    const sessions = localStorage.getItem('sessions');
+    const newSession = {
+      email: userEmail,
+      expDate: new Date(new Date().getTime() + 3600 * 1000)
+    };
+    if (sessions) {
+      localStorage.setItem('sessions', JSON.stringify([...JSON.parse(sessions), newSession]));
+
+      return;
+    }
+
+    localStorage.setItem('sessions', JSON.stringify([newSession]));
+  }
 }
