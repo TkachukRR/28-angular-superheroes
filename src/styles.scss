@@ -37,6 +37,72 @@ body {
   background-size: cover;
 }
 
+input, textarea{
+  display: block;
+  width: 100%;
+  padding: 4px 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  opacity: 1;
+  transform: scale(1);
+
+  transition: opacity 250ms ease-in-out, transform 250ms ease;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn {
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0 rgba(255,255,255,.5),
+  7px 7px 20px 0 rgba(0,0,0,.1),
+  4px 4px 5px 0 rgba(0,0,0,.1);
+  outline: none;
+
+  &-orange{
+    background: rgb(255,151,0);
+    border: none;
+    z-index: 1;
+  }
+
+  &-orange:hover:not(:disabled) {
+    background-color: #eaf818;
+    background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
+    transition: all 0.2s ease;
+  }
+
+  &-orange:active {
+    top: 2px;
+  }
+
+  &:disabled{
+    background: rgb(253, 240, 223);
+    color: rgba(189, 189, 189, 0.85);
+  }
+}
 
 
 

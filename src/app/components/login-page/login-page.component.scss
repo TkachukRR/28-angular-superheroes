@@ -1,0 +1,48 @@
+.login {
+	width: 480px;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.85);
+	border: 1px solid gray;
+	border-radius: 5px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.login__header {
+	margin-bottom: 12px;
+	text-align: center;
+}
+
+.form {
+	margin-bottom: 12px;
+
+	&__control {
+		margin-bottom: 4px;
+		min-height: 75px;
+
+		&-invalid {
+			color: red;
+
+			input {
+				border-color: red;
+				color: red;
+			}
+		}
+	}
+
+	& label {
+		display: block;
+		margin-bottom: 8px;
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+	}
+}
+
+.message-error {
+	height: 18px;
+	overflow: hidden;
+	margin-bottom: 2px;
+}
