@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegisteredUser } from '../interfaces';
+import { RegisteredUser, Session } from '../interfaces';
 
 @Injectable()
 export class LocalStorageService {
@@ -33,7 +33,7 @@ export class LocalStorageService {
 
   public addUsersSessionExpiresDate(userEmail: string): void{
     const sessions = localStorage.getItem('sessions');
-    const newSession = {
+    const newSession: Session = {
       email: userEmail,
       expDate: new Date(new Date().getTime() + 3600 * 1000)
     };
