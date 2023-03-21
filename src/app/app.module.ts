@@ -9,9 +9,10 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from './shared/services/localStorage.service';
 import { AuthService } from './shared/services/auth.service';
+import { UserPageComponent } from './components/user-page/user-page.component';
 
 @NgModule({
-	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent],
+	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent, UserPageComponent],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
 	providers: [LocalStorageService, AuthService],
 	bootstrap: [AppComponent]
