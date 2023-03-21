@@ -31,14 +31,45 @@ export class LocalStorageService {
 		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email);
 	}
 
-  public addNewUserSession(newUserSession: Session): void{
-    const sessions = localStorage.getItem('sessions');
-      if (sessions) {
-        localStorage.setItem('sessions', JSON.stringify([...JSON.parse(sessions), newUserSession]));
+	public addNewUserSession(newUserSession: Session): void {
+		const sessions = localStorage.getItem('sessions');
+		if (sessions) {
+			localStorage.setItem('sessions', JSON.stringify([...JSON.parse(sessions), newUserSession]));
 
-        return;
-      }
+			return;
+		}
 
-    localStorage.setItem('sessions', JSON.stringify([newUserSession]));
-  }
+		localStorage.setItem('sessions', JSON.stringify([newUserSession]));
+	}
+
+	public getUserSession(userEmail: string) {
+		const sessions = localStorage.getItem('sessions');
+		if (sessions) {
+			return JSON.parse(sessions).filter((session: Session) => session.email === userEmail);
+		}
+
+		return null;
+	}
+
+	public removeUserSession(userEmail: string) {
+		const sessions = localStorage.getItem('sessions');
+		if (!sessions) {
+			return;
+		}
+		const filteredSessions = JSON.parse(sessions).filter((session: Session) => session.email !== userEmail);
+		this.setSessions([...filteredSessions]);
+	}
+
+	public getSessions(): Array<Session> | [] {
+		const sessions = localStorage.getItem('sessions');
+		if (sessions) {
+			return JSON.parse(sessions);
+		}
+
+		return [];
+	}
+
+	public setSessions(sessions: Array<Session>) {
+		localStorage.setItem('sessions', JSON.stringify([...sessions]));
+	}
 }

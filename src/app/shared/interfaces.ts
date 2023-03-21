@@ -5,6 +5,6 @@ export interface RegisteredUser {
 }
 
 export interface Session {
-  email: string;
-  expDate: Date;
+	email: string;
+	expDate: Date;
 }

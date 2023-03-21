@@ -2,7 +2,7 @@
 	<div class="login modal">
 		<h2 class="login__header">Login page</h2>
 
-		<form [formGroup]="loginForm" (ngSubmit)="submit()" class="login__form form">
+		<form [formGroup]="loginForm" (ngSubmit)="singIn()" class="login__form form">
 			<div
 				[ngClass]="{ 'form__control-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched }"
 				class="form__control">

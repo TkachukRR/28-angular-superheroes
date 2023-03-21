@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from './shared/services/localStorage.service';
-import { AuthService } from "./shared/services/auth.service";
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
 	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent],

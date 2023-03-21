@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms'
 import { CustomValidators } from '../../shared/custom.validators';
 import { LocalStorageService } from '../../shared/services/localStorage.service';
 import { RegisteredUser } from '../../shared/interfaces';
-import { AuthService } from "../../shared/services/auth.service";
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
 	selector: 'app-login-page',
@@ -12,13 +12,10 @@ import { AuthService } from "../../shared/services/auth.service";
 })
 export class LoginPageComponent implements OnInit {
 	public loginForm: FormGroup = new FormGroup({});
-  public submitted = false;
-  public isRegistered = false;
+	public submitted = false;
+	public isRegistered = false;
 
-	constructor(
-    public localStorageService: LocalStorageService,
-    private auth: AuthService
-  ) {}
+	constructor(public localStorageService: LocalStorageService, private auth: AuthService) {}
 
 	public ngOnInit() {
 		this.loginForm = new FormGroup({
@@ -42,7 +39,7 @@ export class LoginPageComponent implements OnInit {
 		});
 	}
 
-	public submit() {
+	public singIn(): void {
 		if (this.loginForm.value['email'].invalid || this.loginForm.value['password'].invalid) {
 			console.error('Sign in error, invalid parameters');
 
@@ -64,10 +61,11 @@ export class LoginPageComponent implements OnInit {
 		console.log('sing in success');
 		// this.loginForm.reset()
 		// redirect
-    this.auth.login(this.loginForm.value['email']);
+		this.auth.login(this.loginForm.value['email']);
+		// console.log(this.auth.controlAuthStatus(this.loginForm.value['email']));
 	}
 
-	public registrationNewUser() {
+	public registrationNewUser(): void {
 		if (this.loginForm.invalid) {
 			return; // show popup "Registration error, invalid parameters"
 		}
