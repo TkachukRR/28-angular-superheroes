@@ -1,11 +1,10 @@
-<div class="backdrop" *ngIf="messageText">
-  <div
-    class="message modal"
-    [ngClass]="{
-    'message-success': type === 'success',
-    'message-warning': type === 'warning'
-    }"
-  >
-    {{messageText}}
-  </div>
+<div *ngIf="messageText" class="backdrop">
+	<div
+		[ngClass]="{
+			'message-success': type === 'success',
+			'message-warning': type === 'warning'
+		}"
+		class="message modal">
+		{{ messageText }}
+	</div>
 </div>

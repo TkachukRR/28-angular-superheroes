@@ -5,6 +5,7 @@ import { LocalStorageService } from '../../shared/services/localStorage.service'
 import { RegisteredUser } from '../../shared/interfaces';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../../shared/services/message.service';
 
 @Component({
 	selector: 'app-login-page',
@@ -15,9 +16,13 @@ export class LoginPageComponent implements OnInit {
 	public loginForm: FormGroup = new FormGroup({});
 	public submitted = false;
 	public isRegistered = false;
-  public message: string = '';
 
-	constructor(public localStorageService: LocalStorageService, private auth: AuthService, private router: Router) {}
+	constructor(
+		public localStorageService: LocalStorageService,
+		private auth: AuthService,
+		private router: Router,
+		private message: MessageService
+	) {}
 
 	public ngOnInit() {
 		this.loginForm = new FormGroup({
@@ -43,12 +48,12 @@ export class LoginPageComponent implements OnInit {
 
 	public singIn(): void {
 		if (this.loginForm.value['email'].invalid || this.loginForm.value['password'].invalid) {
-      // 'Sign in error, invalid parameters'
+			this.message.warning('Sign in error, invalid parameters');
 
-			return; // show popup "Sign in error, invalid parameters"
+			return;
 		}
 		if (!this.isRegistered) {
-      // 'Unregistered email'
+			this.message.warning('Unregistered email');
 
 			return;
 		}
@@ -56,30 +61,29 @@ export class LoginPageComponent implements OnInit {
 		this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email']);
 		const registeredUser: RegisteredUser = this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email'])[0];
 		if (registeredUser.password !== this.loginForm.value['password']) {
-      //  'Wrong password'
+			this.message.warning('Wrong password');
 
 			return;
 		}
 		this.auth.login();
-
-    // 'sing in success';
-
+		this.message.success('Sing in success');
+		void this.router.navigate(['user']);
 	}
 
 	public registrationNewUser(): void {
 		if (this.loginForm.invalid) {
-      // 'Registration error, invalid parameters';
+			this.message.warning('Registration error, invalid parameters');
 
 			return;
 		}
 		if (this.isRegistered) {
-      // 'This email registered.'
+			this.message.warning('This email used.');
 
 			return;
 		}
 
 		this.localStorageService.addNewUserToRegistered(this.loginForm.value);
-    // 'registration success'
+		this.message.success('Registration success');
 	}
 
 	public setActualRegisteredStatus(email: string): void {

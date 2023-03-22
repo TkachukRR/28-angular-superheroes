@@ -2,7 +2,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
-import { LoginPageComponent } from "../../components/login-page/login-page.component";
+import { LoginPageComponent } from '../../components/login-page/login-page.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuardService implements CanActivate {
@@ -13,11 +13,11 @@ export class AuthGuardService implements CanActivate {
 		state: RouterStateSnapshot
 	): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 		if (this.authService.checkAuthenticated()) {
-      return true;
-    }
+			return true;
+		}
 
-    // this.loginPage.message = 'erorr';
-    this.router.navigate(['login']);
+		// this.loginPage.message = 'erorr';
+		this.router.navigate(['login']);
 
 		return false;
 	}

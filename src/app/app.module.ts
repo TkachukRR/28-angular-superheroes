@@ -14,7 +14,14 @@ import { MessageWindowComponent } from './shared/components/message-window/messa
 import { MessageService } from './shared/services/message.service';
 
 @NgModule({
-	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent, UserPageComponent, MessageWindowComponent],
+	declarations: [
+		AppComponent,
+		MainLayoutComponent,
+		HeaderComponent,
+		LoginPageComponent,
+		UserPageComponent,
+		MessageWindowComponent
+	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
 	providers: [LocalStorageService, AuthService, MessageService],
 	bootstrap: [AppComponent]

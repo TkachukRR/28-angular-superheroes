@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './localStorage.service';
-import { Session } from '../interfaces';
 
 @Injectable()
 export class AuthService {
@@ -18,11 +17,11 @@ export class AuthService {
 
 	public checkAuthenticated(): boolean {
 		if (this.localStorageService.getUserSession() || new Date(this.localStorageService.getUserSession()) < new Date()) {
-      this.logout();
+			this.logout();
 
-      return false;
+			return false;
 		}
 
-    return true;
+		return true;
 	}
 }
