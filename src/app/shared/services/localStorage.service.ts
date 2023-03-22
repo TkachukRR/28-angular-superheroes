@@ -39,12 +39,12 @@ export class LocalStorageService {
 		localStorage.removeItem('sessionActiveTo');
 	}
 
-	public getUserSession(): Date | null {
+	public getUserSession(): string {
 		const sessions = localStorage.getItem('sessionActiveTo');
 		if (sessions) {
 			return JSON.parse(sessions);
 		}
 
-		return null;
+		return '';
 	}
 }

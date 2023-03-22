@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -6,10 +6,14 @@ import { AuthService } from '../../shared/services/auth.service';
 	templateUrl: './user-page.component.html',
 	styleUrls: ['./user-page.component.scss']
 })
-export class UserPageComponent {
-  constructor(private auth: AuthService) {
-  }
-  public logout() {
-    this.auth.logout();
-  }
+export class UserPageComponent implements OnInit {
+	constructor(private auth: AuthService) {}
+
+	public ngOnInit(): void {
+		console.log(this.auth.checkAuthenticated());
+	}
+
+	public logout() {
+		this.auth.logout();
+	}
 }

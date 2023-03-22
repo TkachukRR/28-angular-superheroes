@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { AuthGuardService } from './shared/services/auth.guard.service';
 
 const routes: Routes = [
 	{ path: '', component: MainLayoutComponent, pathMatch: 'full' },
 	{ path: 'login', component: LoginPageComponent },
-	{ path: 'user', component: UserPageComponent }
+	{ path: 'user', component: UserPageComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
