@@ -11,11 +11,12 @@ import { LocalStorageService } from './shared/services/localStorage.service';
 import { AuthService } from './shared/services/auth.service';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { MessageWindowComponent } from './shared/components/message-window/message-window.component';
+import { MessageService } from './shared/services/message.service';
 
 @NgModule({
 	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent, UserPageComponent, MessageWindowComponent],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-	providers: [LocalStorageService, AuthService],
+	providers: [LocalStorageService, AuthService, MessageService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
