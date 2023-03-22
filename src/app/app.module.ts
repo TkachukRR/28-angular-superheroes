@@ -10,9 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from './shared/services/localStorage.service';
 import { AuthService } from './shared/services/auth.service';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { MessageWindowComponent } from './shared/components/message-window/message-window.component';
 
 @NgModule({
-	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent, UserPageComponent],
+	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent, UserPageComponent, MessageWindowComponent],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
 	providers: [LocalStorageService, AuthService],
 	bootstrap: [AppComponent]

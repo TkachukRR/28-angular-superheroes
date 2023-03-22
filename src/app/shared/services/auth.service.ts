@@ -17,11 +17,12 @@ export class AuthService {
 	}
 
 	public checkAuthenticated(): boolean {
-		if (new Date(this.localStorageService.getUserSession()) > new Date()) {
-			return true;
-		}
-		this.logout();
+		if (this.localStorageService.getUserSession() || new Date(this.localStorageService.getUserSession()) < new Date()) {
+      this.logout();
 
-		return false;
+      return false;
+		}
+
+    return true;
 	}
 }

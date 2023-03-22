@@ -15,6 +15,7 @@ export class LoginPageComponent implements OnInit {
 	public loginForm: FormGroup = new FormGroup({});
 	public submitted = false;
 	public isRegistered = false;
+  public message: string = '';
 
 	constructor(public localStorageService: LocalStorageService, private auth: AuthService, private router: Router) {}
 
@@ -42,41 +43,43 @@ export class LoginPageComponent implements OnInit {
 
 	public singIn(): void {
 		if (this.loginForm.value['email'].invalid || this.loginForm.value['password'].invalid) {
-			console.error('Sign in error, invalid parameters');
+      // 'Sign in error, invalid parameters'
 
 			return; // show popup "Sign in error, invalid parameters"
 		}
 		if (!this.isRegistered) {
-			console.error('Unregistered email');
+      // 'Unregistered email'
 
-			return; // show popup "This email registered."
+			return;
 		}
 
 		this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email']);
 		const registeredUser: RegisteredUser = this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email'])[0];
 		if (registeredUser.password !== this.loginForm.value['password']) {
-			console.error('Wrong password');
+      //  'Wrong password'
 
 			return;
 		}
-		console.log('sing in success');
-		// this.loginForm.reset()
-		// redirect
 		this.auth.login();
-		// console.log(this.auth.controlAuthStatus(this.loginForm.value['email']));
-		this.router.navigate(['user']);
+
+    // 'sing in success';
+
 	}
 
 	public registrationNewUser(): void {
 		if (this.loginForm.invalid) {
-			return; // show popup "Registration error, invalid parameters"
+      // 'Registration error, invalid parameters';
+
+			return;
 		}
 		if (this.isRegistered) {
-			return; // show popup "This email registered."
+      // 'This email registered.'
+
+			return;
 		}
 
-		console.log('registration success');
 		this.localStorageService.addNewUserToRegistered(this.loginForm.value);
+    // 'registration success'
 	}
 
 	public setActualRegisteredStatus(email: string): void {
