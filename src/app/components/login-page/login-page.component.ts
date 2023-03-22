@@ -67,7 +67,7 @@ export class LoginPageComponent implements OnInit {
 		}
 		this.auth.login();
 		this.message.success('Sing in success');
-		void this.router.navigate(['user']);
+		void this.router.navigate(['/user']);
 	}
 
 	public registrationNewUser(): void {

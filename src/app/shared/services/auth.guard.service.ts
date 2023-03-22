@@ -2,11 +2,11 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
-import { LoginPageComponent } from '../../components/login-page/login-page.component';
+import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuardService implements CanActivate {
-	constructor(private authService: AuthService, private router: Router, private loginPage: LoginPageComponent) {}
+	constructor(private authService: AuthService, private router: Router, private message: MessageService) {}
 
 	public canActivate(
 		route: ActivatedRouteSnapshot,
@@ -15,8 +15,7 @@ export class AuthGuardService implements CanActivate {
 		if (this.authService.checkAuthenticated()) {
 			return true;
 		}
-
-		// this.loginPage.message = 'erorr';
+		this.message.warning('login again');
 		this.router.navigate(['login']);
 
 		return false;
