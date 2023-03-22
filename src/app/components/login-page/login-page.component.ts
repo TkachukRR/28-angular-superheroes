@@ -4,6 +4,7 @@ import { CustomValidators } from '../../shared/custom.validators';
 import { LocalStorageService } from '../../shared/services/localStorage.service';
 import { RegisteredUser } from '../../shared/interfaces';
 import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login-page',
@@ -15,7 +16,7 @@ export class LoginPageComponent implements OnInit {
 	public submitted = false;
 	public isRegistered = false;
 
-	constructor(public localStorageService: LocalStorageService, private auth: AuthService) {}
+	constructor(public localStorageService: LocalStorageService, private auth: AuthService, private router: Router) {}
 
 	public ngOnInit() {
 		this.loginForm = new FormGroup({
@@ -61,8 +62,9 @@ export class LoginPageComponent implements OnInit {
 		console.log('sing in success');
 		// this.loginForm.reset()
 		// redirect
-		this.auth.login(this.loginForm.value['email']);
+		this.auth.login();
 		// console.log(this.auth.controlAuthStatus(this.loginForm.value['email']));
+		this.router.navigate(['user']);
 	}
 
 	public registrationNewUser(): void {

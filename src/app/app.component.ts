@@ -8,13 +8,6 @@ import { LocalStorageService } from './shared/services/localStorage.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-	constructor(private auth: AuthService, private localStorageService: LocalStorageService) {}
-	public ngOnInit() {
-		if (!this.localStorageService.getSessions()) {
-			this.localStorageService.setSessions([]);
-		}
-		setInterval(() => {
-			this.auth.controlAuthStatuses();
-		}, 1000);
-	}
+	constructor() {}
+	public ngOnInit() {}
 }

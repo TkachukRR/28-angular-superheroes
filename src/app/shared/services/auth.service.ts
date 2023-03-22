@@ -6,22 +6,19 @@ import { Session } from '../interfaces';
 export class AuthService {
 	constructor(private localStorageService: LocalStorageService) {}
 
-	public login(userEmail: string): void {
-		const newUserSession: Session = {
-			email: userEmail,
-			expDate: new Date(new Date().getTime() + 3600 * 1000)
-		};
-		this.localStorageService.addNewUserSession(newUserSession);
+	public login(): void {
+		const expDate: Date = new Date(new Date().getTime() + 3600 * 1000);
+
+		this.localStorageService.setUserSession(expDate);
 	}
 
-	public logout(userEmail: string): void {
-		this.localStorageService.removeUserSession(userEmail);
+	public logout(): void {
+		this.localStorageService.removeUserSession();
 	}
 
-	public controlAuthStatuses(): void {
-		const activeSessions = this.localStorageService
-			.getSessions()
-			.filter((session: { expDate: Date }) => new Date(session.expDate) > new Date());
-		this.localStorageService.setSessions(activeSessions);
+	public checkAuthenticated(): boolean {
+		this.localStorageService.getUserSession();
+
+		return false;
 	}
 }
