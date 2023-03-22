@@ -6,5 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./message-window.component.scss']
 })
 export class MessageWindowComponent {
-  @Input() message: string = '';
+  @Input() showTimeMs  = 2000;
+
+  public messageText = '';
+  public type = 'success';
 }
