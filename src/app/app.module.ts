@@ -12,6 +12,7 @@ import { AuthService } from './shared/services/auth.service';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { MessageWindowComponent } from './shared/components/message-window/message-window.component';
 import { MessageService } from './shared/services/message.service';
+import { HeroSelectPageComponent } from './components/hero-select-page/hero-select-page.component';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { MessageService } from './shared/services/message.service';
 		HeaderComponent,
 		LoginPageComponent,
 		UserPageComponent,
-		MessageWindowComponent
+		MessageWindowComponent,
+  HeroSelectPageComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
 	providers: [LocalStorageService, AuthService, MessageService],
