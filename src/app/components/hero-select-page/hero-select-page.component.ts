@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-hero-select-page',
-  templateUrl: './hero-select-page.component.html',
-  styleUrls: ['./hero-select-page.component.scss']
+	selector: 'app-hero-select-page',
+	templateUrl: './hero-select-page.component.html',
+	styleUrls: ['./hero-select-page.component.scss']
 })
-export class HeroSelectPageComponent implements OnInit{
+export class HeroSelectPageComponent implements OnInit {
+	public searchForm!: FormGroup;
 
-  public searchForm!: FormGroup;
+	constructor() {}
 
-  constructor() {
-  }
+	public ngOnInit(): void {
+		this.searchForm = new FormGroup({
+			searchInput: new FormControl('')
+		});
+	}
 
-  public ngOnInit(): void {
-    this.searchForm = new FormGroup({
-      searchInput: new FormControl('')
-    });
-  }
+	public searchHero() {
 
-  public searchHero() {
-      console.log(this.searchForm.controls?.['searchInput'].value)
-  }
+	}
 }

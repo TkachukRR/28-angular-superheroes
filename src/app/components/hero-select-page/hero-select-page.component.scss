@@ -1,20 +1,20 @@
-.search{
-  &__form {
-    position: relative;
-    max-width: 50%;
-    margin: 0 auto;
-  }
+.search {
+	&__form {
+		position: relative;
+		max-width: 50%;
+		margin: 0 auto;
+	}
 
-  &__submit {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    border: none;
-    background: none;
-    padding: 2px 4px;
-  }
+	&__submit {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		border: none;
+		background: none;
+		padding: 2px 4px;
+	}
 
-  &__svg{
-    height: 20px;
-  }
+	&__svg {
+		height: 20px;
+	}
 }
