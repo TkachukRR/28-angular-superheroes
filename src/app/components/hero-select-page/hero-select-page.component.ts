@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-hero-select-page',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./hero-select-page.component.scss']
 })
 export class HeroSelectPageComponent {
+  public searchForm!: FormGroup;
 
+
+  public searchHero() {
+
+  }
 }

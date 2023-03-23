@@ -1,3 +1,7 @@
 <p>hero-select-page works!</p>
 
-
+<form [formGroup]="searchForm" (ngSubmit)="searchHero()">
+  <label for="searchInput">search by name</label>
+  <input id="searchInput" type="text" placeholder="Enter hero name" formControlName="searchInput"/>
+  <button class="btn" type="submit">Search</button>
+</form>
