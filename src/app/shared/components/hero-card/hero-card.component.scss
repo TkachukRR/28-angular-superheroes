@@ -1,0 +1,19 @@
+.hero__card {
+  max-width: 50%;
+  padding: 20px;
+  border: 1px solid #fff300;
+}
+
+.hero{
+  &__name{
+    text-transform: uppercase;
+  }
+
+  &__stats{
+
+  }
+
+  &__avatar{
+
+  }
+}
