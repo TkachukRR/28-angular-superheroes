@@ -8,11 +8,22 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from './shared/services/localStorage.service';
+import { AuthService } from './shared/services/auth.service';
+import { UserPageComponent } from './components/user-page/user-page.component';
+import { MessageWindowComponent } from './shared/components/message-window/message-window.component';
+import { MessageService } from './shared/services/message.service';
 
 @NgModule({
-	declarations: [AppComponent, MainLayoutComponent, HeaderComponent, LoginPageComponent],
+	declarations: [
+		AppComponent,
+		MainLayoutComponent,
+		HeaderComponent,
+		LoginPageComponent,
+		UserPageComponent,
+		MessageWindowComponent
+	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-	providers: [LocalStorageService],
+	providers: [LocalStorageService, AuthService, MessageService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

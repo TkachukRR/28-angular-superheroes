@@ -104,6 +104,21 @@ input, textarea{
   }
 }
 
+.message{
+  display: block;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-weight: 700;
+  background-color: #cccccc;
+
+  &-success{
+    background-color: #07bd07;
+  }
+
+  &-warning{
+    background-color: red;
+  }
+}
 
 
 

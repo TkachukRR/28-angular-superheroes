@@ -3,6 +3,9 @@ import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms'
 import { CustomValidators } from '../../shared/custom.validators';
 import { LocalStorageService } from '../../shared/services/localStorage.service';
 import { RegisteredUser } from '../../shared/interfaces';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { MessageService } from '../../shared/services/message.service';
 
 @Component({
 	selector: 'app-login-page',
@@ -11,10 +14,15 @@ import { RegisteredUser } from '../../shared/interfaces';
 })
 export class LoginPageComponent implements OnInit {
 	public loginForm: FormGroup = new FormGroup({});
-  public submitted = false;
-  public isRegistered = false;
+	public submitted = false;
+	public isRegistered = false;
 
-	constructor(public localStorageService: LocalStorageService) {}
+	constructor(
+		public localStorageService: LocalStorageService,
+		private auth: AuthService,
+		private router: Router,
+		private message: MessageService
+	) {}
 
 	public ngOnInit() {
 		this.loginForm = new FormGroup({
@@ -38,40 +46,44 @@ export class LoginPageComponent implements OnInit {
 		});
 	}
 
-	public submit() {
+	public singIn(): void {
 		if (this.loginForm.value['email'].invalid || this.loginForm.value['password'].invalid) {
-			console.error('Sign in error, invalid parameters');
+			this.message.warning('Sign in error, invalid parameters');
 
-			return; // show popup "Sign in error, invalid parameters"
+			return;
 		}
 		if (!this.isRegistered) {
-			console.error('Unregistered email');
+			this.message.warning('Unregistered email');
 
-			return; // show popup "This email registered."
+			return;
 		}
 
 		this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email']);
 		const registeredUser: RegisteredUser = this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email'])[0];
 		if (registeredUser.password !== this.loginForm.value['password']) {
-			console.error('Wrong password');
+			this.message.warning('Wrong password');
 
 			return;
 		}
-		console.log('sing in success');
-		// this.loginForm.reset()
-		// redirect
+		this.auth.login();
+		this.message.success('Sing in success');
+		void this.router.navigate(['/user']);
 	}
 
-	public registrationNewUser() {
+	public registrationNewUser(): void {
 		if (this.loginForm.invalid) {
-			return; // show popup "Registration error, invalid parameters"
+			this.message.warning('Registration error, invalid parameters');
+
+			return;
 		}
 		if (this.isRegistered) {
-			return; // show popup "This email registered."
+			this.message.warning('This email used.');
+
+			return;
 		}
 
-		console.log('registration success');
 		this.localStorageService.addNewUserToRegistered(this.loginForm.value);
+		this.message.success('Registration success');
 	}
 
 	public setActualRegisteredStatus(email: string): void {

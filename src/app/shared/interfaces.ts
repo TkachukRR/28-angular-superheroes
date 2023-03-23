@@ -3,3 +3,8 @@ export interface RegisteredUser {
 	password: string;
 	name: string;
 }
+
+export interface Session {
+	email: string;
+	expDate: Date;
+}
