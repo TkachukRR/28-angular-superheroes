@@ -10,7 +10,7 @@ import { HeroesService } from '../../shared/services/heroes.service';
 export class HeroSelectPageComponent implements OnInit {
 	public searchForm!: FormGroup;
 
-	constructor(private heroes: HeroesService) {}
+	constructor(public heroes: HeroesService) {}
 
 	public ngOnInit(): void {
 		this.searchForm = new FormGroup({

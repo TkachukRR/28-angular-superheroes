@@ -29,4 +29,19 @@
 	</button>
 </form>
 
-<app-heroes-page></app-heroes-page>
+<app-heroes-page *ngIf="this.heroes.isSuccessfulSearch; else noResultsBlock"></app-heroes-page>
+
+<ng-template #noResultsBlock>
+  <div *ngIf="!this.heroes.isSuccessfulSearch && !this.heroes.loading; else loading">
+    <p>No results.</p>
+    <p>Waiting for successful search.</p>
+  </div>
+
+  <ng-template #loading>
+    <div class="lds-dual-ring">
+    </div>
+  </ng-template>
+</ng-template>
+
+
+

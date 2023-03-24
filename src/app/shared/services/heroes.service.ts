@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Hero } from '../interfaces';
 import { MessageService } from './message.service';
+import { Observable } from "rxjs";
 
 const BASE_URL = 'https://www.superheroapi.com';
 const TOKEN = '882862659490279';
@@ -20,18 +21,25 @@ export interface HeroesErrorResponse {
 @Injectable()
 export class HeroesService {
 	public heroes!: Array<Hero>;
+  public isSuccessfulSearch = false;
+  public loading = false;
 
 	constructor(private http: HttpClient, private message: MessageService) {}
 
 	public getByName(name: string) {
+    this.loading = true;
 		this.http
 			.get<HeroesSuccessResponse | HeroesErrorResponse>(`${BASE_URL}/api.php/${TOKEN}/search/${name}`)
 			.subscribe(response => {
+        this.loading = false;
+
 				if (response.response === 'success') {
+          this.isSuccessfulSearch = true;
 					this.heroes = response.results;
 				}
 
 				if (response.response === 'error') {
+          this.isSuccessfulSearch = false;
           this.heroes = [];
 					this.message.warning('No someone hero`s name includes yor search');
 				}
