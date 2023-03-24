@@ -9,17 +9,17 @@ export interface Session {
 	expDate: Date;
 }
 
-export interface Hero{
-  id: string;
-  name: string;
-  stats: HeroPowerStats;
+export interface Hero {
+	id: string;
+	name: string;
+	stats: HeroPowerStats;
 }
 
-export interface HeroPowerStats{
-  combat: string;
-  durability: string;
-  intelligence: string;
-  power: string;
-  speed: string;
-  strength: string;
+export interface HeroPowerStats {
+	combat: string;
+	durability: string;
+	intelligence: string;
+	power: string;
+	speed: string;
+	strength: string;
 }

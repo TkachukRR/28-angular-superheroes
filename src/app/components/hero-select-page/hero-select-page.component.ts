@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { HeroesService } from "../../shared/services/heroes.service";
+import { HeroesService } from '../../shared/services/heroes.service';
 
 @Component({
 	selector: 'app-hero-select-page',
@@ -19,7 +19,7 @@ export class HeroSelectPageComponent implements OnInit {
 	}
 
 	public searchHero() {
-    const inputValue = this.searchForm.controls?.['searchInput'].value
-    this.heroes.getByName(inputValue)
+		const inputValue = this.searchForm.controls?.['searchInput'].value;
+		this.heroes.getByName(inputValue);
 	}
 }

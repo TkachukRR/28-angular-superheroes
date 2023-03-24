@@ -15,8 +15,8 @@ import { MessageService } from './shared/services/message.service';
 import { HeroSelectPageComponent } from './components/hero-select-page/hero-select-page.component';
 import { HeroCardComponent } from './shared/components/hero-card/hero-card.component';
 import { HeroesPageComponent } from './components/heroes-page/heroes-page.component';
-import { HttpClientModule } from "@angular/common/http";
-import { HeroesService } from "./shared/services/heroes.service";
+import { HttpClientModule } from '@angular/common/http';
+import { HeroesService } from './shared/services/heroes.service';
 
 @NgModule({
 	declarations: [
@@ -27,8 +27,8 @@ import { HeroesService } from "./shared/services/heroes.service";
 		UserPageComponent,
 		MessageWindowComponent,
 		HeroSelectPageComponent,
-  HeroCardComponent,
-  HeroesPageComponent
+		HeroCardComponent,
+		HeroesPageComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
