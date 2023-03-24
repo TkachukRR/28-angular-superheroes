@@ -1,6 +1,6 @@
 <div class="hero__card">
-	<h3 class="hero__name">name</h3>
+	<h3 class="hero__name">{{ hero.name }}</h3>
 	<img src="" alt="" class="hero_avatar" />
-	<p class="hero__stats">stats</p>
+	<p class="hero__stats">{{hero.powerstats | json}}</p>
 	<button class="btn hero__select">Select</button>
 </div>

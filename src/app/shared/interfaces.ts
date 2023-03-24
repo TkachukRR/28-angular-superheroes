@@ -12,7 +12,7 @@ export interface Session {
 export interface Hero {
 	id: string;
 	name: string;
-	stats: HeroPowerStats;
+  powerstats: HeroPowerStats;
 }
 
 export interface HeroPowerStats {
