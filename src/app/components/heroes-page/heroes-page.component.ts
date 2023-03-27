@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesService } from "../../shared/services/heroes.service";
-import { Hero, HeroPowerStats } from "../../shared/interfaces";
+import { Hero } from "../../shared/interfaces";
 
 @Component({
 	selector: 'app-heroes-page',

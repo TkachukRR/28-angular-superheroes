@@ -29,6 +29,11 @@
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 18px;
+
+    & li{
+      display: flex;
+      justify-content: space-between;
+    }
 	}
 
 	&__avatar {

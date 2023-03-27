@@ -30,7 +30,7 @@
   </form>
 
   <div class="heroes">
-  <app-heroes-page class="heroes__board" *ngIf="this.heroes.isSuccessfulSearch; else noResultsBlock"></app-heroes-page>
+  <app-heroes-page class="heroes__board" *ngIf="this.heroes.isSuccessfulSearch && !this.heroes.loading; else noResultsBlock"></app-heroes-page>
 
   <ng-template class="heroes__waiting" #noResultsBlock>
     <div *ngIf="!this.heroes.isSuccessfulSearch && !this.heroes.loading; else loading">
