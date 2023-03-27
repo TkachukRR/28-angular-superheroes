@@ -15,6 +15,12 @@
 
     display: inline-block;
 		max-width: 50%;
+
+    &-invalid{
+      color: red;
+      border-color: red;
+      outline-color: red;
+    }
 	}
 
 	&__submit {
@@ -29,6 +35,10 @@
 	&__svg {
 		height: 20px;
 	}
+
+  &__validation{
+    color: red;
+  }
 }
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HeroesService } from '../../shared/services/heroes.service';
 
 @Component({
@@ -15,7 +15,10 @@ export class HeroSelectPageComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.searchForm = new FormGroup({
-			searchInput: new FormControl('')
+			searchInput: new FormControl('', [
+        Validators.required,
+        Validators.pattern( /^[a-zA-Z]+$/  )
+      ])
 		});
 	}
 

@@ -5,8 +5,15 @@
 
     <form [formGroup]="searchForm" (ngSubmit)="searchHero()" class="search__form">
       <label for="searchInput" class="search__label">Let's find your hero!</label>
-      <input id="searchInput" type="text" placeholder="Enter hero name" formControlName="searchInput" class="search__input" />
-      <button type="submit" class="search__submit">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Enter hero name"
+        formControlName="searchInput"
+        class="search__input"
+        [ngClass]="{ 'search__form-invalid': searchForm.get('searchInput')?.invalid && searchForm.get('searchInput')?.touched }"
+      />
+      <button type="submit" class="search__submit" [disabled]="searchForm.get('searchInput')?.invalid">
         <svg
           id="Слой_1"
           enable-background="new 0 0 40 40"
@@ -31,6 +38,14 @@
         </svg>
       </button>
     </form>
+    <div class="search__validation" *ngIf="searchForm.get('searchInput')?.touched">
+      <p *ngIf="searchForm.get('searchInput')?.errors?.['required']">
+        Can not be empty.
+      </p>
+      <p *ngIf="searchForm.get('searchInput')?.errors?.['pattern']">
+        Without spaces allowed.
+      </p>
+    </div>
     <app-keyboard *ngIf="keyboardVisible"></app-keyboard>
   </div>
   <div class="heroes">
