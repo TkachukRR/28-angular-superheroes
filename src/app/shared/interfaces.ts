@@ -13,6 +13,9 @@ export interface Hero {
 	id: string;
 	name: string;
   powerstats: HeroPowerStats;
+  image: {
+    url: string;
+  };
 }
 
 export interface HeroPowerStats {

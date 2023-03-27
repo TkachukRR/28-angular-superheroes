@@ -3,6 +3,7 @@
 		position: relative;
 		max-width: 50%;
 		margin: 0 auto;
+    margin-bottom: 10px;
 	}
 
 	&__submit {
@@ -17,4 +18,19 @@
 	&__svg {
 		height: 20px;
 	}
+}
+
+
+.heroes {
+  text-align: center;
+
+  &__board{
+  }
+  &__waiting{
+  }
+  &__loading{
+  }
+}
+
+.select__page{
 }

@@ -35,7 +35,7 @@ export class HeroesService {
 				if (response.response === 'success') {
           this.isSuccessfulSearch = true;
 					this.heroes = response.results;
-          console.log(this.heroes)
+          console.log(this.heroes);
 				}
 
 				if (response.response === 'error') {
