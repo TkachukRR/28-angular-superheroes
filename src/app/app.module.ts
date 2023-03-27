@@ -17,6 +17,7 @@ import { HeroCardComponent } from './shared/components/hero-card/hero-card.compo
 import { HeroesPageComponent } from './components/heroes-page/heroes-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeroesService } from './shared/services/heroes.service';
+import { KeyboardComponent } from './shared/components/keyboard/keyboard.component';
 
 @NgModule({
 	declarations: [
@@ -28,7 +29,8 @@ import { HeroesService } from './shared/services/heroes.service';
 		MessageWindowComponent,
 		HeroSelectPageComponent,
 		HeroCardComponent,
-		HeroesPageComponent
+		HeroesPageComponent,
+  KeyboardComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
