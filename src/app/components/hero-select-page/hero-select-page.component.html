@@ -49,7 +49,7 @@
 
     <ul class="search__resent">
       <li *ngFor="let recentSearch of heroes.getRecentSearches()">
-        {{recentSearch}}
+        <button type="button" class="btn" (click)="onResentSearch(recentSearch)">{{recentSearch}}</button>
       </li>
     </ul>
     <app-keyboard *ngIf="keyboardVisible"></app-keyboard>

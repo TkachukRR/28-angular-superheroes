@@ -45,6 +45,13 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    height: 2em;
+
+    & button {
+    width: auto;
+    height: auto;
+      padding: 4px 8px;
+    }
   }
 }
 

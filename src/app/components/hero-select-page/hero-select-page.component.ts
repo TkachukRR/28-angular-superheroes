@@ -30,4 +30,11 @@ export class HeroSelectPageComponent implements OnInit {
   public showKeyboard() {
     this.keyboardVisible = !this.keyboardVisible;
   }
+
+  public onResentSearch(recentSearch: string){
+    this.searchForm = new FormGroup({
+      searchInput: new FormControl(recentSearch)
+    });
+    this.searchHero();
+  }
 }
