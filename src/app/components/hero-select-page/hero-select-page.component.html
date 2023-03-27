@@ -38,11 +38,11 @@
         </svg>
       </button>
     </form>
-    <div class="search__validation" *ngIf="searchForm.get('searchInput')?.touched">
-      <p *ngIf="searchForm.get('searchInput')?.errors?.['required']">
+    <div class="search__validation">
+      <p *ngIf="searchForm.get('searchInput')?.errors?.['required'] && searchForm.get('searchInput')?.touched">
         Can not be empty.
       </p>
-      <p *ngIf="searchForm.get('searchInput')?.errors?.['pattern']">
+      <p *ngIf="searchForm.get('searchInput')?.errors?.['pattern'] && searchForm.get('searchInput')?.touched">
         Without spaces allowed.
       </p>
     </div>
