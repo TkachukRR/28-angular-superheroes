@@ -45,4 +45,25 @@ export class HeroesService {
 				}
 			});
 	}
+
+  public getByFirstLetter(key: string) {
+    this.loading = true;
+    this.http
+      .get<HeroesSuccessResponse | HeroesErrorResponse>(`${BASE_URL}/api.php/${TOKEN}/search/${key}`)
+      .subscribe(response => {
+        this.loading = false;
+
+        if (response.response === 'success') {
+          this.isSuccessfulSearch = true;
+          this.heroes = response.results.filter((hero: Hero) => hero.name.startsWith(key));
+          console.log(this.heroes);
+        }
+
+        if (response.response === 'error') {
+          this.isSuccessfulSearch = false;
+          this.heroes = [];
+          this.message.warning('No someone hero`s name includes yor search');
+        }
+      });
+  }
 }

@@ -9,6 +9,7 @@ import { HeroesService } from '../../shared/services/heroes.service';
 })
 export class HeroSelectPageComponent implements OnInit {
 	public searchForm!: FormGroup;
+  public keyboardVisible = false;
 
 	constructor(public heroes: HeroesService) {}
 
@@ -24,5 +25,6 @@ export class HeroSelectPageComponent implements OnInit {
 	}
 
   public showKeyboard() {
+    this.keyboardVisible = !this.keyboardVisible;
   }
 }

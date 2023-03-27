@@ -1,1 +1,6 @@
-<p>keyboard works!</p>
+<ul class="keyboard">
+  <li class="keyboard__item" *ngFor="let key of keys">
+    <button class="btn keyboard__button" type="button" (click)="searchHeroByFirstLetter(key)"> {{ key }} </button>
+  </li>
+</ul>
+

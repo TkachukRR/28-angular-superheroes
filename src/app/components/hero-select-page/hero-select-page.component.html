@@ -2,6 +2,7 @@
 <div class="select__page">
   <div class="search">
     <button class="btn search__keyboard" type="button" (click)="showKeyboard()">A</button>
+
     <form [formGroup]="searchForm" (ngSubmit)="searchHero()" class="search__form">
       <label for="searchInput" class="search__label">Let's find your hero!</label>
       <input id="searchInput" type="text" placeholder="Enter hero name" formControlName="searchInput" class="search__input" />
@@ -30,6 +31,7 @@
         </svg>
       </button>
     </form>
+    <app-keyboard *ngIf="keyboardVisible"></app-keyboard>
   </div>
   <div class="heroes">
   <app-heroes-page class="heroes__board" *ngIf="this.heroes.isSuccessfulSearch && !this.heroes.loading; else noResultsBlock"></app-heroes-page>
