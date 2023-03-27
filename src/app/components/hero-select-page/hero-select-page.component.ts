@@ -22,4 +22,7 @@ export class HeroSelectPageComponent implements OnInit {
 		const inputValue = this.searchForm.controls?.['searchInput'].value;
 		this.heroes.getByName(inputValue);
 	}
+
+  public showKeyboard() {
+  }
 }
