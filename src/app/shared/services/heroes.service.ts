@@ -22,6 +22,7 @@ export class HeroesService {
 	public heroes!: Array<Hero>;
   public isSuccessfulSearch = false;
   public loading = false;
+  public recentSearches: string[] = [];
 
 	constructor(private http: HttpClient, private message: MessageService) {}
 
@@ -35,6 +36,7 @@ export class HeroesService {
 				if (response.response === 'success') {
           this.isSuccessfulSearch = true;
 					this.heroes = response.results;
+          this.addRecentSearch(response['results-for']);
           console.log(this.heroes);
 				}
 
@@ -65,5 +67,21 @@ export class HeroesService {
           this.message.warning('No someone hero`s name includes yor search');
         }
       });
+  }
+
+  public getRecentSearches(): string[]{
+    return this.recentSearches;
+  }
+
+  public addRecentSearch(recentSearch: string): void{
+    if (this.recentSearches.includes(recentSearch)){
+      this.recentSearches = this.recentSearches.filter( (search: string) => search !== recentSearch);
+    }
+
+    if (this.recentSearches.length > 4) {
+      this.recentSearches.shift();
+    }
+
+    this.recentSearches = [...this.recentSearches, recentSearch];
   }
 }

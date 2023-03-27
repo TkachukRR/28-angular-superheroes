@@ -46,6 +46,12 @@
         Without spaces allowed.
       </p>
     </div>
+
+    <ul class="search__resent">
+      <li *ngFor="let recentSearch of heroes.getRecentSearches()">
+        {{recentSearch}}
+      </li>
+    </ul>
     <app-keyboard *ngIf="keyboardVisible"></app-keyboard>
   </div>
   <div class="heroes">

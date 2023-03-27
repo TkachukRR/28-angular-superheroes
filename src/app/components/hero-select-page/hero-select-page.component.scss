@@ -40,6 +40,12 @@
     height: 1em;
     color: red;
   }
+
+  &__resent {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
 }
 
 
