@@ -58,7 +58,6 @@ export class HeroesService {
         if (response.response === 'success') {
           this.isSuccessfulSearch = true;
           this.heroes = response.results.filter((hero: Hero) => hero.name.startsWith(key));
-          console.log(this.heroes);
         }
 
         if (response.response === 'error') {
