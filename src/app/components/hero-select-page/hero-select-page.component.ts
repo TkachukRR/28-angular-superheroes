@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HeroesService } from '../../shared/services/heroes.service';
 
@@ -10,6 +10,7 @@ import { HeroesService } from '../../shared/services/heroes.service';
 export class HeroSelectPageComponent implements OnInit {
 	public searchForm!: FormGroup;
   public keyboardVisible = false;
+  @Input() keyboardButtonValue = 'A';
 
 	constructor(public heroes: HeroesService) {}
 
@@ -27,7 +28,7 @@ export class HeroSelectPageComponent implements OnInit {
 		this.heroes.getByName(inputValue);
 	}
 
-  public showKeyboard() {
+  public toggleShowKeyboard() {
     this.keyboardVisible = !this.keyboardVisible;
   }
 
@@ -36,5 +37,10 @@ export class HeroSelectPageComponent implements OnInit {
       searchInput: new FormControl(recentSearch)
     });
     this.searchHero();
+  }
+
+  public setKeyboardButtonName(buttonValue: string) {
+    this.keyboardButtonValue = buttonValue;
+    this.toggleShowKeyboard();
   }
 }

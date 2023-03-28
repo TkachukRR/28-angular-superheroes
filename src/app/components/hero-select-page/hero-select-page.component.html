@@ -1,7 +1,7 @@
 <p>hero-select-page works!</p>
 <div class="select__page">
   <div class="search">
-    <button class="btn search__keyboard" type="button" (click)="showKeyboard()">A</button>
+    <button class="btn search__keyboard" type="button" (click)="toggleShowKeyboard()" >{{ keyboardButtonValue }}</button>
 
     <form [formGroup]="searchForm" (ngSubmit)="searchHero()" class="search__form">
       <label for="searchInput" class="search__label">Let's find your hero!</label>
@@ -52,7 +52,7 @@
         <button type="button" class="btn" (click)="onResentSearch(recentSearch)">{{recentSearch}}</button>
       </li>
     </ul>
-    <app-keyboard *ngIf="keyboardVisible"></app-keyboard>
+    <app-keyboard *ngIf="keyboardVisible" (displayKeyValue)="setKeyboardButtonName($event)"></app-keyboard>
   </div>
   <div class="heroes">
   <app-heroes-page class="heroes__board" *ngIf="this.heroes.isSuccessfulSearch && !this.heroes.loading; else noResultsBlock"></app-heroes-page>

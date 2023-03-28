@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HeroesService } from "../../services/heroes.service";
 
 @Component({
@@ -8,6 +8,7 @@ import { HeroesService } from "../../services/heroes.service";
 })
 export class KeyboardComponent implements OnInit{
   public keys: string[] = [];
+  @Output() public displayKeyValue: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private hero: HeroesService) {
   }
@@ -23,6 +24,7 @@ export class KeyboardComponent implements OnInit{
   }
 
   public searchHeroByFirstLetter(key: string){
+    this.displayKeyValue.emit(key);
     this.hero.getByFirstLetter(key);
   }
 }
