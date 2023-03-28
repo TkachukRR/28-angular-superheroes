@@ -9,17 +9,14 @@ import { HeroesService } from '../../shared/services/heroes.service';
 })
 export class HeroSelectPageComponent implements OnInit {
 	public searchForm!: FormGroup;
-  public keyboardVisible = false;
-  @Input() keyboardButtonValue = 'A';
+	public keyboardVisible = false;
+	@Input() keyboardButtonValue = 'A';
 
 	constructor(public heroes: HeroesService) {}
 
 	public ngOnInit(): void {
 		this.searchForm = new FormGroup({
-			searchInput: new FormControl('', [
-        Validators.required,
-        Validators.pattern( /^[a-zA-Z]+$/  )
-      ])
+			searchInput: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)])
 		});
 	}
 
@@ -28,19 +25,19 @@ export class HeroSelectPageComponent implements OnInit {
 		this.heroes.getByName(inputValue);
 	}
 
-  public toggleShowKeyboard() {
-    this.keyboardVisible = !this.keyboardVisible;
-  }
+	public toggleShowKeyboard() {
+		this.keyboardVisible = !this.keyboardVisible;
+	}
 
-  public onResentSearch(recentSearch: string){
-    this.searchForm = new FormGroup({
-      searchInput: new FormControl(recentSearch)
-    });
-    this.searchHero();
-  }
+	public onResentSearch(recentSearch: string) {
+		this.searchForm = new FormGroup({
+			searchInput: new FormControl(recentSearch)
+		});
+		this.searchHero();
+	}
 
-  public setKeyboardButtonName(buttonValue: string) {
-    this.keyboardButtonValue = buttonValue;
-    this.toggleShowKeyboard();
-  }
+	public setKeyboardButtonName(buttonValue: string) {
+		this.keyboardButtonValue = buttonValue;
+		this.toggleShowKeyboard();
+	}
 }

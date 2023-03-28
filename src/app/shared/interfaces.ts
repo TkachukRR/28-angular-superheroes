@@ -12,10 +12,10 @@ export interface Session {
 export interface Hero {
 	id: string;
 	name: string;
-  powerstats: HeroPowerStats;
-  image: {
-    url: string;
-  };
+	powerstats: HeroPowerStats;
+	image: {
+		url: string;
+	};
 }
 
 export interface HeroPowerStats {

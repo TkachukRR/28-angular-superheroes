@@ -1,36 +1,36 @@
 .search {
-  margin-bottom: 10px;
-  text-align: center;
+	margin-bottom: 10px;
+	text-align: center;
 
-  &__keyboard{
-    display: inline-block;
+	&__keyboard {
+		display: inline-block;
 
-    width: 32px;
-    height: 32px;
+		width: 32px;
+		height: 32px;
 
-    border-radius: 50%;
+		border-radius: 50%;
 
-    padding: 0;
-    margin-right: 4px;
+		padding: 0;
+		margin-right: 4px;
 
-    background-color: #ccc;
+		background-color: #ccc;
 
-    &:hover{
-      background-color: gray;
-    }
-  }
+		&:hover {
+			background-color: gray;
+		}
+	}
 
 	&__form {
 		position: relative;
 
-    display: inline-block;
+		display: inline-block;
 		max-width: 50%;
 
-    &-invalid{
-      color: red;
-      border-color: red;
-      outline-color: red;
-    }
+		&-invalid {
+			color: red;
+			border-color: red;
+			outline-color: red;
+		}
 	}
 
 	&__submit {
@@ -46,36 +46,35 @@
 		height: 20px;
 	}
 
-  &__validation{
-    height: 1em;
-    color: red;
-  }
+	&__validation {
+		height: 1em;
+		color: red;
+	}
 
-  &__resent {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    height: 2em;
+	&__resent {
+		display: flex;
+		justify-content: center;
+		gap: 20px;
+		height: 2em;
 
-    & button {
-    width: auto;
-    height: auto;
-      padding: 4px 8px;
-    }
-  }
+		& button {
+			width: auto;
+			height: auto;
+			padding: 4px 8px;
+		}
+	}
 }
-
 
 .heroes {
-  text-align: center;
+	text-align: center;
 
-  &__board{
-  }
-  &__waiting{
-  }
-  &__loading{
-  }
+	&__board {
+	}
+	&__waiting {
+	}
+	&__loading {
+	}
 }
 
-.select__page{
+.select__page {
 }

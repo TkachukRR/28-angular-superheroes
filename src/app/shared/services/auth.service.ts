@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './localStorage.service';
-import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthService {
-	constructor(
-    private localStorageService: LocalStorageService,
-    private router: Router
-  ) {}
+	constructor(private localStorageService: LocalStorageService) {}
 
 	public login(): void {
 		const expDate: Date = new Date(new Date().getTime() + 3600 * 1000);
@@ -20,11 +16,10 @@ export class AuthService {
 	}
 
 	public checkAuthenticated(): boolean {
-      if (this.localStorageService.getUserSession() === '' || new Date(this.localStorageService.getUserSession()) < new Date()) {
+		if (this.localStorageService.getUserSession() === '' || new Date(this.localStorageService.getUserSession()) < new Date()) {
+			return false;
+		}
 
-      	return false;
-      }
-
-      return true;
+		return true;
 	}
 }

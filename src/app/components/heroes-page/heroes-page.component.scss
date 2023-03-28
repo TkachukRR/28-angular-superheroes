@@ -1,11 +1,11 @@
-.heroes__list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+.heroes__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
 
-.heroes__item{
-  width: calc(50% - 10px);
+.heroes__item {
+	width: calc(50% - 10px);
 }

@@ -6,14 +6,15 @@ import { AuthGuardService } from './shared/services/auth.guard.service';
 import { HeroSelectPageComponent } from './components/hero-select-page/hero-select-page.component';
 
 const routes: Routes = [
-	{ path: '' , pathMatch: 'full', redirectTo: '/user/search'},
+	{ path: '', pathMatch: 'full', redirectTo: '/user/search' },
 	{ path: 'login', component: LoginPageComponent },
-	{ path: 'user',	component: UserPageComponent, canActivate: [AuthGuardService],
-		children: [
-      { path: 'search', component: HeroSelectPageComponent}
-    ]
+	{
+		path: 'user',
+		component: UserPageComponent,
+		canActivate: [AuthGuardService],
+		children: [{ path: 'search', component: HeroSelectPageComponent }]
 	},
-  { path: '**', redirectTo: '/user/search'}
+	{ path: '**', redirectTo: '/user/search' }
 ];
 
 @NgModule({

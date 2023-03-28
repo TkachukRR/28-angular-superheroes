@@ -30,7 +30,7 @@ import { KeyboardComponent } from './shared/components/keyboard/keyboard.compone
 		HeroSelectPageComponent,
 		HeroCardComponent,
 		HeroesPageComponent,
-  KeyboardComponent
+		KeyboardComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],

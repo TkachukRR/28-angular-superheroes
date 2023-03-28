@@ -2,19 +2,19 @@
 	padding: 20px;
 	border: 1px solid #fff300;
 
-  &__title{
-    text-align: center;
-    margin-bottom: 12px;
-  }
-  &__information{
-    display: flex;
-  }
-  &__description{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-grow: 1;
-  }
+	&__title {
+		text-align: center;
+		margin-bottom: 12px;
+	}
+	&__information {
+		display: flex;
+	}
+	&__description {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		flex-grow: 1;
+	}
 }
 
 .hero {
@@ -23,20 +23,20 @@
 	}
 
 	&__stats {
-    flex-grow: 1;
+		flex-grow: 1;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 18px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-bottom: 18px;
 
-    & li{
-      display: flex;
-      justify-content: space-between;
-    }
+		& li {
+			display: flex;
+			justify-content: space-between;
+		}
 	}
 
 	&__avatar {
-    max-height: 250px;
+		max-height: 250px;
 	}
 }

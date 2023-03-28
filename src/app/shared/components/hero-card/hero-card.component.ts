@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Hero } from "../../interfaces";
+import { Hero } from '../../interfaces';
 
 @Component({
 	selector: 'app-hero-card',
@@ -7,5 +7,5 @@ import { Hero } from "../../interfaces";
 	styleUrls: ['./hero-card.component.scss']
 })
 export class HeroCardComponent {
-  @Input() hero!: Hero;
+	@Input() hero!: Hero;
 }
