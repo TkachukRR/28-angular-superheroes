@@ -30,9 +30,7 @@ export class HeroSelectPageComponent implements OnInit {
 	}
 
 	public onResentSearch(recentSearch: string) {
-		this.searchForm = new FormGroup({
-			searchInput: new FormControl(recentSearch)
-		});
+    this.searchForm.setValue({['searchInput']: recentSearch});
 		this.searchHero();
 	}
 
