@@ -20,6 +20,7 @@ import { HeroesService } from './shared/services/heroes.service';
 import { KeyboardComponent } from './shared/components/keyboard/keyboard.component';
 import { UserInfoPageComponent } from './components/user-info-page/user-info-page.component';
 import { UserHeroesComponent } from './components/user-heroes/user-heroes.component';
+import { UserBattlesHistoryComponent } from './components/user-battles-history/user-battles-history.component';
 
 @NgModule({
 	declarations: [
@@ -34,7 +35,8 @@ import { UserHeroesComponent } from './components/user-heroes/user-heroes.compon
 		HeroesPageComponent,
 		KeyboardComponent,
     UserInfoPageComponent,
-    UserHeroesComponent
+    UserHeroesComponent,
+    UserBattlesHistoryComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
