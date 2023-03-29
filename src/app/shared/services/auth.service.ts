@@ -17,8 +17,6 @@ export class AuthService {
 
 	public checkAuthenticated(): boolean {
 		if (this.localStorageService.getUserSession() === '' || new Date(this.localStorageService.getUserSession()) < new Date()) {
-			this.logout();
-
 			return false;
 		}
 

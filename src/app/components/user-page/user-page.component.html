@@ -1,2 +1,4 @@
-<p>user-page works!</p>
-<button (click)="logout()" type="button">Log out</button>
+<a [routerLink]="['/user', 'info']" type="button" class="btn button__info">User Info</a>
+<button (click)="logout()" type="button" class="btn button__logout">Log out</button>
+
+<router-outlet></router-outlet>

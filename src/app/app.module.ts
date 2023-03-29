@@ -12,6 +12,12 @@ import { AuthService } from './shared/services/auth.service';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { MessageWindowComponent } from './shared/components/message-window/message-window.component';
 import { MessageService } from './shared/services/message.service';
+import { HeroSelectPageComponent } from './components/hero-select-page/hero-select-page.component';
+import { HeroCardComponent } from './shared/components/hero-card/hero-card.component';
+import { HeroesPageComponent } from './components/heroes-page/heroes-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HeroesService } from './shared/services/heroes.service';
+import { KeyboardComponent } from './shared/components/keyboard/keyboard.component';
 import { UserInfoPageComponent } from './components/user-info-page/user-info-page.component';
 
 @NgModule({
@@ -22,10 +28,14 @@ import { UserInfoPageComponent } from './components/user-info-page/user-info-pag
 		LoginPageComponent,
 		UserPageComponent,
 		MessageWindowComponent,
-  UserInfoPageComponent
+		HeroSelectPageComponent,
+		HeroCardComponent,
+		HeroesPageComponent,
+		KeyboardComponent,
+    UserInfoPageComponent
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-	providers: [LocalStorageService, AuthService, MessageService],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
