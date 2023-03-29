@@ -82,7 +82,16 @@ export class LoginPageComponent implements OnInit {
 			return;
 		}
 
-		this.localStorageService.addNewUserToRegistered(this.loginForm.value);
+    const newUser: RegisteredUser = {
+      name: this.loginForm.value.name,
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+      favourites: [],
+      selectedHero: '',
+      powerUps: {}
+    };
+
+		this.localStorageService.addNewUserToRegistered(newUser);
 		this.message.success('Registration success');
 	}
 
