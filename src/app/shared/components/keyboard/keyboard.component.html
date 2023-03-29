@@ -1,0 +1,5 @@
+<ul class="keyboard">
+	<li *ngFor="let key of keys" class="keyboard__item">
+		<button (click)="searchHeroByFirstLetter(key)" type="button" class="btn keyboard__button">{{ key }}</button>
+	</li>
+</ul>
