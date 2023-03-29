@@ -10,4 +10,20 @@ export class HeroCardComponent {
   public isFavourite = false;
   public isSelected = false;
 	@Input() hero!: Hero;
+
+  public addToFavourite(){
+    this.isFavourite = !this.isFavourite;
+  }
+
+  public removeFromFavourites(){
+    this.isFavourite = !this.isFavourite;
+  }
+
+  public addToSelected(){
+    this.isSelected = !this.isSelected;
+  }
+
+  public removeFromSelected(){
+    this.isSelected = !this.isSelected;
+  }
 }
