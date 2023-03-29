@@ -1,11 +1,22 @@
 <ul class="information__list">
   <li class="information__item">
-    <a class="btn information__button">Heroes List</a>
+    <a
+      [routerLink]="['/user', 'info', 'heroes']"
+      class="btn information__button"
+    >Heroes List</a>
   </li>
   <li class="information__item">
-    <a class="btn information__button">Battles history</a>
+    <a
+      [routerLink]="['/user', 'info', 'battles']"
+      class="btn information__button"
+    >Battles history</a>
   </li>
   <li class="information__item">
-    <a class="btn information__button">Powerups</a>
+    <a
+      [routerLink]="['/user', 'info', 'powerups']"
+      class="btn information__button"
+    >Powerups</a>
   </li>
 </ul>
+
+<router-outlet></router-outlet>
