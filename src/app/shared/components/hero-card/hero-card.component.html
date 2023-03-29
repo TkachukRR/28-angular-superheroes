@@ -16,7 +16,16 @@
 				<li>strength: {{ hero.powerstats.strength }}</li>
 			</ul>
 
-			<button class="btn hero__select">Select</button>
+      <div class="hero__buttons">
+        <button class="btn hero__select" [disabled]="isSelected">
+          <span *ngIf="!isSelected; else selected">Select</span>
+          <ng-template #selected>Selected</ng-template>
+        </button>
+        <button class="btn hero__favourites">
+          <span *ngIf="isFavourite; else favourite">Remove</span>
+          <ng-template #favourite>Add</ng-template>
+        </button>
+      </div>
 		</div>
 	</div>
 </div>

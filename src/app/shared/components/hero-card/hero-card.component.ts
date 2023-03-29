@@ -7,5 +7,7 @@ import { Hero } from '../../interfaces';
 	styleUrls: ['./hero-card.component.scss']
 })
 export class HeroCardComponent {
+  public isFavourite = false;
+  public isSelected = false;
 	@Input() hero!: Hero;
 }
