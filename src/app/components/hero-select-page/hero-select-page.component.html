@@ -1,6 +1,6 @@
 <div class="select__page">
 	<div class="search">
-		<button (click)="toggleShowKeyboard()" type="button" class="btn search__keyboard">{{ keyboardButtonValue }}</button>
+		<button (click)="toggleShowKeyboard()" type="button" class="btn search__keyboard">{{ _keyboardButtonValue }}</button>
 
 		<form [formGroup]="searchForm" (ngSubmit)="searchHero()" class="search__form">
 			<label for="searchInput" class="search__label">Let's find your hero!</label>
