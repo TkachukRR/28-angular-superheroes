@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeroesService } from './shared/services/heroes.service';
 import { KeyboardComponent } from './shared/components/keyboard/keyboard.component';
 import { UserInfoPageComponent } from './components/user-info-page/user-info-page.component';
+import { UserHeroesComponent } from './components/user-heroes/user-heroes.component';
 
 @NgModule({
 	declarations: [
@@ -32,7 +33,8 @@ import { UserInfoPageComponent } from './components/user-info-page/user-info-pag
 		HeroCardComponent,
 		HeroesPageComponent,
 		KeyboardComponent,
-    UserInfoPageComponent
+    UserInfoPageComponent,
+    UserHeroesComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
