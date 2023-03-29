@@ -8,9 +8,9 @@
     min-width: 200px;
     text-align: center;
     background-color: #cccccc;
-  }
 
-  & active{
-    background-color: #fff300;
+    &.active{
+      background-color: #fff300;
+    }
   }
 }
