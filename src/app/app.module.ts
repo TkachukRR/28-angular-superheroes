@@ -21,6 +21,7 @@ import { KeyboardComponent } from './shared/components/keyboard/keyboard.compone
 import { UserInfoPageComponent } from './components/user-info-page/user-info-page.component';
 import { UserHeroesComponent } from './components/user-heroes/user-heroes.component';
 import { UserBattlesHistoryComponent } from './components/user-battles-history/user-battles-history.component';
+import { UserPowersupsComponent } from './components/user-powersups/user-powersups.component';
 
 @NgModule({
 	declarations: [
@@ -36,7 +37,8 @@ import { UserBattlesHistoryComponent } from './components/user-battles-history/u
 		KeyboardComponent,
     UserInfoPageComponent,
     UserHeroesComponent,
-    UserBattlesHistoryComponent
+    UserBattlesHistoryComponent,
+    UserPowersupsComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
