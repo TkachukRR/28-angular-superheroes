@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
-import { AuthGuardService } from './shared/services/auth.guard.service';
+import { AuthGuard } from './shared/services/auth.guard';
 import { HeroSelectPageComponent } from './components/hero-select-page/hero-select-page.component';
 
 const routes: Routes = [
@@ -11,7 +11,7 @@ const routes: Routes = [
 	{
 		path: 'user',
 		component: UserPageComponent,
-		canActivate: [AuthGuardService],
+		canActivate: [AuthGuard],
 		children: [{ path: 'search', component: HeroSelectPageComponent }]
 	},
 	{ path: '**', redirectTo: '/user/search' }

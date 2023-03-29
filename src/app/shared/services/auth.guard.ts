@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuardService implements CanActivate {
+export class AuthGuard implements CanActivate {
 	constructor(private authService: AuthService, private router: Router, private message: MessageService) {}
 
 	public canActivate(
