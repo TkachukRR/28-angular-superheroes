@@ -17,12 +17,12 @@
 			</ul>
 
       <div class="hero__buttons">
-        <button class="btn hero__select" [disabled]="isSelected">
+        <button class="btn hero__buttons-select" [disabled]="isSelected">
           <span *ngIf="!isSelected; else selected">Select</span>
           <ng-template #selected>Selected</ng-template>
         </button>
-        <button class="btn hero__favourites">
-          <span *ngIf="isFavourite; else favourite">Remove</span>
+        <button class="btn hero__buttons-favourites" [ngClass]="{'red': isFavourite}">
+          <span *ngIf="isFavourite; else favourite" >Remove</span>
           <ng-template #favourite>Add</ng-template>
         </button>
       </div>
