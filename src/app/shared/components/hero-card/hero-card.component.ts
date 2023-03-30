@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Hero } from '../../interfaces';
-import { UserSessionService } from "../../services/user-session.service";
-import { LocalStorageService } from "../../services/localStorage.service";
+import { UserSessionService } from '../../services/user-session.service';
+import { LocalStorageService } from '../../services/localStorage.service';
 
 @Component({
 	selector: 'app-hero-card',
@@ -19,8 +19,8 @@ export class HeroCardComponent {
   ) {
   }
 
-  public addToFavourite(id: string){
-    this.userSession.addToFavourites(id);
+  public addToFavourite(hero: Hero){
+    this.userSession.addToFavourites(hero);
     this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
   }
 
@@ -30,7 +30,14 @@ export class HeroCardComponent {
   }
 
   public setIsFavourite(){
-    this.isFavourite = this.userSession.getFavourites().includes(this.hero.id);
+    const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
+
+    if (filteredFavourites.length) {
+      this.isFavourite = true;
+
+      return;
+    }
+    this.isFavourite = false;
   }
 
   public checkIsFavourite(): boolean{
@@ -41,8 +48,10 @@ export class HeroCardComponent {
 
   public addToSelected(id: string){
     this.userSession.setSelectedHero(id);
-    if (!this.userSession.getFavourites().includes(id)) {
-      this.userSession.addToFavourites(id);
+    const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
+
+    if (!filteredFavourites.length) {
+      this.userSession.addToFavourites(this.hero);
     }
     this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
     this.setIsSelected();

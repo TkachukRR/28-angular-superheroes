@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegisteredUser } from '../interfaces';
+import { Hero, RegisteredUser } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -25,15 +25,15 @@ export class UserSessionService {
     return this.activeUser.selectedHero;
   }
 
-  public addToFavourites(id: string): void{
-    this.activeUser.favourites = [...this.activeUser.favourites, id];
+  public addToFavourites(hero: Hero): void{
+    this.activeUser.favourites = [...this.activeUser.favourites, hero];
   }
 
   public removeFromFavourites(id: string): void{
-    this.activeUser.favourites = this.activeUser.favourites.filter(heroId => heroId !== id);
+    this.activeUser.favourites = this.activeUser.favourites.filter((hero: Hero) => hero.id !== id);
   }
 
-  public getFavourites(): string[]{
+  public getFavourites(): Hero[]{
     return this.activeUser.favourites;
   }
 }

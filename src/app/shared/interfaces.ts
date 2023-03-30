@@ -2,7 +2,7 @@ export interface RegisteredUser {
 	email: string;
 	password: string;
 	name: string;
-  favourites: string[] | [];
+  favourites: Hero[] | [];
   selectedHero: string;
   powerUps: object;
 }

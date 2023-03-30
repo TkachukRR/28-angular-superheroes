@@ -28,7 +28,7 @@
         <button
           class="btn hero__buttons-favourites"
           [ngClass]="{'red': checkIsFavourite()}"
-          (click)="!isFavourite? addToFavourite(hero.id): removeFromFavourites(hero.id)"
+          (click)="!isFavourite? addToFavourite(hero): removeFromFavourites(hero.id)"
         >
           {{ !isFavourite? 'Add': 'Remove'}}
         </button>
