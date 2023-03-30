@@ -36,6 +36,10 @@ export class UserSessionService {
     this.activeUser.favourites = [...this.activeUser.favourites, id];
   }
 
+  public removeFromFavourites(id: string): void{
+    this.activeUser.favourites = this.activeUser.favourites.filter(heroId => heroId !== id);
+  }
+
   public getFavourites(): string[]{
     return this.activeUser.favourites;
   }

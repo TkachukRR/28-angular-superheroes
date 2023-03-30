@@ -25,7 +25,8 @@ export class HeroCardComponent {
   }
 
   public removeFromFavourites(id: string){
-    this.isFavourite = !this.isFavourite;
+    this.userSession.removeFromFavourites(id);
+    this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
   }
 
   public setIsFavourite(){
