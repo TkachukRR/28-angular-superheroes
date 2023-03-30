@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{'orange': isSelected}">
+<div class="card" [ngClass]="{'orange': checkIsSelected()}">
 	<h3 class="card__title hero__name">{{ hero.name }}</h3>
 
 	<div class="card__information" >
@@ -17,7 +17,12 @@
 			</ul>
 
       <div class="hero__buttons">
-        <button class="btn hero__buttons-select" [disabled]="isSelected" (click)="!isSelected? addToSelected(): removeFromSelected()">
+        <button
+          class="btn hero__buttons-select"
+          [disabled]="checkIsSelected()"
+          (click)="addToSelected(hero.id)"
+          [ngClass]="{'yellow': checkIsSelected()}"
+        >
           <span *ngIf="!isSelected; else selected">Select</span>
           <ng-template #selected>Selected</ng-template>
         </button>
