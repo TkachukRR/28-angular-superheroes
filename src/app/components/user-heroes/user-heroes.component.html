@@ -1,1 +1,7 @@
 <p>user-heroes works!</p>
+
+<ul class="heroes__list">
+  <li *ngFor="let hero of favouriteHeroes" class="heroes__item">
+    <app-hero-card [hero]="hero"></app-hero-card>
+  </li>
+</ul>
