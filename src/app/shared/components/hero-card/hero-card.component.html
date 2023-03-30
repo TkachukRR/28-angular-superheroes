@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{'orange': checkIsSelected()}">
+<div class="card" [ngClass]="{'green': checkIsFavourite() && !checkIsSelected(), 'orange': checkIsSelected()}">
 	<h3 class="card__title hero__name">{{ hero.name }}</h3>
 
 	<div class="card__information" >
@@ -26,7 +26,11 @@
           <span *ngIf="!isSelected; else selected">Select</span>
           <ng-template #selected>Selected</ng-template>
         </button>
-        <button class="btn hero__buttons-favourites" [ngClass]="{'red': isFavourite}" (click)="!isFavourite? addToFavourite(): removeFromFavourites()">
+        <button
+          class="btn hero__buttons-favourites"
+          [ngClass]="{'red': checkIsFavourite()}"
+          (click)="!isFavourite? addToFavourite(hero.id): removeFromFavourites(hero.id)"
+        >
           <span *ngIf="isFavourite; else favourite" >Remove</span>
           <ng-template #favourite>Add</ng-template>
         </button>

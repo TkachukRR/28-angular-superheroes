@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegisteredUser } from "../interfaces";
+import { RegisteredUser } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,13 @@ export class UserSessionService {
 
   public getSelectedHero(): string{
     return this.activeUser.selectedHero;
+  }
+
+  public addToFavourites(id: string): void{
+    this.activeUser.favourites = [...this.activeUser.favourites, id];
+  }
+
+  public getFavourites(): string[]{
+    return this.activeUser.favourites;
   }
 }

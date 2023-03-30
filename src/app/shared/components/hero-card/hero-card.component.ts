@@ -19,16 +19,26 @@ export class HeroCardComponent {
   ) {
   }
 
-  public addToFavourite(){
+  public addToFavourite(id: string){
+    this.userSession.addToFavourites(id);
+    this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
+  }
+
+  public removeFromFavourites(id: string){
     this.isFavourite = !this.isFavourite;
   }
 
-  public removeFromFavourites(){
-    this.isFavourite = !this.isFavourite;
+  public setIsFavourite(){
+    this.isFavourite = this.userSession.getFavourites().includes(this.hero.id);
+  }
+
+  public checkIsFavourite(): boolean{
+    this.setIsFavourite();
+
+    return this.isFavourite;
   }
 
   public addToSelected(id: string){
-    this.isSelected = !this.isSelected;
     this.userSession.setSelectedHero(id);
     this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
     this.setIsSelected();
