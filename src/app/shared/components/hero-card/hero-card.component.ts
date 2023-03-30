@@ -41,6 +41,9 @@ export class HeroCardComponent {
 
   public addToSelected(id: string){
     this.userSession.setSelectedHero(id);
+    if (!this.userSession.getFavourites().includes(id)) {
+      this.userSession.addToFavourites(id);
+    }
     this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
     this.setIsSelected();
   }
