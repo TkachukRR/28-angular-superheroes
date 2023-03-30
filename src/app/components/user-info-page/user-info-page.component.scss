@@ -1,0 +1,16 @@
+.information{
+  &__list {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__button {
+    min-width: 200px;
+    text-align: center;
+    background-color: #cccccc;
+
+    &.active{
+      background-color: #fff300;
+    }
+  }
+}
