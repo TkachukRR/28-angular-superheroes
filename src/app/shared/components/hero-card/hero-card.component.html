@@ -23,16 +23,14 @@
           (click)="addToSelected(hero.id)"
           [ngClass]="{'yellow': checkIsSelected()}"
         >
-          <span *ngIf="!isSelected; else selected">Select</span>
-          <ng-template #selected>Selected</ng-template>
+          {{ !isSelected? 'Select' : 'Selected'}}
         </button>
         <button
           class="btn hero__buttons-favourites"
           [ngClass]="{'red': checkIsFavourite()}"
           (click)="!isFavourite? addToFavourite(hero.id): removeFromFavourites(hero.id)"
         >
-          <span *ngIf="isFavourite; else favourite" >Remove</span>
-          <ng-template #favourite>Add</ng-template>
+          {{ !isFavourite? 'Add': 'Remove'}}
         </button>
       </div>
 		</div>

@@ -10,14 +10,7 @@ export class UserSessionService {
   constructor() { }
 
   public setActiveUser(user: RegisteredUser): void{
-    this.activeUser = {
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      favourites: user.favourites,
-      selectedHero: user.selectedHero,
-      powerUps: user.powerUps
-    };
+    this.activeUser = {...user};
   }
 
   public getActiveUser(){
