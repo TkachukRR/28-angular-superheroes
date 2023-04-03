@@ -1,1 +1,9 @@
-<p>user-heroes works!</p>
+<div class="favourites">
+	<ul class="heroes__list">
+		<li *ngFor="let hero of favouriteHeroes" class="heroes__item">
+			<app-favourite-hero-card [hero]="hero"></app-favourite-hero-card>
+		</li>
+	</ul>
+
+	<a *ngIf="favouriteHeroes" routerLink="['/user', 'search']" class="btn button__add">+</a>
+</div>

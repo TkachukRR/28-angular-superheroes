@@ -1,24 +1,19 @@
 import { Component, Input } from '@angular/core';
-import { Hero } from '../../interfaces';
-import { UserSessionService } from '../../services/user-session.service';
-import { LocalStorageService } from '../../services/localStorage.service';
+import { Hero } from '../../shared/interfaces';
+import { UserSessionService } from '../../shared/services/user-session.service';
+import { LocalStorageService } from '../../shared/services/localStorage.service';
 
 @Component({
-	selector: 'app-hero-card',
-	templateUrl: './hero-card.component.html',
-	styleUrls: ['./hero-card.component.scss']
+	selector: 'app-favourite-hero-card',
+	templateUrl: './favourite-hero-card.component.html',
+	styleUrls: ['./favourite-hero-card.component.scss']
 })
-export class HeroCardComponent {
+export class FavouriteHeroCardComponent {
 	public isFavourite = false;
 	public isSelected = false;
 	@Input() hero!: Hero;
 
 	constructor(private userSession: UserSessionService, private storageService: LocalStorageService) {}
-
-	public addToFavourite(hero: Hero) {
-		this.userSession.addToFavourites(hero);
-		this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
-	}
 
 	public removeFromFavourites(id: string) {
 		this.userSession.removeFromFavourites(id);

@@ -6,7 +6,7 @@ import { RegisteredUser } from '../../shared/interfaces';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from '../../shared/services/message.service';
-import { UserSessionService } from "../../shared/services/user-session.service";
+import { UserSessionService } from '../../shared/services/user-session.service';
 
 @Component({
 	selector: 'app-login-page',
@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
 		private auth: AuthService,
 		private router: Router,
 		private message: MessageService,
-    private session: UserSessionService
+		private session: UserSessionService
 	) {}
 
 	public ngOnInit() {
@@ -67,7 +67,7 @@ export class LoginPageComponent implements OnInit {
 			return;
 		}
 		this.auth.login();
-    this.session.setActiveUser(registeredUser);
+		this.session.setActiveUser(registeredUser);
 		this.message.success('Sing in success');
 		void this.router.navigate(['/user', 'search']);
 	}
@@ -84,14 +84,14 @@ export class LoginPageComponent implements OnInit {
 			return;
 		}
 
-    const newUser: RegisteredUser = {
-      name: this.loginForm.value.name,
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-      favourites: [],
-      selectedHero: '',
-      powerUps: {}
-    };
+		const newUser: RegisteredUser = {
+			name: this.loginForm.value.name,
+			email: this.loginForm.value.email,
+			password: this.loginForm.value.password,
+			favourites: [],
+			selectedHero: '',
+			powerUps: {}
+		};
 
 		this.localStorageService.addNewUserToRegistered(newUser);
 		this.message.success('Registration success');

@@ -1,39 +1,39 @@
 import { Injectable } from '@angular/core';
-import { RegisteredUser } from '../interfaces';
+import { Hero, RegisteredUser } from '../interfaces';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class UserSessionService {
-  public activeUser!: RegisteredUser;
+	public activeUser!: RegisteredUser;
 
-  constructor() { }
+	constructor() {}
 
-  public setActiveUser(user: RegisteredUser): void{
-    this.activeUser = {...user};
-  }
+	public setActiveUser(user: RegisteredUser): void {
+		this.activeUser = { ...user };
+	}
 
-  public getActiveUser(){
-    return this.activeUser;
-  }
+	public getActiveUser() {
+		return this.activeUser;
+	}
 
-  public setSelectedHero(heroId: string){
-    this.activeUser.selectedHero = heroId;
-  }
+	public setSelectedHero(heroId: string) {
+		this.activeUser.selectedHero = heroId;
+	}
 
-  public getSelectedHero(): string{
-    return this.activeUser.selectedHero;
-  }
+	public getSelectedHero(): string {
+		return this.activeUser.selectedHero;
+	}
 
-  public addToFavourites(id: string): void{
-    this.activeUser.favourites = [...this.activeUser.favourites, id];
-  }
+	public addToFavourites(hero: Hero): void {
+		this.activeUser.favourites = [...this.activeUser.favourites, hero];
+	}
 
-  public removeFromFavourites(id: string): void{
-    this.activeUser.favourites = this.activeUser.favourites.filter(heroId => heroId !== id);
-  }
+	public removeFromFavourites(id: string): void {
+		this.activeUser.favourites = this.activeUser.favourites.filter((hero: Hero) => hero.id !== id);
+	}
 
-  public getFavourites(): string[]{
-    return this.activeUser.favourites;
-  }
+	public getFavourites(): Hero[] {
+		return this.activeUser.favourites;
+	}
 }
