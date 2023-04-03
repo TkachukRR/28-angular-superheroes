@@ -1,18 +1,18 @@
 <table class="history">
-  <thead>
-    <tr class="history__row-head">
-      <th class="history__col-date">Date</th>
-      <th class="history__col-hero">Hero</th>
-      <th class="history__col-opponent">Opponent</th>
-      <th class="history__col-result">Result</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="history__row" *ngFor="let fight of fights">
-      <td class="history__col-date">{{fight.date | date: 'medium'}}</td>
-      <td class="history__col-hero">{{fight.hero}}</td>
-      <td class="history__col-opponent">{{fight.opponent}}</td>
-      <td class="history__col-result">{{fight.win ? 'win' : 'lost'}}</td>
-    </tr>
-  </tbody>
+	<thead>
+		<tr class="history__row-head">
+			<th (click)="sortBy('date')" class="history__col-date">Date</th>
+			<th (click)="sortBy('hero')" class="history__col-hero">Hero</th>
+			<th (click)="sortBy('opponent')" class="history__col-opponent">Opponent</th>
+			<th (click)="sortBy('win')" class="history__col-result">Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let fight of sortedFights" class="history__row">
+			<td class="history__col-date">{{ fight.date | date : 'medium' }}</td>
+			<td class="history__col-hero">{{ fight.hero }}</td>
+			<td class="history__col-opponent">{{ fight.opponent }}</td>
+			<td class="history__col-result">{{ fight.win ? 'win' : 'lost' }}</td>
+		</tr>
+	</tbody>
 </table>

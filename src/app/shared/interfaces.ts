@@ -19,7 +19,7 @@ export interface Hero {
 	image: {
 		url: string;
 	};
-  fights?: Fight[];
+	fights?: Fight[];
 }
 
 export interface HeroPowerStats {
@@ -32,14 +32,14 @@ export interface HeroPowerStats {
 }
 
 export interface Fight {
-  date: string;
-  opponentName: string;
-  win: 'true' | 'false';
+	date: string;
+	opponentName: string;
+	win: 'true' | 'false';
 }
 
 export interface FightHistory {
-  hero: string;
-  date: Date;
-  opponent: string;
-  win: boolean;
+	hero: string;
+	date: Date;
+	opponent: string;
+	win: boolean;
 }

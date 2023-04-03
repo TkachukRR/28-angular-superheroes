@@ -1,31 +1,37 @@
 td {
-  text-align: center;
+	text-align: center;
 }
 
-.history{
-  margin-top: 10px;
-  padding: 10px;
-  width: 100%;
-  background-color: rgba(204, 204, 204, 0.91);
+th {
+	cursor: pointer;
+}
 
+.history {
+	margin-top: 10px;
+	padding: 10px;
+	width: 100%;
+	background-color: rgba(204, 204, 204, 0.91);
 
-  &__row{
-background-color: #f6fc9c;
+	&__row {
+		background-color: #f6fc9c;
 
-      &-head{
-        background-color: #07bd07;
-      }
+		&-head {
+			background-color: #07bd07;
+		}
+	}
 
-      &:nth-child(2){
-        background-color: rgba(7, 189, 7, 0.51);
-
-    }
-  }
-
-  &__col{
-    &-date{width: 20%}
-    &-hero{width: 35%}
-    &-opponent{width: 35%}
-    &-result{width: 10%}
-  }
+	&__col {
+		&-date {
+			width: 20%;
+		}
+		&-hero {
+			width: 35%;
+		}
+		&-opponent {
+			width: 35%;
+		}
+		&-result {
+			width: 10%;
+		}
+	}
 }

@@ -26,8 +26,8 @@ export class UserSessionService {
 	}
 
 	public addToFavourites(hero: Hero): void {
-    const fight: Fight = {date: new Date(Date.now()).toString(), opponentName: '', win: 'false'};
-    const newHero: Hero = {...hero, fights: [fight]};
+		const fight: Fight = { date: '', opponentName: '', win: 'false' };
+		const newHero: Hero = { ...hero, fights: [fight] };
 		this.activeUser.favourites = [...this.activeUser.favourites, newHero];
 	}
 
