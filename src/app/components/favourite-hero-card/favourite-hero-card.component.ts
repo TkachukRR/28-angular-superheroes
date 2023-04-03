@@ -21,14 +21,7 @@ export class FavouriteHeroCardComponent {
 	}
 
 	public setIsFavourite() {
-		const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
-
-		if (filteredFavourites.length) {
-			this.isFavourite = true;
-
-			return;
-		}
-		this.isFavourite = false;
+		this.isFavourite = this.userSession.getFavourites().some((hero: Hero) => hero.id === this.hero.id);
 	}
 
 	public checkIsFavourite(): boolean {
@@ -39,9 +32,9 @@ export class FavouriteHeroCardComponent {
 
 	public addToSelected(id: string) {
 		this.userSession.setSelectedHero(id);
-		const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
+		this.setIsFavourite();
 
-		if (!filteredFavourites.length) {
+		if (!this.isFavourite) {
 			this.userSession.addToFavourites(this.hero);
 		}
 		this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
