@@ -33,6 +33,13 @@ export interface HeroPowerStats {
 
 export interface Fight {
   date: string;
-  opponentId: string;
+  opponentName: string;
   win: 'true' | 'false';
+}
+
+export interface FightHistory {
+  hero: string;
+  date: Date;
+  opponent: string;
+  win: boolean;
 }
