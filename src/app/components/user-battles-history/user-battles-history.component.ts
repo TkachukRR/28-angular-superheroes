@@ -45,11 +45,6 @@ export class UserBattlesHistoryComponent implements OnInit {
 	}
 
 	public sortBy(property: 'date' | 'hero' | 'opponent' | 'win') {
-		// console.log('0')
-		// console.log(this.sortedFightsState)
-		// console.log(this.fights)
-		// console.log(this.sortedFights)
-
 		if (!this.sortedFightsState.isSorted || this.sortedFightsState.sortedBy !== property) {
 			switch (property) {
 				case 'date':
@@ -72,11 +67,6 @@ export class UserBattlesHistoryComponent implements OnInit {
 			this.sortedFightsState.isSorted = true;
 			this.sortedFightsState.sortedBy = property;
 			this.sortedFightsState.isIncrease = true;
-
-			console.log('1');
-			console.log(this.sortedFightsState);
-			console.log('fights', this.fights);
-			console.log(this.sortedFights);
 
 			return;
 		}
@@ -101,10 +91,6 @@ export class UserBattlesHistoryComponent implements OnInit {
 			}
 
 			this.sortedFightsState.isIncrease = false;
-			console.log('2');
-			console.log(this.sortedFightsState);
-			console.log('fights', this.fights);
-			console.log(this.sortedFights);
 
 			return;
 		}
