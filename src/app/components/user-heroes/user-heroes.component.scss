@@ -1,36 +1,36 @@
-.favourites{
-  position: relative;
+.favourites {
+	position: relative;
 }
 
-.heroes__list{
-  padding: 10px;
+.heroes__list {
+	padding: 10px;
 }
 
-.heroes__item:not(:last-child){
-  margin-bottom: 8px;
+.heroes__item:not(:last-child) {
+	margin-bottom: 8px;
 }
 
-.button__add{
-  position: absolute;
-  right: -60px;
-  bottom: 50px;
+.button__add {
+	position: absolute;
+	right: -60px;
+	bottom: 50px;
 
-  display: inline-block;
+	display: inline-block;
 
-  width: 32px;
-  height: 32px;
+	width: 32px;
+	height: 32px;
 
-  border-radius: 50%;
+	border-radius: 50%;
 
-  padding: 0;
-  margin-right: 4px;
+	padding: 0;
+	margin-right: 4px;
 
-  background-color: #ccc;
+	background-color: #ccc;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:hover {
-    background-color: gray;
-  }
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&:hover {
+		background-color: gray;
+	}
 }

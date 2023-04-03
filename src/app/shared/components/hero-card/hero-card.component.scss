@@ -40,35 +40,35 @@
 		max-height: 250px;
 	}
 
-  &__buttons{
-    display: flex;
-    gap: 12px;
+	&__buttons {
+		display: flex;
+		gap: 12px;
 
-    &-select{
-      max-width: 100px;
-      padding: 10px;
-      background-color: #fd7c1a;
-    }
-    &-favourites{
-      max-width: 100px;
-      padding: 10px;
-      background-color: #07bd07;
-    }
-  }
+		&-select {
+			max-width: 100px;
+			padding: 10px;
+			background-color: #fd7c1a;
+		}
+		&-favourites {
+			max-width: 100px;
+			padding: 10px;
+			background-color: #07bd07;
+		}
+	}
 }
 
-.red{
-  background-color: red;
+.red {
+	background-color: red;
 }
 
-.orange{
-  background-color: #fd7c1a;
+.orange {
+	background-color: #fd7c1a;
 }
 
-.yellow{
-  background-color: #fff300;
+.yellow {
+	background-color: #fff300;
 }
 
 .green {
-  background-color: rgba(36, 255, 36, 0.53);
+	background-color: rgba(36, 255, 36, 0.53);
 }

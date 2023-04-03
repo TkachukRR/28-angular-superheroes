@@ -27,17 +27,18 @@ export class LocalStorageService {
 		return this.getRegisteredUsers().map(registeredUser => registeredUser.email);
 	}
 
-  public updateRegisteredUserByEmail(newUserInfo: RegisteredUser){
-    const updatedUserInfo: RegisteredUser = this.getFullUserInfoByEmail(newUserInfo.email)[0];
-    updatedUserInfo.powerUps = newUserInfo.powerUps;
-    updatedUserInfo.selectedHero = newUserInfo.selectedHero;
-    updatedUserInfo.favourites = newUserInfo.favourites;
+	public updateRegisteredUserByEmail(newUserInfo: RegisteredUser) {
+		const updatedUserInfo: RegisteredUser = this.getFullUserInfoByEmail(newUserInfo.email)[0];
+		updatedUserInfo.powerUps = newUserInfo.powerUps;
+		updatedUserInfo.selectedHero = newUserInfo.selectedHero;
+		updatedUserInfo.favourites = newUserInfo.favourites;
 
-    const filteredRegisteredUsers = this.getRegisteredUsers()
-      .filter((registeredUser: RegisteredUser) => registeredUser.email !== newUserInfo.email);
+		const filteredRegisteredUsers = this.getRegisteredUsers().filter(
+			(registeredUser: RegisteredUser) => registeredUser.email !== newUserInfo.email
+		);
 
-    localStorage.setItem('registeredUsers', JSON.stringify([...filteredRegisteredUsers, updatedUserInfo]));
-  }
+		localStorage.setItem('registeredUsers', JSON.stringify([...filteredRegisteredUsers, updatedUserInfo]));
+	}
 
 	public getFullUserInfoByEmail(email: string) {
 		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email);

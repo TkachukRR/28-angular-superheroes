@@ -36,11 +36,11 @@ import { FavouriteHeroCardComponent } from './components/favourite-hero-card/fav
 		HeroCardComponent,
 		HeroesPageComponent,
 		KeyboardComponent,
-    UserInfoPageComponent,
-    UserHeroesComponent,
-    UserBattlesHistoryComponent,
-    UserPowersupsComponent,
-    FavouriteHeroCardComponent
+		UserInfoPageComponent,
+		UserHeroesComponent,
+		UserBattlesHistoryComponent,
+		UserPowersupsComponent,
+		FavouriteHeroCardComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],

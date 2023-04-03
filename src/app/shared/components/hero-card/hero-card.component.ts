@@ -9,61 +9,57 @@ import { LocalStorageService } from '../../services/localStorage.service';
 	styleUrls: ['./hero-card.component.scss']
 })
 export class HeroCardComponent {
-  public isFavourite = false;
-  public isSelected = false;
+	public isFavourite = false;
+	public isSelected = false;
 	@Input() hero!: Hero;
 
-  constructor(
-    private userSession: UserSessionService,
-    private storageService: LocalStorageService
-  ) {
-  }
+	constructor(private userSession: UserSessionService, private storageService: LocalStorageService) {}
 
-  public addToFavourite(hero: Hero){
-    this.userSession.addToFavourites(hero);
-    this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
-  }
+	public addToFavourite(hero: Hero) {
+		this.userSession.addToFavourites(hero);
+		this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
+	}
 
-  public removeFromFavourites(id: string){
-    this.userSession.removeFromFavourites(id);
-    this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
-  }
+	public removeFromFavourites(id: string) {
+		this.userSession.removeFromFavourites(id);
+		this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
+	}
 
-  public setIsFavourite(){
-    const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
+	public setIsFavourite() {
+		const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
 
-    if (filteredFavourites.length) {
-      this.isFavourite = true;
+		if (filteredFavourites.length) {
+			this.isFavourite = true;
 
-      return;
-    }
-    this.isFavourite = false;
-  }
+			return;
+		}
+		this.isFavourite = false;
+	}
 
-  public checkIsFavourite(): boolean{
-    this.setIsFavourite();
+	public checkIsFavourite(): boolean {
+		this.setIsFavourite();
 
-    return this.isFavourite;
-  }
+		return this.isFavourite;
+	}
 
-  public addToSelected(id: string){
-    this.userSession.setSelectedHero(id);
-    const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
+	public addToSelected(id: string) {
+		this.userSession.setSelectedHero(id);
+		const filteredFavourites = this.userSession.getFavourites().filter((hero: Hero) => hero.id === this.hero.id);
 
-    if (!filteredFavourites.length) {
-      this.userSession.addToFavourites(this.hero);
-    }
-    this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
-    this.setIsSelected();
-  }
+		if (!filteredFavourites.length) {
+			this.userSession.addToFavourites(this.hero);
+		}
+		this.storageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
+		this.setIsSelected();
+	}
 
-  public setIsSelected(){
-      this.isSelected = this.userSession.getSelectedHero() === this.hero.id;
-  }
+	public setIsSelected() {
+		this.isSelected = this.userSession.getSelectedHero() === this.hero.id;
+	}
 
-  public checkIsSelected(): boolean{
-    this.setIsSelected();
+	public checkIsSelected(): boolean {
+		this.setIsSelected();
 
-    return this.isSelected;
-  }
+		return this.isSelected;
+	}
 }

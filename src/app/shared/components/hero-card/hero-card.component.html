@@ -1,7 +1,7 @@
-<div class="card" [ngClass]="{'green': checkIsFavourite() && !checkIsSelected(), 'orange': checkIsSelected()}">
+<div [ngClass]="{ green: checkIsFavourite() && !checkIsSelected(), orange: checkIsSelected() }" class="card">
 	<h3 class="card__title hero__name">{{ hero.name }}</h3>
 
-	<div class="card__information" >
+	<div class="card__information">
 		<div class="card__image">
 			<img [src]="hero.image.url" alt="{{ hero.name }} avatar" class="hero__avatar" />
 		</div>
@@ -16,23 +16,21 @@
 				<li>strength: {{ hero.powerstats.strength }}</li>
 			</ul>
 
-      <div class="hero__buttons">
-        <button
-          class="btn hero__buttons-select"
-          [disabled]="checkIsSelected()"
-          (click)="addToSelected(hero.id)"
-          [ngClass]="{'yellow': checkIsSelected()}"
-        >
-          {{ !isSelected? 'Select' : 'Selected'}}
-        </button>
-        <button
-          class="btn hero__buttons-favourites"
-          [ngClass]="{'red': checkIsFavourite()}"
-          (click)="!isFavourite? addToFavourite(hero): removeFromFavourites(hero.id)"
-        >
-          {{ !isFavourite? 'Add': 'Remove'}}
-        </button>
-      </div>
+			<div class="hero__buttons">
+				<button
+					[disabled]="checkIsSelected()"
+					[ngClass]="{ yellow: checkIsSelected() }"
+					(click)="addToSelected(hero.id)"
+					class="btn hero__buttons-select">
+					{{ !isSelected ? 'Select' : 'Selected' }}
+				</button>
+				<button
+					[ngClass]="{ red: checkIsFavourite() }"
+					(click)="!isFavourite ? addToFavourite(hero) : removeFromFavourites(hero.id)"
+					class="btn hero__buttons-favourites">
+					{{ !isFavourite ? 'Add' : 'Remove' }}
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

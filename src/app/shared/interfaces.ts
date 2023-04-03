@@ -2,9 +2,9 @@ export interface RegisteredUser {
 	email: string;
 	password: string;
 	name: string;
-  favourites: Hero[] | [];
-  selectedHero: string;
-  powerUps: object;
+	favourites: Hero[] | [];
+	selectedHero: string;
+	powerUps: object;
 }
 
 export interface Session {

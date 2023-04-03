@@ -1,69 +1,69 @@
 .card {
-  padding: 10px;
-  border: 1px solid #fff300;
-  display: flex;
-  justify-content: space-between;
+	padding: 10px;
+	border: 1px solid #fff300;
+	display: flex;
+	justify-content: space-between;
 
-  &__title {
-    text-align: center;
-    margin-bottom: 12px;
-  }
-  &__info {
-    flex-grow: 1;
-  }
+	&__title {
+		text-align: center;
+		margin-bottom: 12px;
+	}
+	&__info {
+		flex-grow: 1;
+	}
 }
 
 .hero {
-  &__name {
-    text-transform: uppercase;
-  }
+	&__name {
+		text-transform: uppercase;
+	}
 
-  &__stats {
-    flex-basis: 50%;
+	&__stats {
+		flex-basis: 50%;
 
-    display: flex;
-    justify-content: space-around;
-  }
+		display: flex;
+		justify-content: space-around;
+	}
 
-  &__avatar {
-    max-height: 100px;
-  }
+	&__avatar {
+		max-height: 100px;
+	}
 
-  &__buttons{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+	&__buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
 
-    &-select{
-      max-width: 100px;
-      padding: 10px;
-      background-color: #fd7c1a;
-      margin-right: 12px;
-    }
-    &-favourites{
-      max-width: 100px;
-      padding: 10px;
-      background-color: #07bd07;
-    }
+		&-select {
+			max-width: 100px;
+			padding: 10px;
+			background-color: #fd7c1a;
+			margin-right: 12px;
+		}
+		&-favourites {
+			max-width: 100px;
+			padding: 10px;
+			background-color: #07bd07;
+		}
 
-    &-more{
-      width: 100%;
-    }
-  }
+		&-more {
+			width: 100%;
+		}
+	}
 }
 
-.red{
-  background-color: red;
+.red {
+	background-color: red;
 }
 
-.orange{
-  background-color: #fd7c1a;
+.orange {
+	background-color: #fd7c1a;
 }
 
-.yellow{
-  background-color: #fff300;
+.yellow {
+	background-color: #fff300;
 }
 
 .green {
-  background-color: rgba(36, 255, 36, 0.53);
+	background-color: rgba(36, 255, 36, 0.53);
 }
