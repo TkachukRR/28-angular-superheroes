@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Hero, RegisteredUser } from '../interfaces';
+import { Fight, Hero, RegisteredUser } from '../interfaces';
 
 @Injectable({
 	providedIn: 'root'
@@ -26,7 +26,9 @@ export class UserSessionService {
 	}
 
 	public addToFavourites(hero: Hero): void {
-		this.activeUser.favourites = [...this.activeUser.favourites, hero];
+    const fight: Fight = {date: '', opponentId: '', win: 'false'};
+    const newHero: Hero = {...hero, fights: [fight]};
+		this.activeUser.favourites = [...this.activeUser.favourites, newHero];
 	}
 
 	public removeFromFavourites(id: string): void {
