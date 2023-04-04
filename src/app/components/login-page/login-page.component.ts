@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CustomValidators } from '../../shared/custom.validators';
 import { LocalStorageService } from '../../shared/services/localStorage.service';
-import { AvailablePowerups, RegisteredUser } from '../../shared/interfaces';
+import { AvailablePowerup, RegisteredUser } from '../../shared/interfaces';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from '../../shared/services/message.service';
@@ -83,14 +83,6 @@ export class LoginPageComponent implements OnInit {
 
 			return;
 		}
-		const powerUps: AvailablePowerups = {
-			combat: { title: 'Ironman nano armor', quantity: 1, power: 10 },
-			durability: { title: 'Captain America shield', quantity: 0, power: 10 },
-			intelligence: { title: "Dr. Strange's cloak", quantity: 0, power: 10 },
-			power: { title: 'Mjolnir', quantity: 0, power: 10 },
-			speed: { title: 'Flash boots', quantity: 1, power: 10 },
-			strength: { title: "Green lantern's ring", quantity: 0, power: 10 }
-		};
 
 		const newUser: RegisteredUser = {
 			name: this.loginForm.value.name,
@@ -98,7 +90,26 @@ export class LoginPageComponent implements OnInit {
 			password: this.loginForm.value.password,
 			favourites: [],
 			selectedHero: '',
-			powerUps
+			powerUps: [
+				{
+					title: 'Ironman nano armor',
+					powerName: 'combat',
+					addPowerfull: 10,
+					quantity: 1
+				},
+				{
+					title: "Dr. Strange's cloak",
+					powerName: 'intelligence',
+					addPowerfull: 10,
+					quantity: 2
+				},
+				{
+					title: 'Flash boots',
+					powerName: 'speed',
+					addPowerfull: 10,
+					quantity: 1
+				}
+			]
 		};
 
 		this.localStorageService.addNewUserToRegistered(newUser);

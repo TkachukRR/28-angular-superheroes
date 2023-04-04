@@ -4,7 +4,7 @@ export interface RegisteredUser {
 	name: string;
 	favourites: Hero[] | [];
 	selectedHero: string;
-	powerUps: AvailablePowerups;
+	powerUps: AvailablePowerup[] | [];
 }
 
 export interface Session {
@@ -44,17 +44,15 @@ export interface FightHistory {
 	win: boolean;
 }
 
-export interface AvailablePowerups {
-	combat: SinglePowerup;
-	durability: SinglePowerup;
-	intelligence: SinglePowerup;
-	power: SinglePowerup;
-	speed: SinglePowerup;
-	strength: SinglePowerup;
-}
-
-export interface SinglePowerup {
-	title: string;
-	power: number;
+export interface AvailablePowerup {
+	title:
+		| 'Ironman nano armor'
+		| 'Captain America shield'
+		| "Dr. Strange's cloak"
+		| 'Mjolnir'
+		| 'Flash boots'
+		| "Green lantern's ring";
+	powerName: 'combat' | 'durability' | 'intelligence' | 'power' | 'speed' | 'strength';
+	addPowerfull: number;
 	quantity: number;
 }
