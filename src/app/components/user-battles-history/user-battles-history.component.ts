@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from '../../shared/services/user-session.service';
 import { FightHistory, Hero, SortedFights } from '../../shared/interfaces';
 import { SortProperty } from './user-battles-sort-property.enum';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-user-battles-history',
@@ -18,7 +19,7 @@ export class UserBattlesHistoryComponent implements OnInit {
 	};
 	public readonly sortProperty = SortProperty;
 
-	constructor(public userSession: UserSessionService) {}
+	constructor(public userSession: UserSessionService, private router: Router) {}
 
 	public ngOnInit() {
 		this.favourites = this.userSession.getFavourites();
@@ -97,5 +98,9 @@ export class UserBattlesHistoryComponent implements OnInit {
 		this.sortedFightsState.isIncrease = false;
 
 		this.sortedFights = [...this.fights];
+	}
+
+	public showHeroInfo(heroName: string) {
+		this.router.navigate(['/hero-info', heroName.trim().replace(' ', '_')]);
 	}
 }

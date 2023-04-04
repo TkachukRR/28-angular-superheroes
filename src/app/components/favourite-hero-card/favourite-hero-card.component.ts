@@ -52,9 +52,7 @@ export class FavouriteHeroCardComponent {
 		return this.isSelected;
 	}
 
-	public showHeroInfo(event: Event) {
-		event.stopPropagation();
-
-		this.router.navigate(['/hero-info', this.hero.name.trim().replace(' ', '_')]);
+	public showHeroInfo(heroName: string) {
+		this.router.navigate(['/hero-info', heroName.trim().replace(' ', '_')]);
 	}
 }
