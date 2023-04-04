@@ -23,6 +23,7 @@ import { UserHeroesComponent } from './components/user-heroes/user-heroes.compon
 import { UserBattlesHistoryComponent } from './components/user-battles-history/user-battles-history.component';
 import { UserPowersupsComponent } from './components/user-powersups/user-powersups.component';
 import { FavouriteHeroCardComponent } from './components/favourite-hero-card/favourite-hero-card.component';
+import { HeroInfoPageComponent } from './shared/components/hero-info-page/hero-info-page.component';
 
 @NgModule({
 	declarations: [
@@ -40,7 +41,8 @@ import { FavouriteHeroCardComponent } from './components/favourite-hero-card/fav
 		UserHeroesComponent,
 		UserBattlesHistoryComponent,
 		UserPowersupsComponent,
-		FavouriteHeroCardComponent
+		FavouriteHeroCardComponent,
+  HeroInfoPageComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
