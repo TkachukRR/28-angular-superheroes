@@ -45,14 +45,8 @@ export interface FightHistory {
 }
 
 export interface AvailablePowerup {
-	title:
-		| 'Ironman nano armor'
-		| 'Captain America shield'
-		| "Dr. Strange's cloak"
-		| 'Mjolnir'
-		| 'Flash boots'
-		| "Green lantern's ring";
-	powerName: 'combat' | 'durability' | 'intelligence' | 'power' | 'speed' | 'strength';
+	title: string;
+	powerName: string;
 	addPowerfull: number;
 	quantity: number;
 }
