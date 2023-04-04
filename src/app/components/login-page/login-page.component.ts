@@ -88,8 +88,185 @@ export class LoginPageComponent implements OnInit {
 			name: this.loginForm.value.name,
 			email: this.loginForm.value.email,
 			password: this.loginForm.value.password,
-			favourites: [],
-			selectedHero: '',
+			favourites: [
+				{
+					id: '503',
+					name: 'One-Above-All',
+					powerstats: {
+						intelligence: '100',
+						strength: '100',
+						speed: '100',
+						durability: '100',
+						power: '100',
+						combat: '100'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/10374.jpg'
+					},
+					fights: [
+						{
+							date: 'Mon Apr 07 2023 14:52:42 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'HAN SOLO',
+							win: 'true'
+						}
+					]
+				},
+				{
+					id: '145',
+					name: 'Cable',
+					powerstats: {
+						intelligence: '88',
+						strength: '48',
+						speed: '23',
+						durability: '56',
+						power: '100',
+						combat: '80'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/40.jpg'
+					},
+					fights: [
+						{
+							date: 'Mon Apr 03 2023 14:52:43 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'ABE SAPIEN',
+							win: 'false'
+						}
+					]
+				},
+				{
+					id: '94',
+					name: 'Black Abbott',
+					powerstats: {
+						intelligence: 'null',
+						strength: 'null',
+						speed: 'null',
+						durability: 'null',
+						power: 'null',
+						combat: 'null'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/1049.jpg'
+					},
+					fights: [
+						{
+							date: 'Mon Apr 03 2023 14:52:44 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'BATGIRL V',
+							win: 'false'
+						}
+					]
+				},
+				{
+					id: '250',
+					name: 'Fabian Cortez',
+					powerstats: {
+						intelligence: 'null',
+						strength: 'null',
+						speed: 'null',
+						durability: 'null',
+						power: 'null',
+						combat: 'null'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/24.jpg'
+					},
+					fights: [
+						{
+							date: 'Mon Apr 03 2023 14:52:45 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'CHAMBER',
+							win: 'false'
+						}
+					]
+				},
+				{
+					id: '13',
+					name: 'Ajax',
+					powerstats: {
+						intelligence: '56',
+						strength: '48',
+						speed: '35',
+						durability: '80',
+						power: '34',
+						combat: '55'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/10422.jpg'
+					},
+					fights: [
+						{
+							date: 'Tue Apr 04 2023 00:43:28 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'ELEKTRA',
+							win: 'true'
+						}
+					]
+				},
+				{
+					id: '349',
+					name: 'Jack Bauer',
+					powerstats: {
+						intelligence: 'null',
+						strength: '43',
+						speed: 'null',
+						durability: 'null',
+						power: 'null',
+						combat: 'null'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/1203.jpg'
+					},
+					fights: [
+						{
+							date: 'Tue Apr 04 2023 00:43:30 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'FRANKLIN RICHARDS',
+							win: 'false'
+						}
+					]
+				},
+				{
+					id: '351',
+					name: 'Jack-Jack',
+					powerstats: {
+						intelligence: '6',
+						strength: '34',
+						speed: '67',
+						durability: '80',
+						power: '100',
+						combat: '6'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/871.jpg'
+					},
+					fights: [
+						{
+							date: 'Tue Apr 04 2023 00:43:32 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'HOWARD THE DUCK',
+							win: 'false'
+						}
+					]
+				},
+				{
+					id: '352',
+					name: 'James Bond',
+					powerstats: {
+						intelligence: '88',
+						strength: '13',
+						speed: '17',
+						durability: '35',
+						power: '25',
+						combat: '90'
+					},
+					image: {
+						url: 'https://www.superherodb.com/pictures2/portraits/10/100/10404.jpg'
+					},
+					fights: [
+						{
+							date: 'Tue Apr 04 2023 00:43:35 GMT+0200 (Центральная Европа, летнее время)',
+							opponentName: 'HIRO NAKAMURA',
+							win: 'false'
+						}
+					]
+				}
+			],
+			selectedHero: '145',
 			powerUps: [
 				{
 					title: 'Ironman nano armor',

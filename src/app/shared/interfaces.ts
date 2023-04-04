@@ -56,3 +56,7 @@ export interface AvailablePowerup {
 	addPowerfull: number;
 	quantity: number;
 }
+export interface SortedFights {
+	sorted: string;
+	isIncrease: boolean;
+}
