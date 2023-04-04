@@ -31,7 +31,7 @@ const routes: Routes = [
 			}
 		]
 	},
-	{ path: 'hero-info:/heroName', component: HeroInfoPageComponent, canActivate: [AuthGuard] },
+	{ path: 'hero-info/:heroName', component: HeroInfoPageComponent, canActivate: [AuthGuard] },
 	{ path: '**', redirectTo: '/user/search' }
 ];
 
