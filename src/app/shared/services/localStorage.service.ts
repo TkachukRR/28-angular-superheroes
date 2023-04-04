@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegisteredUser, Session } from '../interfaces';
+import { RegisteredUser } from '../interfaces';
 
 @Injectable()
 export class LocalStorageService {

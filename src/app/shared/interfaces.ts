@@ -5,6 +5,7 @@ export interface RegisteredUser {
 	favourites: Hero[] | [];
 	selectedHero: string;
 	powerUps: object;
+	availablePowerups: AvailablePowerups;
 }
 
 export interface Session {
@@ -42,4 +43,19 @@ export interface FightHistory {
 	date: Date;
 	opponent: string;
 	win: boolean;
+}
+
+export interface AvailablePowerups {
+	combat: SinglePowerup;
+	durability: SinglePowerup;
+	intelligence: SinglePowerup;
+	power: SinglePowerup;
+	speed: SinglePowerup;
+	strength: SinglePowerup;
+}
+
+export interface SinglePowerup {
+	name: string;
+	power: number;
+	quantity: number;
 }
