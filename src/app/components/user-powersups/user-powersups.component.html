@@ -1,1 +1,7 @@
-<p>user-powersups works!</p>
+<ul class="powerups__list">
+	<li *ngFor="let powerup of availablePowerup" class="powerups__item">
+		<h5>{{ powerup.title }}</h5>
+		<div>{{ powerup.powers }}</div>
+		<div>{{ powerup.quantity }}</div>
+	</li>
+</ul>
