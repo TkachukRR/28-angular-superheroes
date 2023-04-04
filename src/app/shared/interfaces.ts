@@ -4,8 +4,7 @@ export interface RegisteredUser {
 	name: string;
 	favourites: Hero[] | [];
 	selectedHero: string;
-	powerUps: object;
-	availablePowerups: AvailablePowerups;
+	powerUps: AvailablePowerups;
 }
 
 export interface Session {
@@ -55,7 +54,7 @@ export interface AvailablePowerups {
 }
 
 export interface SinglePowerup {
-	name: string;
+	title: string;
 	power: number;
 	quantity: number;
 }
