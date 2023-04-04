@@ -43,3 +43,8 @@ export interface FightHistory {
 	opponent: string;
 	win: boolean;
 }
+
+export interface SortedFights {
+	sorted: string;
+	isIncrease: boolean;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from '../../shared/services/user-session.service';
-import { Fight, FightHistory, Hero } from '../../shared/interfaces';
+import { FightHistory, Hero, SortedFights } from '../../shared/interfaces';
+import { SortProperty } from './user-battles-sort-property.enum';
 
 @Component({
 	selector: 'app-user-battles-history',
@@ -11,12 +12,11 @@ export class UserBattlesHistoryComponent implements OnInit {
 	public favourites!: Hero[];
 	public fights: FightHistory[] = [];
 	public sortedFights: FightHistory[] = [];
-	public by: null | 'date' | 'hero' | 'opponent' | 'win' = null;
-	public sortedFightsState = {
-		isSorted: false,
-		sortedBy: this.by,
+	public sortedFightsState: SortedFights = {
+		sorted: SortProperty.NotSorted,
 		isIncrease: false
 	};
+	public readonly sortProperty = SortProperty;
 
 	constructor(public userSession: UserSessionService) {}
 
@@ -44,48 +44,46 @@ export class UserBattlesHistoryComponent implements OnInit {
 		});
 	}
 
-	public sortBy(property: 'date' | 'hero' | 'opponent' | 'win') {
-		if (!this.sortedFightsState.isSorted || this.sortedFightsState.sortedBy !== property) {
+	public sortBy(property: SortProperty) {
+		if (this.sortedFightsState.sorted === SortProperty.NotSorted || !this.sortedFightsState.isIncrease) {
 			switch (property) {
-				case 'date':
+				case SortProperty.Date:
 					this.sortedFights.sort((a, b) => a.date.getTime() - b.date.getTime());
 					break;
 
-				case 'hero':
+				case SortProperty.Hero:
 					this.sortedFights.sort((a, b) => a.hero.localeCompare(b.hero));
 					break;
 
-				case 'opponent':
+				case SortProperty.Opponent:
 					this.sortedFights.sort((a, b) => a.opponent.localeCompare(b.opponent));
 					break;
 
-				case 'win':
+				case SortProperty.Win:
 					this.sortedFights.sort((a, b) => +a.win - +b.win);
 					break;
 			}
 
-			this.sortedFightsState.isSorted = true;
-			this.sortedFightsState.sortedBy = property;
+			this.sortedFightsState.sorted = property;
 			this.sortedFightsState.isIncrease = true;
 
 			return;
 		}
 
-		if (this.sortedFightsState.sortedBy === property && this.sortedFightsState.isIncrease) {
+		if (this.sortedFightsState.sorted !== SortProperty.NotSorted && this.sortedFightsState.isIncrease) {
 			switch (property) {
-				case 'date':
+				case SortProperty.Date:
 					this.sortedFights.sort((a, b) => b.date.getTime() - a.date.getTime());
 					break;
 
-				case 'hero':
+				case SortProperty.Hero:
 					this.sortedFights.sort((a, b) => b.hero.localeCompare(a.hero));
 					break;
 
-				case 'opponent':
+				case SortProperty.Opponent:
 					this.sortedFights.sort((a, b) => b.opponent.localeCompare(a.opponent));
 					break;
-
-				case 'win':
+				case SortProperty.Win:
 					this.sortedFights.sort((a, b) => +b.win - +a.win);
 					break;
 			}
@@ -95,8 +93,7 @@ export class UserBattlesHistoryComponent implements OnInit {
 			return;
 		}
 
-		this.sortedFightsState.isSorted = false;
-		this.sortedFightsState.sortedBy = null;
+		this.sortedFightsState.sorted = SortProperty.NotSorted;
 		this.sortedFightsState.isIncrease = false;
 
 		this.sortedFights = [...this.fights];
