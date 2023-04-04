@@ -19,6 +19,7 @@ export interface Hero {
 	image: {
 		url: string;
 	};
+	fights?: Fight[];
 }
 
 export interface HeroPowerStats {
@@ -28,4 +29,22 @@ export interface HeroPowerStats {
 	power: string;
 	speed: string;
 	strength: string;
+}
+
+export interface Fight {
+	date: string;
+	opponentName: string;
+	win: 'true' | 'false';
+}
+
+export interface FightHistory {
+	hero: string;
+	date: Date;
+	opponent: string;
+	win: boolean;
+}
+
+export interface SortedFights {
+	sorted: string;
+	isIncrease: boolean;
 }
