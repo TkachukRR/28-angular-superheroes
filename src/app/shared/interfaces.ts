@@ -20,6 +20,27 @@ export interface Hero {
 		url: string;
 	};
 	fights?: Fight[];
+	biography?: HeroBiography;
+	appearance?: HeroAppearance;
+}
+
+export interface HeroBiography {
+	['full-name']: string | string[];
+	['alter-egos']: string | string[];
+	aliases: string | string[];
+	['place-of-birth']: string | string[];
+	['first-appearance']: string | string[];
+	publisher: string | string[];
+	alignment: string | string[];
+}
+
+export interface HeroAppearance {
+	gender: string | string[];
+	race: string | string[];
+	height: string[];
+	weight: string[];
+	['eye-color']: string | string[];
+	['hair-color']: string | string[];
 }
 
 export interface HeroPowerStats {

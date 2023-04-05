@@ -10,15 +10,17 @@ import { Hero } from '../../interfaces';
 })
 export class HeroInfoPageComponent implements OnInit {
 	public hero!: Hero;
+	public loading = true;
 
 	constructor(private route: ActivatedRoute, private heroService: HeroesService) {}
 
 	public ngOnInit(): void {
+		this.loading = true;
 		this.route.params.subscribe((params: Params) => {
 			this.heroService.getByName(params['heroName'].replace('_', ' ')).subscribe(response => {
 				if (response.response === 'success') {
+					this.loading = false;
 					[this.hero] = response['results'];
-					console.log(this.hero);
 				}
 			});
 		});

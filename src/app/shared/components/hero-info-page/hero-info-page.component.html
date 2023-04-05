@@ -1,6 +1,41 @@
-<div class="hero__avater">
-	<img src="" alt="" />
-</div>
-<div class="hero__info">
-	<h2 class="hero__name">name</h2>
+<div *ngIf="!loading" class="hero">
+	<div class="hero__avater">
+		<img [src]="hero.image.url" alt="{{ hero.name }}" />
+	</div>
+	<div class="hero__info">
+		<h2 class="hero__name">{{ hero.name }}</h2>
+		<div class="hero__powerstats powerstats">
+			<h3 class="powerstats__title">Powerstats:</h3>
+			<ul class="powerstats__list">
+				<li>Combat: {{ hero.powerstats.combat }}</li>
+				<li>Durability: {{ hero.powerstats.durability }}</li>
+				<li>Intelligence: {{ hero.powerstats.intelligence }}</li>
+				<li>Power: {{ hero.powerstats.power }}</li>
+				<li>Speed: {{ hero.powerstats.speed }}</li>
+				<li>Strength: {{ hero.powerstats.strength }}</li>
+			</ul>
+		</div>
+
+		<div class="hero__appearance appearance">
+			<h3 class="appearance__title">Appearance:</h3>
+			<ul class="appearance__list">
+				<li>Gender: {{ hero.appearance?.['gender'] }}</li>
+				<li>Race: {{ hero.appearance?.['race'] }}</li>
+				<li>Height: {{ hero.appearance?.['height'] }}</li>
+				<li>Weight: {{ hero.appearance?.['weight'] }}</li>
+				<li>Eyes: {{ hero.appearance?.['eye-color'] }}</li>
+				<li>Hair: {{ hero.appearance?.['hair-color'] }}</li>
+			</ul>
+		</div>
+
+		<div class="hero__biography biography">
+			<h3 class="biography__title">Biography:</h3>
+			<ul class="biography__list">
+				<li>Full-name: {{ hero.biography?.['full-name'] }}</li>
+				<li>Alter-egos: {{ hero.biography?.['alter-egos'] }}</li>
+				<li>First-appearance: {{ hero.biography?.['first-appearance'] }}</li>
+				<li>Publisher: {{ hero.biography?.['publisher'] }}</li>
+			</ul>
+		</div>
+	</div>
 </div>
