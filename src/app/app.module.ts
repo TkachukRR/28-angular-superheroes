@@ -25,6 +25,7 @@ import { UserPowersupsComponent } from './components/user-powersups/user-powersu
 import { FavouriteHeroCardComponent } from './components/favourite-hero-card/favourite-hero-card.component';
 import { HeroInfoPageComponent } from './shared/components/hero-info-page/hero-info-page.component';
 import { BattlePageComponent } from './components/battle-page/battle-page.component';
+import { FighterComponent } from './components/fighter/fighter.component';
 
 @NgModule({
 	declarations: [
@@ -44,7 +45,8 @@ import { BattlePageComponent } from './components/battle-page/battle-page.compon
 		UserPowersupsComponent,
 		FavouriteHeroCardComponent,
   HeroInfoPageComponent,
-  BattlePageComponent
+  BattlePageComponent,
+  FighterComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
