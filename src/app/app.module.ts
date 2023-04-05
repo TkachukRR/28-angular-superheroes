@@ -44,9 +44,9 @@ import { FighterComponent } from './components/fighter/fighter.component';
 		UserBattlesHistoryComponent,
 		UserPowersupsComponent,
 		FavouriteHeroCardComponent,
-  HeroInfoPageComponent,
-  BattlePageComponent,
-  FighterComponent
+		HeroInfoPageComponent,
+		BattlePageComponent,
+		FighterComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
