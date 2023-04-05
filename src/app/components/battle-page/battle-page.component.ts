@@ -14,6 +14,8 @@ const MAX_HERO_ID = 731;
 export class BattlePageComponent implements OnInit {
 	public hero!: Hero;
 	public opponent!: Hero;
+	public loadedHeroInfo = false;
+	public loadedOpponentInfo = false;
 
 	constructor(
 		private userSession: UserSessionService,
@@ -32,9 +34,11 @@ export class BattlePageComponent implements OnInit {
 	}
 
 	private setHero() {
+		this.loadedHeroInfo = false;
 		this.heroesService.getById(+this.userSession.getSelectedHero()).subscribe(response => {
 			if (response.response === 'success') {
 				this.hero = response;
+				this.loadedHeroInfo = true;
 			}
 		});
 	}
@@ -42,9 +46,11 @@ export class BattlePageComponent implements OnInit {
 	private setOpponent() {
 		const randomOpponentId = this.number.getRandomNumber(MIN_HERO_ID, MAX_HERO_ID);
 
+		this.loadedOpponentInfo = false;
 		this.heroesService.getById(randomOpponentId).subscribe(response => {
 			if (response.response === 'success') {
 				this.opponent = response;
+				this.loadedOpponentInfo = true;
 			}
 		});
 	}

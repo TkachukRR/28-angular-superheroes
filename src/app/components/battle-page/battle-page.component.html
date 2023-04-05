@@ -1,14 +1,20 @@
-<h2 class="battle__title">hero opponent</h2>
-<div class="battle__card-hero">
-	<app-fighter></app-fighter>
+<div *ngIf="loadedHeroInfo && loadedOpponentInfo; else loading">
+	<h2 class="battle__title">hero opponent</h2>
+	<div class="battle__card-hero">
+		<app-fighter [hero]="hero"></app-fighter>
+	</div>
+	<span class="battle__span">VS</span>
+	<button (click)="fight()" class="btn">Fight</button>
+	<div class="battle__card-opponent">
+		<app-fighter [hero]="opponent"></app-fighter>
+	</div>
+	<ul class="hero__powerups powerups_list">
+		<li>
+			<button class="btn">powerup</button>
+		</li>
+	</ul>
 </div>
-<span class="battle__span">VS</span>
-<button (click)="fight()" class="btn">Fight</button>
-<div class="battle__card-opponent">
-	<app-fighter></app-fighter>
-</div>
-<ul class="hero__powerups powerups_list">
-	<li>
-		<button class="btn">powerup</button>
-	</li>
-</ul>
+
+<ng-template #loading class="loading">
+	<div class="lds-dual-ring"></div>
+</ng-template>
