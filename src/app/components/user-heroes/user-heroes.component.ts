@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../shared/interfaces';
 import { UserSessionService } from '../../shared/services/user-session.service';
-import { LocalStorageService } from '../../shared/services/localStorage.service';
-import { HeroesService } from '../../shared/services/heroes.service';
 
 @Component({
 	selector: 'app-user-heroes',

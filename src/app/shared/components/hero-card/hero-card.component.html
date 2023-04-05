@@ -1,4 +1,7 @@
-<div [ngClass]="{ green: checkIsFavourite() && !checkIsSelected(), orange: checkIsSelected() }" class="card">
+<div
+	[ngClass]="{ green: checkIsFavourite() && !checkIsSelected(), orange: checkIsSelected() }"
+	(click)="showHeroInfo($event)"
+	class="card">
 	<h3 class="card__title hero__name">{{ hero.name }}</h3>
 
 	<div class="card__information">

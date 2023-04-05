@@ -1,0 +1,38 @@
+.hero {
+	display: flex;
+	justify-content: center;
+
+	&__avater {
+		width: 20%;
+		margin-right: 24px;
+
+		& img {
+			border: 8px solid #0aff02;
+		}
+	}
+
+	&__info {
+		width: 60%;
+		padding: 16px;
+		background-color: #fff;
+	}
+
+	&__name {
+		text-align: center;
+		margin-bottom: 16px;
+	}
+
+	&__powerstats > *,
+	&__appearance > *,
+	&__biography > * {
+		margin-bottom: 8px;
+	}
+}
+
+.powerstats,
+.appearance,
+.biography {
+	&__list > li:not(:last-of-type) {
+		margin-bottom: 4px;
+	}
+}

@@ -10,8 +10,8 @@
 	<tbody>
 		<tr *ngFor="let fight of sortedFights" class="history__row">
 			<td class="history__col-date">{{ fight.date | date : 'medium' }}</td>
-			<td class="history__col-hero">{{ fight.hero }}</td>
-			<td class="history__col-opponent">{{ fight.opponent }}</td>
+			<td (click)="showHeroInfo(fight.hero)" class="history__col-hero">{{ fight.hero }}</td>
+			<td (click)="showHeroInfo(fight.opponent)" class="history__col-opponent">{{ fight.opponent }}</td>
 			<td class="history__col-result">{{ fight.win ? 'win' : 'lost' }}</td>
 		</tr>
 	</tbody>

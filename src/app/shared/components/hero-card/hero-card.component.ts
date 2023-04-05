@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Hero } from '../../interfaces';
 import { UserSessionService } from '../../services/user-session.service';
 import { LocalStorageService } from '../../services/localStorage.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-hero-card',
@@ -13,7 +14,7 @@ export class HeroCardComponent {
 	public isSelected = false;
 	@Input() hero!: Hero;
 
-	constructor(private userSession: UserSessionService, private storageService: LocalStorageService) {}
+	constructor(private userSession: UserSessionService, private storageService: LocalStorageService, private router: Router) {}
 
 	public addToFavourite(hero: Hero) {
 		this.userSession.addToFavourites(hero);
@@ -54,5 +55,11 @@ export class HeroCardComponent {
 		this.setIsSelected();
 
 		return this.isSelected;
+	}
+
+	public showHeroInfo(event: Event) {
+		event.stopPropagation();
+
+		this.router.navigate(['/hero-info', this.hero.name.trim().replace(' ', '_')]);
 	}
 }
