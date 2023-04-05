@@ -34,7 +34,7 @@ export class HeroesService {
 	public getById(id: number) {
 		this.loading = true;
 
-		return this.http.get<HeroesSuccessResponse | HeroesErrorResponse>(`${BASE_URL}/api.php/${TOKEN}/${id}`);
+		return this.http.get<Hero | HeroesErrorResponse>(`${BASE_URL}/api.php/${TOKEN}/${id}`);
 	}
 
 	public getRecentSearches(): string[] {

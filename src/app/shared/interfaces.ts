@@ -13,6 +13,7 @@ export interface Session {
 }
 
 export interface Hero {
+	response?: 'success' | 'error';
 	id: string;
 	name: string;
 	powerstats: HeroPowerStats;
