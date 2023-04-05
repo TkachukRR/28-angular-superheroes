@@ -31,6 +31,12 @@ export class HeroesService {
 		return this.http.get<HeroesSuccessResponse | HeroesErrorResponse>(`${BASE_URL}/api.php/${TOKEN}/search/${name}`);
 	}
 
+	public getById(id: number) {
+		this.loading = true;
+
+		return this.http.get<HeroesSuccessResponse | HeroesErrorResponse>(`${BASE_URL}/api.php/${TOKEN}/${id}`);
+	}
+
 	public getRecentSearches(): string[] {
 		return this.recentSearches;
 	}
