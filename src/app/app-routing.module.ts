@@ -10,6 +10,7 @@ import { UserBattlesHistoryComponent } from './components/user-battles-history/u
 import { UserPowersupsComponent } from './components/user-powersups/user-powersups.component';
 import { HeroInfoPageComponent } from './shared/components/hero-info-page/hero-info-page.component';
 import { BattlePageComponent } from './components/battle-page/battle-page.component';
+import { CheckFavouritesGuard } from './shared/services/check-favourites.guard';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: '/user/search' },
@@ -33,7 +34,7 @@ const routes: Routes = [
 		]
 	},
 	{ path: 'hero-info/:heroName', component: HeroInfoPageComponent, canActivate: [AuthGuard] },
-	{ path: 'battle', component: BattlePageComponent, canActivate: [AuthGuard] },
+	{ path: 'battle', component: BattlePageComponent, canActivate: [AuthGuard, CheckFavouritesGuard] },
 	{ path: '**', redirectTo: '/user/search' }
 ];
 

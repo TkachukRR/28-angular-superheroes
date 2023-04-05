@@ -49,7 +49,7 @@ export class LocalStorageService {
 	}
 
 	public removeUserSession() {
-		localStorage.removeItem('sessionActiveTo');
+		localStorage.setItem('sessionActiveTo', '');
 	}
 
 	public getUserSession(): string {
