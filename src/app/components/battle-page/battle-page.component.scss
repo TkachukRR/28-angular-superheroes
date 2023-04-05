@@ -1,0 +1,37 @@
+.battle {
+	&__title {
+		text-align: center;
+		font-size: 48px;
+		letter-spacing: 1px;
+		color: red;
+		font-weight: 700;
+		&-span {
+			font-size: 28px;
+			color: black;
+		}
+	}
+	&__span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 200px;
+		font-weight: 700;
+		color: red;
+	}
+}
+
+.fighters {
+	display: flex;
+	position: relative;
+	align-items: center;
+
+	&__hero {
+		width: 50%;
+	}
+	&__opponent {
+		width: 50%;
+
+		margin-top: 25%;
+	}
+}

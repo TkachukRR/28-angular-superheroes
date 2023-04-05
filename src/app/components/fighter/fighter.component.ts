@@ -7,5 +7,5 @@ import { Hero } from 'src/app/shared/interfaces';
 	styleUrls: ['./fighter.component.scss']
 })
 export class FighterComponent {
-	@Input() public hero!: Hero;
+	@Input() public fighter!: Hero;
 }

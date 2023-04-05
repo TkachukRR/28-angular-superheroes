@@ -1,13 +1,17 @@
 <div *ngIf="loadedHeroInfo && loadedOpponentInfo; else loading">
-	<h2 class="battle__title">hero opponent</h2>
-	<div class="battle__card-hero">
-		<app-fighter [hero]="hero"></app-fighter>
+	<h2 class="battle__title">{{ hero.name }} <span class="battle__title-span">vs</span> {{ opponent.name }}</h2>
+	<div class="battle__fighters fighters">
+		<div class="battle__card-hero fighters__hero">
+			<app-fighter [fighter]="hero"></app-fighter>
+		</div>
+		<div class="battle__card-opponent fighters__opponent">
+			<app-fighter [fighter]="opponent"></app-fighter>
+		</div>
+		<span class="battle__span">VS</span>
 	</div>
-	<span class="battle__span">VS</span>
+
 	<button (click)="fight()" class="btn">Fight</button>
-	<div class="battle__card-opponent">
-		<app-fighter [hero]="opponent"></app-fighter>
-	</div>
+
 	<ul class="hero__powerups powerups_list">
 		<li>
 			<button class="btn">powerup</button>
