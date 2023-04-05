@@ -1,1 +1,13 @@
-<p>user-powersups works!</p>
+<ul *ngIf="availablePowerups.length; else noAvailablePowerups" class="powerups__list">
+	<li *ngFor="let powerup of availablePowerups" class="powerups__item">
+		<h5 class="powerup__title">Title: {{ powerup.title }}</h5>
+		<div class="powerup__power">
+			Add to {{ powerup.powerName }} <span> +{{ powerup.addPowerfull }}</span>
+		</div>
+		<div class="powerup__left">Uses left: {{ powerup.quantity }}</div>
+	</li>
+</ul>
+
+<ng-template #noAvailablePowerups>
+	<div>You don't have available power ups.</div>
+</ng-template>

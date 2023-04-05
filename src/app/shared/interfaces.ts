@@ -4,7 +4,7 @@ export interface RegisteredUser {
 	name: string;
 	favourites: Hero[] | [];
 	selectedHero: string;
-	powerUps: object;
+	powerUps: AvailablePowerup[] | [];
 }
 
 export interface Session {
@@ -44,6 +44,12 @@ export interface FightHistory {
 	win: boolean;
 }
 
+export interface AvailablePowerup {
+	title: string;
+	powerName: string;
+	addPowerfull: number;
+	quantity: number;
+}
 export interface SortedFights {
 	sorted: string;
 	isIncrease: boolean;

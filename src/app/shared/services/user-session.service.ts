@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Fight, Hero, RegisteredUser } from '../interfaces';
+import { AvailablePowerup, Fight, Hero, RegisteredUser } from '../interfaces';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,5 +37,9 @@ export class UserSessionService {
 
 	public getFavourites(): Hero[] {
 		return this.activeUser.favourites;
+	}
+
+	public getPowerups(): AvailablePowerup[] {
+		return this.activeUser.powerUps;
 	}
 }
