@@ -42,7 +42,7 @@ import { HeroInfoPageComponent } from './shared/components/hero-info-page/hero-i
 		UserBattlesHistoryComponent,
 		UserPowersupsComponent,
 		FavouriteHeroCardComponent,
-  HeroInfoPageComponent
+		HeroInfoPageComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],

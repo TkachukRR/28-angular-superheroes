@@ -53,6 +53,6 @@ export class FavouriteHeroCardComponent {
 	}
 
 	public showHeroInfo(heroName: string) {
-		this.router.navigate(['/hero-info', heroName.trim().replace(' ', '_')]);
+		void this.router.navigate(['/hero-info', heroName]);
 	}
 }
