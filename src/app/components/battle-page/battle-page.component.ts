@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from 'src/app/shared/interfaces';
+import { Hero, AvailablePowerup } from 'src/app/shared/interfaces';
 import { HeroesService } from 'src/app/shared/services/heroes.service';
 import { RandomNumberService } from 'src/app/shared/services/random-number.service';
 import { UserSessionService } from 'src/app/shared/services/user-session.service';
@@ -16,6 +16,7 @@ export class BattlePageComponent implements OnInit {
 	public opponent!: Hero;
 	public loadedHeroInfo = false;
 	public loadedOpponentInfo = false;
+	public powerups!: AvailablePowerup[];
 
 	constructor(
 		private userSession: UserSessionService,
@@ -26,6 +27,7 @@ export class BattlePageComponent implements OnInit {
 	public ngOnInit(): void {
 		this.setHero();
 		this.setOpponent();
+		this.setPowerups();
 	}
 
 	public fight() {
@@ -53,5 +55,9 @@ export class BattlePageComponent implements OnInit {
 				this.loadedOpponentInfo = true;
 			}
 		});
+	}
+
+	private setPowerups() {
+		this.powerups = this.userSession.getPowerups();
 	}
 }

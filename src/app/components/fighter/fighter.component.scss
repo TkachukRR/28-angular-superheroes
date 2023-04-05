@@ -4,6 +4,12 @@
 	background-color: #fff200b9;
 	padding: 8px;
 
+	&__name {
+		text-align: center;
+		font-size: 64px;
+		color: chartreuse;
+	}
+
 	&__stats {
 		text-align: center;
 	}

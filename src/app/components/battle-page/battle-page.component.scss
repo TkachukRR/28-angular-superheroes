@@ -1,15 +1,4 @@
 .battle {
-	&__title {
-		text-align: center;
-		font-size: 48px;
-		letter-spacing: 1px;
-		color: red;
-		font-weight: 700;
-		&-span {
-			font-size: 28px;
-			color: black;
-		}
-	}
 	&__span {
 		position: absolute;
 		top: 50%;
@@ -25,13 +14,45 @@
 	display: flex;
 	position: relative;
 	align-items: center;
+	margin-bottom: 12px;
 
 	&__hero {
 		width: 50%;
+		margin-top: -10%;
 	}
 	&__opponent {
 		width: 50%;
 
-		margin-top: 25%;
+		margin-top: 15%;
+	}
+}
+
+.button__fight {
+	position: absolute;
+	bottom: 0;
+	left: 25%;
+	width: 30%;
+	transform: translate(-50%, 0);
+	height: 10%;
+	font-size: 36px;
+	font-weight: 700;
+	background-color: red;
+}
+
+.powerups {
+	&__title {
+		text-align: center;
+		margin-bottom: 12px;
+	}
+	&__list {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	&__item {
+		text-align: center;
+		& .btn {
+			background-color: #fff300;
+		}
 	}
 }
