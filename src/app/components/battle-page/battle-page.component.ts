@@ -23,6 +23,9 @@ export class BattlePageComponent implements OnInit {
 	public loadedHeroInfo = false;
 	public loadedOpponentInfo = false;
 	public powerups!: AvailablePowerup[];
+	public showTimer = false;
+	public winner!: Hero;
+	public showWinneer = false;
 
 	constructor(
 		private userSession: UserSessionService,
@@ -45,20 +48,17 @@ export class BattlePageComponent implements OnInit {
 
 		const totalHeroPower = heroPower + randomHeroPower;
 		const totalOpponentPower = opponentPower + randomOpponentPower;
+		this.showTimer = true;
 
 		if (totalHeroPower > totalOpponentPower) {
-			console.log('hero win');
-			console.log('totalHeroPower', totalHeroPower, 'totalOpponentPower', totalOpponentPower);
+			this.winner = this.hero;
 		}
 
 		if (totalHeroPower < totalOpponentPower) {
-			console.log('oppo win');
-			console.log('totalHeroPower', totalHeroPower, 'totalOpponentPower', totalOpponentPower);
+			this.winner = this.opponent;
 		}
 
 		if (totalHeroPower === totalOpponentPower) {
-			console.log('tie');
-			console.log('totalHeroPower', totalHeroPower, 'totalOpponentPower', totalOpponentPower);
 		}
 	}
 
@@ -73,11 +73,16 @@ export class BattlePageComponent implements OnInit {
 		});
 	}
 
+	public onTimerFinished() {
+		this.showTimer = false;
+		this.showWinneer = true;
+	}
+
 	private setHero() {
-		this.loadedHeroInfo = false;
 		this.heroesService.getById(+this.userSession.getSelectedHero()).subscribe(response => {
 			if (response.response === 'success') {
 				this.hero = response;
+
 				this.loadedHeroInfo = true;
 			}
 		});
