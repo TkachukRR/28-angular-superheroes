@@ -7,6 +7,11 @@ import { UserSessionService } from 'src/app/shared/services/user-session.service
 
 const MIN_HERO_ID = 1;
 const MAX_HERO_ID = 731;
+
+const MIN_HERO_RANDOM_POWER = 0;
+const MAX_HERO_RANDOM_POWER = 600;
+const MIN_OPPONENT_RANDOM_POWER = 0;
+const MAX_OPPONENT_RANDOM_POWER = 600;
 @Component({
 	selector: 'app-battle-page',
 	templateUrl: './battle-page.component.html',
@@ -32,8 +37,29 @@ export class BattlePageComponent implements OnInit {
 	}
 
 	public fight() {
-		console.log(this.hero);
-		console.log(this.opponent);
+		const heroPower = this.calculatePower(this.hero);
+		const opponentPower = this.calculatePower(this.opponent);
+
+		const randomHeroPower = this.number.getRandomNumber(MIN_HERO_RANDOM_POWER, MAX_HERO_RANDOM_POWER);
+		const randomOpponentPower = this.number.getRandomNumber(MIN_OPPONENT_RANDOM_POWER, MAX_OPPONENT_RANDOM_POWER);
+
+		const totalHeroPower = heroPower + randomHeroPower;
+		const totalOpponentPower = opponentPower + randomOpponentPower;
+
+		if (totalHeroPower > totalOpponentPower) {
+			console.log('hero win');
+			console.log('totalHeroPower', totalHeroPower, 'totalOpponentPower', totalOpponentPower);
+		}
+
+		if (totalHeroPower < totalOpponentPower) {
+			console.log('oppo win');
+			console.log('totalHeroPower', totalHeroPower, 'totalOpponentPower', totalOpponentPower);
+		}
+
+		if (totalHeroPower === totalOpponentPower) {
+			console.log('tie');
+			console.log('totalHeroPower', totalHeroPower, 'totalOpponentPower', totalOpponentPower);
+		}
 	}
 
 	public addPower(powerupName: PowerupsNames) {
@@ -41,8 +67,9 @@ export class BattlePageComponent implements OnInit {
 		this.userSession.getPowerups().map(powerup => {
 			if (powerup.powerName === powerupName) {
 				powerup.quantity--;
-				this.userSession.checkPowerups();
 			}
+
+			this.userSession.checkPowerups();
 		});
 	}
 
@@ -70,5 +97,12 @@ export class BattlePageComponent implements OnInit {
 
 	private setPowerups() {
 		this.powerups = this.userSession.getPowerups();
+	}
+
+	private calculatePower(figter: Hero): number {
+		const powers = Object.values(figter.powerstats);
+		const totalPower = powers.reduce((total: number, power) => (total = total + +power), 0);
+
+		return totalPower;
 	}
 }
