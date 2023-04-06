@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegisteredUser } from '../interfaces';
+import { ActiveUser, RegisteredUser } from '../interfaces';
 
 @Injectable()
 export class LocalStorageService {
@@ -44,20 +44,28 @@ export class LocalStorageService {
 		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email);
 	}
 
-	public setUserSession(date: Date): void {
-		localStorage.setItem('sessionActiveTo', JSON.stringify(date));
+	public setUserSession(activeUser: ActiveUser): void {
+		localStorage.setItem('session', JSON.stringify(activeUser));
 	}
 
 	public removeUserSession() {
-		localStorage.setItem('sessionActiveTo', '');
+		localStorage.setItem('session', '');
 	}
 
-	public getUserSession(): string {
-		const sessions = localStorage.getItem('sessionActiveTo');
+	public getUserSession(): ActiveUser {
+		const sessions = localStorage.getItem('session');
 		if (sessions) {
 			return JSON.parse(sessions);
 		}
 
-		return '';
+		return {} as ActiveUser;
+	}
+
+	public clearUserSessionExpDate() {
+		const activeUser = this.getUserSession();
+		if (activeUser) {
+			activeUser.expDate = new Date(0);
+			this.setUserSession(activeUser);
+		}
 	}
 }

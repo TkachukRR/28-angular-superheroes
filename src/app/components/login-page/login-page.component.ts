@@ -67,7 +67,7 @@ export class LoginPageComponent implements OnInit {
 
 			return;
 		}
-		this.auth.login();
+		this.auth.login(this.loginForm.value['email']);
 		this.session.setActiveUser(registeredUser);
 		this.message.success('Sing in success');
 		void this.router.navigate(['/user', 'search']);

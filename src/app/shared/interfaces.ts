@@ -79,3 +79,8 @@ export interface SortedFights {
 	sorted: string;
 	isIncrease: boolean;
 }
+
+export interface ActiveUser {
+	userId: number;
+	expDate: Date;
+}
