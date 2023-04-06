@@ -7,6 +7,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from '../../shared/services/message.service';
 import { UserSessionService } from '../../shared/services/user-session.service';
+import { PowerupsNames, PowerupsTitles } from 'src/app/shared/powersups.enums';
 
 @Component({
 	selector: 'app-login-page',
@@ -269,20 +270,20 @@ export class LoginPageComponent implements OnInit {
 			selectedHero: '145',
 			powerUps: [
 				{
-					title: 'Ironman nano armor',
-					powerName: 'combat',
+					title: PowerupsTitles.Combat,
+					powerName: PowerupsNames.Combat,
 					addPowerfull: 10,
 					quantity: 1
 				},
 				{
-					title: "Dr. Strange's cloak",
-					powerName: 'intelligence',
+					title: PowerupsTitles.Intelligence,
+					powerName: PowerupsNames.Intelligence,
 					addPowerfull: 10,
 					quantity: 2
 				},
 				{
-					title: 'Flash boots',
-					powerName: 'speed',
+					title: PowerupsTitles.Speed,
+					powerName: PowerupsNames.Speed,
 					addPowerfull: 10,
 					quantity: 1
 				}

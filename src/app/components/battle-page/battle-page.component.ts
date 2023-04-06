@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero, AvailablePowerup } from 'src/app/shared/interfaces';
+import { PowerupsNames } from 'src/app/shared/powersups.enums';
 import { HeroesService } from 'src/app/shared/services/heroes.service';
 import { RandomNumberService } from 'src/app/shared/services/random-number.service';
 import { UserSessionService } from 'src/app/shared/services/user-session.service';
@@ -33,6 +34,15 @@ export class BattlePageComponent implements OnInit {
 	public fight() {
 		console.log(this.hero);
 		console.log(this.opponent);
+	}
+
+	public addPower(powerupName: PowerupsNames) {
+		this.hero.powerstats[powerupName] = `${+this.hero.powerstats[powerupName] + 10}`;
+		this.userSession.getPowerups().map(powerup => {
+			if (powerup.powerName === powerupName) {
+				powerup.quantity--;
+			}
+		});
 	}
 
 	private setHero() {

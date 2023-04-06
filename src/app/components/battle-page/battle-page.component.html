@@ -15,7 +15,7 @@
 			<li *ngFor="let powerup of powerups" class="powerups__item">
 				<h4>{{ powerup.title }}</h4>
 				<div>{{ powerup.powerName }} +{{ powerup.addPowerfull }}</div>
-				<button class="btn">Use</button>
+				<button [disabled]="!powerup.quantity" (click)="addPower(powerup.powerName)" class="btn">Use</button>
 				<div>Left: {{ powerup.quantity }}</div>
 			</li>
 		</ul>
