@@ -48,7 +48,7 @@ import { TimerComponent } from './components/timer/timer.component';
 		HeroInfoPageComponent,
 		BattlePageComponent,
 		FighterComponent,
-  TimerComponent
+		TimerComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],

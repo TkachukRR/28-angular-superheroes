@@ -4,14 +4,15 @@ import { PowerupsNames } from 'src/app/shared/powersups.enums';
 import { HeroesService } from 'src/app/shared/services/heroes.service';
 import { RandomNumberService } from 'src/app/shared/services/random-number.service';
 import { UserSessionService } from 'src/app/shared/services/user-session.service';
+import {
+	MAX_HERO_ID,
+	MAX_HERO_RANDOM_POWER,
+	MAX_OPPONENT_RANDOM_POWER,
+	MIN_HERO_ID,
+	MIN_HERO_RANDOM_POWER,
+	MIN_OPPONENT_RANDOM_POWER
+} from './battle-page.constants';
 
-const MIN_HERO_ID = 1;
-const MAX_HERO_ID = 731;
-
-const MIN_HERO_RANDOM_POWER = 0;
-const MAX_HERO_RANDOM_POWER = 600;
-const MIN_OPPONENT_RANDOM_POWER = 0;
-const MAX_OPPONENT_RANDOM_POWER = 600;
 @Component({
 	selector: 'app-battle-page',
 	templateUrl: './battle-page.component.html',
@@ -56,9 +57,6 @@ export class BattlePageComponent implements OnInit {
 
 		if (totalHeroPower < totalOpponentPower) {
 			this.winner = this.opponent;
-		}
-
-		if (totalHeroPower === totalOpponentPower) {
 		}
 	}
 

@@ -31,6 +31,6 @@
 <app-timer *ngIf="showTimer" (onTimerFinished)="onTimerFinished()"></app-timer>
 
 <div *ngIf="showWinneer" class="winner">
-	<h2 class="winner__name">{{ winner ? winner.name : ('TIE' | uppercase) }} WIN</h2>
+	<h2 class="winner__name">{{ (winner ? winner.name : 'Tie') | uppercase }} WIN</h2>
 	<img *ngIf="winner" [src]="winner.image.url" alt="{{ winner.name }}" class="winner__avatar" />
 </div>
