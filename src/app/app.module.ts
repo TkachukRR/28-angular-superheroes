@@ -26,6 +26,7 @@ import { FavouriteHeroCardComponent } from './components/favourite-hero-card/fav
 import { HeroInfoPageComponent } from './shared/components/hero-info-page/hero-info-page.component';
 import { BattlePageComponent } from './components/battle-page/battle-page.component';
 import { FighterComponent } from './components/fighter/fighter.component';
+import { TimerComponent } from './components/timer/timer.component';
 
 @NgModule({
 	declarations: [
@@ -46,7 +47,8 @@ import { FighterComponent } from './components/fighter/fighter.component';
 		FavouriteHeroCardComponent,
 		HeroInfoPageComponent,
 		BattlePageComponent,
-		FighterComponent
+		FighterComponent,
+  TimerComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [LocalStorageService, AuthService, MessageService, HeroesService],
