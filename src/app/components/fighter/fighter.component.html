@@ -1,0 +1,13 @@
+<h2 class="fighter__name">{{ fighter.name | uppercase }}</h2>
+<div class="fighter">
+	<img [src]="fighter.image.url" alt="{{ fighter.name }} avatar" class="hero__avatar" />
+
+	<ul class="fighter__stats">
+		<li>combat: {{ fighter.powerstats.combat }}</li>
+		<li>durability: {{ fighter.powerstats.durability }}</li>
+		<li>intelligence: {{ fighter.powerstats.intelligence }}</li>
+		<li>power: {{ fighter.powerstats.power }}</li>
+		<li>speed: {{ fighter.powerstats.speed }}</li>
+		<li>strength: {{ fighter.powerstats.strength }}</li>
+	</ul>
+</div>

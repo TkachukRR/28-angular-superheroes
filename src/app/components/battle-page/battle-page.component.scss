@@ -1,0 +1,90 @@
+.battle {
+	&__span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 200px;
+		font-weight: 700;
+		color: red;
+		text-shadow: 2px 2px 4px #000000;
+	}
+}
+
+.fighters {
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin-bottom: 24px;
+
+	&__hero {
+		width: 50%;
+		margin-top: -10%;
+	}
+	&__opponent {
+		width: 50%;
+
+		margin-top: 15%;
+	}
+}
+
+.button__fight {
+	position: absolute;
+	bottom: 0;
+	left: 25%;
+	width: 30%;
+	transform: translate(-50%, 0);
+	height: 10%;
+	font-size: 36px;
+	font-weight: 700;
+	background-color: red;
+}
+
+.powerups {
+	background-color: #ff8d36;
+	border-radius: 4px;
+	padding: 8px;
+
+	&__title {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 12px;
+	}
+	&__list {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	&__item {
+		text-align: center;
+		background-color: rgba(255, 255, 255, 0.5);
+		border-radius: 4px;
+		padding: 8px;
+
+		& .btn {
+			background-color: #fff300;
+		}
+	}
+}
+
+.winner {
+	&__name {
+		font-size: 52px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-weight: 700;
+		color: red;
+		text-shadow: 2px 2px 4px #000000;
+		z-index: 999;
+	}
+	&__avatar {
+		height: 50%;
+		width: auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

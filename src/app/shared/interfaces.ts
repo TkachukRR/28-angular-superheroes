@@ -1,3 +1,5 @@
+import { PowerupsNames, PowerupsTitles } from './powersups.enums';
+
 export interface RegisteredUser {
 	email: string;
 	password: string;
@@ -13,6 +15,7 @@ export interface Session {
 }
 
 export interface Hero {
+	response?: 'success' | 'error';
 	id: string;
 	name: string;
 	powerstats: HeroPowerStats;
@@ -44,12 +47,12 @@ export interface HeroAppearance {
 }
 
 export interface HeroPowerStats {
-	combat: string;
-	durability: string;
-	intelligence: string;
-	power: string;
-	speed: string;
-	strength: string;
+	[PowerupsNames.Combat]: string;
+	[PowerupsNames.Durability]: string;
+	[PowerupsNames.Intelligence]: string;
+	[PowerupsNames.Power]: string;
+	[PowerupsNames.Speed]: string;
+	[PowerupsNames.Strength]: string;
 }
 
 export interface Fight {
@@ -66,8 +69,8 @@ export interface FightHistory {
 }
 
 export interface AvailablePowerup {
-	title: string;
-	powerName: string;
+	title: PowerupsTitles;
+	powerName: PowerupsNames;
 	addPowerfull: number;
 	quantity: number;
 }
