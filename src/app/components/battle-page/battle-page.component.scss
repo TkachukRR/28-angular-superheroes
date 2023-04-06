@@ -14,7 +14,7 @@
 	display: flex;
 	position: relative;
 	align-items: center;
-	margin-bottom: 12px;
+	margin-bottom: 24px;
 
 	&__hero {
 		width: 50%;
@@ -40,8 +40,13 @@
 }
 
 .powerups {
+	background-color: #ff8d36;
+	border-radius: 4px;
+	padding: 8px;
+
 	&__title {
 		text-align: center;
+		font-size: 24px;
 		margin-bottom: 12px;
 	}
 	&__list {
@@ -51,6 +56,10 @@
 	}
 	&__item {
 		text-align: center;
+		background-color: rgba(255, 255, 255, 0.5);
+		border-radius: 4px;
+		padding: 8px;
+
 		& .btn {
 			background-color: #fff300;
 		}
