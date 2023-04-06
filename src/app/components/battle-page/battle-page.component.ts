@@ -41,6 +41,7 @@ export class BattlePageComponent implements OnInit {
 		this.userSession.getPowerups().map(powerup => {
 			if (powerup.powerName === powerupName) {
 				powerup.quantity--;
+				this.userSession.checkPowerups();
 			}
 		});
 	}

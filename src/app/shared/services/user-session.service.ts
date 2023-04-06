@@ -42,4 +42,8 @@ export class UserSessionService {
 	public getPowerups(): AvailablePowerup[] {
 		return this.activeUser.powerUps;
 	}
+
+	public checkPowerups(): void {
+		this.activeUser.powerUps = this.activeUser.powerUps.filter(powerup => powerup.quantity > 0);
+	}
 }
