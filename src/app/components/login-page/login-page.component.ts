@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CustomValidators } from '../../shared/custom.validators';
 import { LocalStorageService } from '../../shared/services/localStorage.service';
-import { AvailablePowerup, RegisteredUser } from '../../shared/interfaces';
+import { RegisteredUser } from '../../shared/interfaces';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from '../../shared/services/message.service';
@@ -86,6 +86,7 @@ export class LoginPageComponent implements OnInit {
 		}
 
 		const newUser: RegisteredUser = {
+			id: new Date().getTime(),
 			name: this.loginForm.value.name,
 			email: this.loginForm.value.email,
 			password: this.loginForm.value.password,

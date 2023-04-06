@@ -1,6 +1,7 @@
 import { PowerupsNames, PowerupsTitles } from './powersups.enums';
 
 export interface RegisteredUser {
+	id: number;
 	email: string;
 	password: string;
 	name: string;
