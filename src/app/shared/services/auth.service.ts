@@ -8,7 +8,7 @@ export class AuthService {
 	constructor(private localStorageService: LocalStorageService, private message: MessageService) {}
 
 	public login(userEmail: string): void {
-		const userId = this.localStorageService.getFullUserInfoByEmail(userEmail)[0].id;
+		const userId = this.localStorageService.getFullUserInfoByEmail(userEmail).id;
 		const activeUser: ActiveUser = {
 			userId,
 			expDate: new Date(new Date().getTime() + 3600 * 1000)

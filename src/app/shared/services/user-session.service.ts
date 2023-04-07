@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AvailablePowerup, Fight, Hero, RegisteredUser } from '../interfaces';
+import { LocalStorageService } from './localStorage.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class UserSessionService {
-	public activeUser!: RegisteredUser;
+	public userId: number = this.localStorageService.getUserSession().userId;
+	public activeUser: RegisteredUser = this.localStorageService.getFullUserInfoById(this.userId);
 
-	constructor() {}
+	constructor(private localStorageService: LocalStorageService) {}
 
 	public setActiveUser(user: RegisteredUser): void {
 		this.activeUser = { ...user };

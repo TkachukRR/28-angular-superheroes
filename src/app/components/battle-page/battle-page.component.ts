@@ -78,7 +78,10 @@ export class BattlePageComponent implements OnInit {
 
 	private setHero() {
 		this.heroesService.getById(+this.userSession.getSelectedHero()).subscribe(response => {
+			this.heroesService.loading = false;
+
 			if (response.response === 'success') {
+				this.heroesService.isSuccessfulSearch = true;
 				this.hero = response;
 
 				this.loadedHeroInfo = true;
@@ -91,7 +94,10 @@ export class BattlePageComponent implements OnInit {
 
 		this.loadedOpponentInfo = false;
 		this.heroesService.getById(randomOpponentId).subscribe(response => {
+			this.heroesService.loading = false;
+
 			if (response.response === 'success') {
+				this.heroesService.isSuccessfulSearch = true;
 				this.opponent = response;
 				this.loadedOpponentInfo = true;
 			}

@@ -61,7 +61,7 @@ export class LoginPageComponent implements OnInit {
 			return;
 		}
 
-		const registeredUser: RegisteredUser = this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email'])[0];
+		const registeredUser: RegisteredUser = this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email']);
 		if (registeredUser.password !== this.loginForm.value['password']) {
 			this.message.warning('Wrong password');
 

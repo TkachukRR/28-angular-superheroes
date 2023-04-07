@@ -54,11 +54,11 @@
 	</div>
 	<div class="heroes">
 		<app-heroes-page
-			*ngIf="this.heroes.isSuccessfulSearch && !this.heroes.loading; else noResultsBlock"
+			*ngIf="heroes.isSuccessfulSearch && !heroes.loading; else noResultsBlock"
 			class="heroes__board"></app-heroes-page>
 
 		<ng-template #noResultsBlock class="heroes__waiting">
-			<div *ngIf="!this.heroes.isSuccessfulSearch && !this.heroes.loading; else loading">
+			<div *ngIf="!heroes.isSuccessfulSearch && !heroes.loading; else loading">
 				<p>No results.</p>
 				<p>Waiting for successful search.</p>
 			</div>

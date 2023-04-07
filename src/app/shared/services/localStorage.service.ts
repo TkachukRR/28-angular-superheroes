@@ -28,7 +28,7 @@ export class LocalStorageService {
 	}
 
 	public updateRegisteredUserByEmail(newUserInfo: RegisteredUser) {
-		const updatedUserInfo: RegisteredUser = this.getFullUserInfoByEmail(newUserInfo.email)[0];
+		const updatedUserInfo: RegisteredUser = this.getFullUserInfoByEmail(newUserInfo.email);
 		updatedUserInfo.powerUps = newUserInfo.powerUps;
 		updatedUserInfo.selectedHero = newUserInfo.selectedHero;
 		updatedUserInfo.favourites = newUserInfo.favourites;
@@ -40,8 +40,12 @@ export class LocalStorageService {
 		localStorage.setItem('registeredUsers', JSON.stringify([...filteredRegisteredUsers, updatedUserInfo]));
 	}
 
-	public getFullUserInfoByEmail(email: string) {
-		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email);
+	public getFullUserInfoByEmail(email: string): RegisteredUser {
+		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email)[0];
+	}
+
+	public getFullUserInfoById(userId: number): RegisteredUser {
+		return this.getRegisteredUsers().filter(registeredUser => registeredUser.id === userId)[0];
 	}
 
 	public setUserSession(activeUser: ActiveUser): void {
