@@ -11,12 +11,12 @@
 
 		<div class="card__description">
 			<ul class="hero__stats">
-				<li>combat: {{ hero.powerstats.combat }}</li>
-				<li>durability: {{ hero.powerstats.durability }}</li>
-				<li>intelligence: {{ hero.powerstats.intelligence }}</li>
-				<li>power: {{ hero.powerstats.power }}</li>
-				<li>speed: {{ hero.powerstats.speed }}</li>
-				<li>strength: {{ hero.powerstats.strength }}</li>
+				<li>combat: {{ hero.powerstats.combat === 'null' ? 0 : hero.powerstats.combat }}</li>
+				<li>durability: {{ hero.powerstats.durability === 'null' ? 0 : hero.powerstats.durability }}</li>
+				<li>intelligence: {{ hero.powerstats.intelligence === 'null' ? 0 : hero.powerstats.intelligence }}</li>
+				<li>power: {{ hero.powerstats.power === 'null' ? 0 : hero.powerstats.power }}</li>
+				<li>speed: {{ hero.powerstats.speed === 'null' ? 0 : hero.powerstats.speed }}</li>
+				<li>strength: {{ hero.powerstats.strength === 'null' ? 0 : hero.powerstats.strength }}</li>
 			</ul>
 
 			<div class="hero__buttons">
