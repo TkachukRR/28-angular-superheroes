@@ -16,28 +16,32 @@ export class HeroSelectPageComponent implements OnInit {
 		this._keyboardButtonValue = value;
 	}
 
-	constructor(public heroes: HeroesService, public message: MessageService) {}
+	constructor(public heroesService: HeroesService, public message: MessageService) {}
 
 	public ngOnInit(): void {
+		this.heroesService.loading = false;
+		this.heroesService.isSuccessfulSearch = false;
+
 		this.searchForm = new FormGroup({
 			searchInput: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)])
 		});
 	}
 
 	public searchHero() {
+		this.heroesService.loading = true;
 		const inputValue = this.searchForm.controls?.['searchInput'].value;
-		this.heroes.getByName(inputValue).subscribe(response => {
-			this.heroes.loading = false;
-
+		this.heroesService.getByName(inputValue).subscribe(response => {
 			if (response.response === 'success') {
-				this.heroes.isSuccessfulSearch = true;
-				this.heroes.heroes = response.results;
-				this.heroes.addRecentSearch(response['results-for']);
+				this.heroesService.loading = false;
+				this.heroesService.isSuccessfulSearch = true;
+				this.heroesService.heroes = response.results;
+				this.heroesService.addRecentSearch(response['results-for']);
 			}
 
 			if (response.response === 'error') {
-				this.heroes.isSuccessfulSearch = false;
-				this.heroes.heroes = [];
+				this.heroesService.loading = false;
+				this.heroesService.isSuccessfulSearch = false;
+				this.heroesService.heroes = [];
 				this.message.warning('No someone hero`s name includes yor search');
 			}
 		});

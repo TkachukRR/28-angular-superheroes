@@ -46,7 +46,7 @@
 		</div>
 
 		<ul class="search__resent">
-			<li *ngFor="let recentSearch of heroes.getRecentSearches()">
+			<li *ngFor="let recentSearch of heroesService.getRecentSearches()">
 				<button (click)="onResentSearch(recentSearch)" type="button" class="btn">{{ recentSearch }}</button>
 			</li>
 		</ul>
@@ -54,17 +54,17 @@
 	</div>
 	<div class="heroes">
 		<app-heroes-page
-			*ngIf="heroes.isSuccessfulSearch && !heroes.loading; else noResultsBlock"
+			*ngIf="heroesService.isSuccessfulSearch && !heroesService.loading; else noResultsBlock"
 			class="heroes__board"></app-heroes-page>
 
-		<ng-template #noResultsBlock class="heroes__waiting">
-			<div *ngIf="!heroes.isSuccessfulSearch && !heroes.loading; else loading">
+		<ng-template #noResultsBlock>
+			<div *ngIf="!heroesService.isSuccessfulSearch && !heroesService.loading; else loading" class="heroes__waiting">
 				<p>No results.</p>
 				<p>Waiting for successful search.</p>
 			</div>
 
-			<ng-template #loading class="heroes__loading">
-				<div class="lds-dual-ring"></div>
+			<ng-template #loading>
+				<div class="lds-dual-ring heroes__loading"></div>
 			</ng-template>
 		</ng-template>
 	</div>

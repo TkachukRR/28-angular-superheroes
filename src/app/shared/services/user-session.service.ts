@@ -48,4 +48,30 @@ export class UserSessionService {
 	public checkPowerups(): void {
 		this.activeUser.powerUps = this.activeUser.powerUps.filter(powerup => powerup.quantity > 0);
 	}
+
+	public addPowerup(newPowerup: AvailablePowerup): void {
+		const samePowerupIndex = this.activeUser.powerUps.findIndex(
+			power => power.powerName === newPowerup.powerName && power.title === newPowerup.title
+		);
+
+		if (samePowerupIndex !== -1) {
+			this.activeUser.powerUps[samePowerupIndex].quantity = this.activeUser.powerUps[samePowerupIndex].quantity + 1;
+
+			return;
+		}
+		this.activeUser.powerUps = [
+			...this.activeUser.powerUps,
+			{
+				addPowerfull: newPowerup.addPowerfull,
+				powerName: newPowerup.powerName,
+				quantity: newPowerup.quantity,
+				title: newPowerup.title
+			}
+		];
+	}
+
+	public addToFights(heroId: string, opponentName: string, win: 'false' | 'true') {
+		const fiterIndex = this.activeUser.favourites.findIndex(hero => hero.id === heroId);
+		this.activeUser.favourites[fiterIndex].fights?.push({ date: Date(), opponentName, win });
+	}
 }

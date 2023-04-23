@@ -57,9 +57,7 @@ export class HeroCardComponent {
 		return this.isSelected;
 	}
 
-	public showHeroInfo(event: Event) {
-		event.stopPropagation();
-
+	public showHeroInfo() {
 		this.router.navigate(['/hero-info', this.hero.name.trim().replace(' ', '_')]);
 	}
 }

@@ -1,6 +1,6 @@
 <div
 	[ngClass]="{ green: checkIsFavourite() && !checkIsSelected(), orange: checkIsSelected() }"
-	(click)="showHeroInfo($event)"
+	(click)="showHeroInfo()"
 	class="card">
 	<h3 class="card__title hero__name">{{ hero.name }}</h3>
 
@@ -23,13 +23,13 @@
 				<button
 					[disabled]="checkIsSelected()"
 					[ngClass]="{ yellow: checkIsSelected() }"
-					(click)="addToSelected(hero.id)"
+					(click)="addToSelected(hero.id); $event.stopPropagation()"
 					class="btn hero__buttons-select">
 					{{ !isSelected ? 'Select' : 'Selected' }}
 				</button>
 				<button
 					[ngClass]="{ red: checkIsFavourite() }"
-					(click)="!isFavourite ? addToFavourite(hero) : removeFromFavourites(hero.id)"
+					(click)="!isFavourite ? addToFavourite(hero) : removeFromFavourites(hero.id); $event.stopPropagation()"
 					class="btn hero__buttons-favourites">
 					{{ !isFavourite ? 'Add' : 'Remove' }}
 				</button>
