@@ -25,7 +25,6 @@ export class UserBattlesHistoryComponent implements OnInit {
 		this.favourites = this.userSession.getFavourites();
 		this.setFights();
 		this.sortedFights = [...this.fights];
-		console.log(this.fights);
 	}
 
 	public setFights() {

@@ -23,11 +23,12 @@ export class AuthService {
 
 	public checkAuthenticated(): boolean {
 		if (
-			!this.localStorageService.getUserSession() ||
+			!this.localStorageService.getUserSession().expDate ||
 			new Date(this.localStorageService.getUserSession().expDate).getTime() === new Date(0).getTime()
 		) {
 			return false;
 		}
+
 		if (new Date(this.localStorageService.getUserSession().expDate) < new Date()) {
 			this.message.warning('login again');
 

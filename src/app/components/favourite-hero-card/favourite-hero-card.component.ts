@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Hero } from '../../shared/interfaces';
 import { UserSessionService } from '../../shared/services/user-session.service';
 import { LocalStorageService } from '../../shared/services/localStorage.service';
@@ -9,12 +9,23 @@ import { Router } from '@angular/router';
 	templateUrl: './favourite-hero-card.component.html',
 	styleUrls: ['./favourite-hero-card.component.scss']
 })
-export class FavouriteHeroCardComponent {
+export class FavouriteHeroCardComponent implements OnInit {
 	public isFavourite = false;
 	public isSelected = false;
+	public fightsQuantity = 0;
+	public winsQuantity = 0;
+	public defeatsQuantity = 0;
 	@Input() hero!: Hero;
 
 	constructor(private userSession: UserSessionService, private storageService: LocalStorageService, private router: Router) {}
+
+	public ngOnInit(): void {
+		if (this.hero.fights) {
+			this.fightsQuantity = this.hero.fights?.length;
+			this.winsQuantity = this.hero.fights?.filter(fight => fight.win === 'true').length;
+			this.defeatsQuantity = this.hero.fights?.filter(fight => fight.win === 'false').length;
+		}
+	}
 
 	public removeFromFavourites(id: string) {
 		this.userSession.removeFromFavourites(id);

@@ -4,11 +4,11 @@ import { HeroesService } from '../../shared/services/heroes.service';
 import { MessageService } from '../../shared/services/message.service';
 
 @Component({
-	selector: 'app-hero-select-page',
-	templateUrl: './hero-select-page.component.html',
-	styleUrls: ['./hero-select-page.component.scss']
+	selector: 'app-hero-search-page',
+	templateUrl: './hero-search-page.component.html',
+	styleUrls: ['./hero-search-page.component.scss']
 })
-export class HeroSelectPageComponent implements OnInit {
+export class HeroSearchPageComponent implements OnInit {
 	public searchForm!: FormGroup;
 	public keyboardVisible = false;
 	public _keyboardButtonValue = 'A';
