@@ -29,6 +29,7 @@ export class BattlePageComponent implements OnInit {
 	public showTimer = false;
 	public winner!: Hero;
 	public showWinneer = false;
+	public gotPowerups: string[] = [];
 
 	constructor(
 		private userSession: UserSessionService,
@@ -71,7 +72,9 @@ export class BattlePageComponent implements OnInit {
 			};
 
 			for (let i = 0; i < winnerGetsPowerupsQuantity; i++) {
-				this.userSession.addPowerup(getRandomPowerup() as AvailablePowerup);
+				const randomPowerup = getRandomPowerup();
+				this.gotPowerups.push(randomPowerup.title);
+				this.userSession.addPowerup(randomPowerup as AvailablePowerup);
 			}
 			this.userSession.addToFights(this.hero.id, this.opponent.name, 'true');
 			this.localStorageService.updateRegisteredUserByEmail(this.userSession.getActiveUser());
@@ -106,6 +109,7 @@ export class BattlePageComponent implements OnInit {
 
 			if (response.response === 'success') {
 				this.heroesService.isSuccessfulSearch = true;
+				console.log(response);
 				this.hero = response;
 				this.loadedHeroInfo = true;
 			}
@@ -121,6 +125,12 @@ export class BattlePageComponent implements OnInit {
 
 			if (response.response === 'success') {
 				this.heroesService.isSuccessfulSearch = true;
+				const powerstatKeys = Object.values(PowerupsNames);
+				powerstatKeys.map(key => {
+					if (response.powerstats[key] === 'null') {
+						response.powerstats[key] = '0';
+					}
+				});
 				this.opponent = response;
 				this.loadedOpponentInfo = true;
 			}
