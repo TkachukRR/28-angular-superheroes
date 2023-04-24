@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegisteredUser } from '../interfaces';
+import { ActiveUser, RegisteredUser } from '../interfaces';
 
 @Injectable()
 export class LocalStorageService {
@@ -28,7 +28,7 @@ export class LocalStorageService {
 	}
 
 	public updateRegisteredUserByEmail(newUserInfo: RegisteredUser) {
-		const updatedUserInfo: RegisteredUser = this.getFullUserInfoByEmail(newUserInfo.email)[0];
+		const updatedUserInfo: RegisteredUser = this.getFullUserInfoByEmail(newUserInfo.email);
 		updatedUserInfo.powerUps = newUserInfo.powerUps;
 		updatedUserInfo.selectedHero = newUserInfo.selectedHero;
 		updatedUserInfo.favourites = newUserInfo.favourites;
@@ -40,24 +40,36 @@ export class LocalStorageService {
 		localStorage.setItem('registeredUsers', JSON.stringify([...filteredRegisteredUsers, updatedUserInfo]));
 	}
 
-	public getFullUserInfoByEmail(email: string) {
-		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email);
+	public getFullUserInfoByEmail(email: string): RegisteredUser {
+		return this.getRegisteredUsers().filter(registeredUser => registeredUser.email === email)[0];
 	}
 
-	public setUserSession(date: Date): void {
-		localStorage.setItem('sessionActiveTo', JSON.stringify(date));
+	public getFullUserInfoById(userId: number): RegisteredUser {
+		return this.getRegisteredUsers().filter(registeredUser => registeredUser.id === userId)[0];
+	}
+
+	public setUserSession(activeUser: ActiveUser): void {
+		localStorage.setItem('session', JSON.stringify(activeUser));
 	}
 
 	public removeUserSession() {
-		localStorage.setItem('sessionActiveTo', '');
+		localStorage.setItem('session', '');
 	}
 
-	public getUserSession(): string {
-		const sessions = localStorage.getItem('sessionActiveTo');
+	public getUserSession(): ActiveUser {
+		const sessions = localStorage.getItem('session');
 		if (sessions) {
 			return JSON.parse(sessions);
 		}
 
-		return '';
+		return {} as ActiveUser;
+	}
+
+	public clearUserSessionExpDate() {
+		const activeUser = this.getUserSession();
+		if (activeUser) {
+			activeUser.expDate = new Date(0);
+			this.setUserSession(activeUser);
+		}
 	}
 }

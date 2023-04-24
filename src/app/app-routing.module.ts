@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { AuthGuard } from './shared/services/auth.guard';
-import { HeroSelectPageComponent } from './components/hero-select-page/hero-select-page.component';
+import { HeroSearchPageComponent } from './components/hero-search-page/hero-search-page.component';
 import { UserInfoPageComponent } from './components/user-info-page/user-info-page.component';
 import { UserHeroesComponent } from './components/user-heroes/user-heroes.component';
 import { UserBattlesHistoryComponent } from './components/user-battles-history/user-battles-history.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
 		component: UserPageComponent,
 		canActivate: [AuthGuard],
 		children: [
-			{ path: 'search', component: HeroSelectPageComponent, canActivate: [AuthGuard] },
+			{ path: 'search', component: HeroSearchPageComponent, canActivate: [AuthGuard] },
 			{
 				path: 'info',
 				component: UserInfoPageComponent,

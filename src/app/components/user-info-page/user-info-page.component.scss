@@ -9,6 +9,10 @@
 		text-align: center;
 		background-color: #cccccc;
 
+		&:hover {
+			background-color: #fd7c1a;
+		}
+
 		&.active {
 			background-color: #fff300;
 		}

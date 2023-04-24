@@ -22,4 +22,30 @@
 	margin: 0 auto;
 	background-color: #fff300;
 	margin-bottom: 10px;
+
+	background-image: linear-gradient(to right, #ffd700, #ffa500);
+
+	animation: gradient-animation 0.5s ease-in-out infinite;
+}
+
+@keyframes gradient-animation {
+	0% {
+		background-image: linear-gradient(to right, #ffd700, #ffa500);
+	}
+	25% {
+		background-image: linear-gradient(to right, #ffa500, #ff4500);
+	}
+	50% {
+		background-image: linear-gradient(to right, #ff4500, #8b0000);
+	}
+	75% {
+		background-image: linear-gradient(to right, #ffa500, #ff4500);
+	}
+	100% {
+		background-image: linear-gradient(to right, #ffd700, #ffa500);
+	}
+}
+
+.button__battle:hover {
+	// background-image: linear-gradient(to right, #8b0000, #ff4500);
 }
