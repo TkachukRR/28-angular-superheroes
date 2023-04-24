@@ -3,11 +3,24 @@
 	<img [src]="fighter.image.url" alt="{{ fighter.name }} avatar" class="hero__avatar" />
 
 	<ul class="fighter__stats">
-		<li>combat: {{ fighter.powerstats.combat }}</li>
-		<li>durability: {{ fighter.powerstats.durability }}</li>
-		<li>intelligence: {{ fighter.powerstats.intelligence }}</li>
-		<li>power: {{ fighter.powerstats.power }}</li>
-		<li>speed: {{ fighter.powerstats.speed }}</li>
-		<li>strength: {{ fighter.powerstats.strength }}</li>
+		<li>combat: {{ fighter.powerstats.combat === 'null' ? 0 : fighter.powerstats.combat }}</li>
+		<li>durability: {{ fighter.powerstats.durability === 'null' ? 0 : fighter.powerstats.durability }}</li>
+		<li>intelligence: {{ fighter.powerstats.intelligence === 'null' ? 0 : fighter.powerstats.intelligence }}</li>
+		<li>power: {{ fighter.powerstats.power === 'null' ? 0 : fighter.powerstats.power }}</li>
+		<li>speed: {{ fighter.powerstats.speed === 'null' ? 0 : fighter.powerstats.speed }}</li>
+		<li>strength: {{ fighter.powerstats.strength === 'null' ? 0 : fighter.powerstats.strength }}</li>
+		<li>
+			<strong
+				>total:
+				{{
+					+fighter.powerstats.combat +
+						+fighter.powerstats.durability +
+						+fighter.powerstats.intelligence +
+						+fighter.powerstats.power +
+						+fighter.powerstats.speed +
+						+fighter.powerstats.strength
+				}}
+			</strong>
+		</li>
 	</ul>
 </div>

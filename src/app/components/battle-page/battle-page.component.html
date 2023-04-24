@@ -10,7 +10,7 @@
 			<span class="battle__span">VS</span>
 			<button (click)="fight()" class="btn button__fight">Fight</button>
 		</div>
-		<div class="powerups">
+		<div *ngIf="powerups.length" class="powerups">
 			<h4 class="powerups__title">Powerups:</h4>
 			<ul class="powerups__list">
 				<li *ngFor="let powerup of powerups" class="powerups__item">
@@ -23,8 +23,8 @@
 		</div>
 	</div>
 
-	<ng-template #loading class="loading">
-		<div class="lds-dual-ring"></div>
+	<ng-template #loading>
+		<div class="lds-dual-ring loading"></div>
 	</ng-template>
 </div>
 
@@ -33,4 +33,5 @@
 <div *ngIf="showWinneer" class="winner">
 	<h2 class="winner__name">{{ (winner ? winner.name : 'Tie') | uppercase }} WIN</h2>
 	<img *ngIf="winner" [src]="winner.image.url" alt="{{ winner.name }}" class="winner__avatar" />
+	<p *ngIf="gotPowerups.length" class="winner__powerups">added powerups: {{ gotPowerups.toString() }}</p>
 </div>

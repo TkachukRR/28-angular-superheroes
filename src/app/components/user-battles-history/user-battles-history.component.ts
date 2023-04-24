@@ -29,19 +29,14 @@ export class UserBattlesHistoryComponent implements OnInit {
 
 	public setFights() {
 		this.favourites.map((hero: Hero) => {
-			const fight: FightHistory = {
-				date: new Date(),
-				hero: '',
-				opponent: '',
-				win: false
-			};
 			hero.fights?.map(oneFight => {
+				const fight: FightHistory = {} as FightHistory;
 				fight.date = new Date(oneFight.date);
 				fight.hero = hero.name;
 				fight.opponent = oneFight.opponentName;
 				fight.win = JSON.parse(oneFight.win);
+				this.fights = [...this.fights, fight];
 			});
-			this.fights = [...this.fights, fight];
 		});
 	}
 

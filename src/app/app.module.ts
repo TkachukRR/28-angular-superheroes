@@ -12,7 +12,7 @@ import { AuthService } from './shared/services/auth.service';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { MessageWindowComponent } from './shared/components/message-window/message-window.component';
 import { MessageService } from './shared/services/message.service';
-import { HeroSelectPageComponent } from './components/hero-select-page/hero-select-page.component';
+import { HeroSearchPageComponent } from './components/hero-search-page/hero-search-page.component';
 import { HeroCardComponent } from './shared/components/hero-card/hero-card.component';
 import { HeroesPageComponent } from './components/heroes-page/heroes-page.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,7 +36,7 @@ import { TimerComponent } from './components/timer/timer.component';
 		LoginPageComponent,
 		UserPageComponent,
 		MessageWindowComponent,
-		HeroSelectPageComponent,
+		HeroSearchPageComponent,
 		HeroCardComponent,
 		HeroesPageComponent,
 		KeyboardComponent,

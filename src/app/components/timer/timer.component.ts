@@ -13,7 +13,7 @@ export class TimerComponent implements OnInit {
 	private timer!: any;
 
 	public ngOnInit(): void {
-		this.seconds = 5;
+		this.seconds = 2;
 		this.startTimer();
 	}
 

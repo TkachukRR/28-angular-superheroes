@@ -18,11 +18,15 @@ export class HeroInfoPageComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.loading = true;
+		this.heroService.loading = true;
 		this.route.params
 			.pipe(switchMap((params: Params) => this.heroService.getByName(params['heroName'])))
 			.subscribe((response: any) => {
 				if (response.response === 'success') {
+					this.heroService.isSuccessfulSearch = true;
 					this.loading = false;
+					this.heroService.loading = false;
+
 					[this.hero] = response['results'];
 				}
 			});

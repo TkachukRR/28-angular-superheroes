@@ -1,6 +1,7 @@
 import { PowerupsNames, PowerupsTitles } from './powersups.enums';
 
 export interface RegisteredUser {
+	id: number;
 	email: string;
 	password: string;
 	name: string;
@@ -77,4 +78,9 @@ export interface AvailablePowerup {
 export interface SortedFights {
 	sorted: string;
 	isIncrease: boolean;
+}
+
+export interface ActiveUser {
+	userId: number;
+	expDate: Date;
 }
