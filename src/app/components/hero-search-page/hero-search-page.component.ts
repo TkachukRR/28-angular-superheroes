@@ -23,8 +23,10 @@ export class HeroSearchPageComponent implements OnInit {
 		this.heroesService.isSuccessfulSearch = false;
 
 		this.searchForm = new FormGroup({
-			searchInput: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)])
+			searchInput: new FormControl('super', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)])
 		});
+    this.searchHero();
+    this.searchForm.reset();
 	}
 
 	public searchHero() {

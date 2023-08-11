@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CustomValidators } from '../../shared/custom.validators';
 import { LocalStorageService } from '../../shared/services/localStorage.service';
@@ -14,7 +14,7 @@ import { PowerupsNames, PowerupsTitles } from 'src/app/shared/powersups.enums';
 	templateUrl: './login-page.component.html',
 	styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, AfterViewInit {
 	public loginForm: FormGroup = new FormGroup({});
 	public submitted = false;
 	public isRegistered = false;
@@ -29,37 +29,43 @@ export class LoginPageComponent implements OnInit {
 
 	public ngOnInit() {
 		this.loginForm = new FormGroup({
-			email: new FormControl('', [
-				Validators.required,
-				Validators.email,
-				CustomValidators.supportsDomains(['.com', '.net', '.org', '.co', '.us']) as ValidatorFn,
-				CustomValidators.maxLengthAfterAt(5) as ValidatorFn,
-				CustomValidators.allowedDotsBeforeAt(3) as ValidatorFn
+			email: new FormControl('111', [
+				// Validators.required,
+				// Validators.email,
+				// CustomValidators.supportsDomains(['.com', '.net', '.org', '.co', '.us']) as ValidatorFn,
+				// CustomValidators.maxLengthAfterAt(5) as ValidatorFn,
+				// CustomValidators.allowedDotsBeforeAt(3) as ValidatorFn
 			]),
-			password: new FormControl('', [
-				Validators.required,
-				Validators.minLength(5),
-				Validators.pattern(/(?=[A-Za-z0-9$%.&!]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$%.&!]).*$/)
+			password: new FormControl('111', [
+				// Validators.required,
+				// Validators.minLength(5),
+				// Validators.pattern(/(?=[A-Za-z0-9$%.&!]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$%.&!]).*$/)
 			]),
-			name: new FormControl('', [
-				Validators.required,
-				Validators.minLength(8),
-				Validators.pattern(/^(([a-z]+(-[a-z]+))*|^(([a-z]+|[a-z])+([A-Z][a-z]+|[A-Z])))$/)
+			name: new FormControl('111', [
+				// Validators.required,
+				// Validators.minLength(8),
+				// Validators.pattern(/^(([a-z]+(-[a-z]+))*|^(([a-z]+|[a-z])+([A-Z][a-z]+|[A-Z])))$/)
 			])
 		});
+
+    this.registrationNewUser()
 	}
 
+  public ngAfterViewInit(): void {
+    setTimeout(() => this.singIn(), 1000);
+  }
+
 	public singIn(): void {
-		if (this.loginForm.value['email'].invalid || this.loginForm.value['password'].invalid) {
-			this.message.warning('Sign in error, invalid parameters');
-
-			return;
-		}
-		if (!this.isRegistered) {
-			this.message.warning('Unregistered email');
-
-			return;
-		}
+		// if (this.loginForm.value['email'].invalid || this.loginForm.value['password'].invalid) {
+		// 	this.message.warning('Sign in error, invalid parameters');
+    //
+		// 	return;
+		// }
+		// if (!this.isRegistered) {
+		// 	this.message.warning('Unregistered email');
+    //
+		// 	return;
+		// }
 
 		const registeredUser: RegisteredUser = this.localStorageService.getFullUserInfoByEmail(this.loginForm.value['email']);
 		if (registeredUser.password !== this.loginForm.value['password']) {
@@ -74,16 +80,16 @@ export class LoginPageComponent implements OnInit {
 	}
 
 	public registrationNewUser(): void {
-		if (this.loginForm.invalid) {
-			this.message.warning('Registration error, invalid parameters');
-
-			return;
-		}
-		if (this.isRegistered) {
-			this.message.warning('This email used.');
-
-			return;
-		}
+		// if (this.loginForm.invalid) {
+		// 	this.message.warning('Registration error, invalid parameters');
+    //
+		// 	return;
+		// }
+		// if (this.isRegistered) {
+		// 	this.message.warning('This email used.');
+    //
+		// 	return;
+		// }
 
 		const newUser: RegisteredUser = {
 			id: new Date().getTime(),
